@@ -1,0 +1,59 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+  <title>plain-odbc</title>
+</head>
+<body>
+
+<a href="../../index.html">Home</a> : <a href="../programming.htm">programming</a> : <a href="lisp.htm">lisp</a>
+
+<h1>plain-odbc</h1>
+
+Known to work with CLISP on WIN32.
+
+<p>So far, I can only figure out how to perform a connection using a DSN. It seems that <code>connect-access</code> should be usable to connect to an MDB file, but I have not been able to get it to work.
+
+<pre>
+(ql:quickload "plain-odbc")
+
+
+;;; The following works, provided you specify a DSN:
+
+(progn
+ (setf *con* (plain-odbc:connect "CV" "" "")) ; requires a DSN called
+"CV"
+ (setf sql "select * from people")
+ (multiple-value-bind (status result) (plain-odbc:exec-sql *con* sql)
+                      (print status)
+                      (print result))
+ (plain-odbc:close-connection *con*))
+
+
+;;;; can't seem to get connect-access to work
+;;;; <a href="http://bit.ly/kd7WET">http://bit.ly/kd7WET</a>
+(setf *db-file* "C:\\Users\\mcarter\\CV's\\new1.mdb")
+(setf *db-file* "C:/Users/mcarter/CV's/new1.mdb")
+
+(ext:cd  "C:\\Users\\mcarter\\CV's\\")
+(ext:probe-directory #P"C:\\Users\\mcarter\\CV's\\")
+
+(format t *db-file*)
+
+(setf *con* (plain-odbc:connect-access *db-file*))
+
+Unfortunately, the above returns:
+[Microsoft][ODBC Driver manager] Data source name not found and no
+default driver specified, error code 0, State: IM002 
+
+;(plain-odbc:driver-connect)
+</pre>
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 14-May-2011
+Updated: 14-May-2011
+</pre>
+</body>
+</html>

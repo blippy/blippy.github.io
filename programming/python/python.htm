@@ -1,0 +1,114 @@
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+  <title>Python</title>
+</head>
+
+<body>
+
+<a href="../../index.html">Home</a> : <a href="../programming.htm">programming</a>
+
+
+<h1>Python</h1>
+
+
+<hr><h2>Sharelock Holmes</h2>
+
+<li><a href="https://gist.github.com/blippy/22ecb254af66a9137955">Share selection Nov 2015</a> - xlink</li>
+
+
+<hr><h2>Unicode</h2>
+
+Probably the best way I've found for converting flakey text to ASCII on a mustn't-fail basis is using the following code:
+
+<pre>
+import unicodedata
+text = unicode(text, 'Latin-1')
+text = unicodedata.normalize('NFKD', text).encode('ascii','replace')
+</pre>
+
+
+<hr><h2>Also on this site</h2>
+
+
+
+
+<li><a href="data.htm">data</a> - manipulating data, esp. for statistics
+
+<li><a href="decimal.htm">decimal</a> - arbitrary precision decimal arithmetic
+
+<li><a href="decorators.htm">decorators</a>
+
+<li><a href="drpython.htm">drpython</a> - general notes
+
+<li><a href="format.htm">format</a> - recipes
+
+<li><a href="google.htm">google</a> - development
+
+<li><a href="templating.htm">templating</a> - producing html
+
+<li><a href="webclient.htm">webclient</a> - clientside web processing
+
+
+
+<hr><h2>External Links</h2>
+
+<h3>Blog/gists by me</h3>
+
+<li><a href="https://gist.github.com/blippy/a6ac7fb9092c6c6d6b9a">convert StatsList.csv to HDF5</a>
+  
+<li><a href="https://mcturra2000.wordpress.com/2015/12/11/using-pydatalog-to-join-data-simply/">meatlog.py</a> - using pyDatalog to join data simply
+
+	<li><a href="https://gist.github.com/blippy/a385dc77f9d74e4876d5">Reducing opacity of an image using python and PIL</a></li>
+
+<h3>TUI</h3>
+Text user interfaces
+
+
+<li><a href="https://pypi.python.org/pypi/clint/">clint</a> - command line interface tools - indented, colour, auto-expanding columns, and so on
+
+<li><a href="http://code.google.com/p/npyscreen/">npyscreen</a> - widget library and application framework for programming terminal or console applications. It is built on top of ncurses, which is part of the standard library
+
+<li><a href="https://pypi.python.org/pypi/termcolor">termcolor</a> - ANSII Color formatting for output in terminal
+
+<li><a href="http://urwid.org/">urwid</a> - console user interface library
+
+
+<h3>Unclassified</h3>
+
+<li><a href="http://docs.python.org/2/library/code.html">code.compile_command()</a> - standard python that can parse a string as python code in a repl-like fashion
+
+
+<li><a href="https://mcturra2000.wordpress.com/2015/03/14/map_concurrently-simple-multithreading-in-python/">map_concurrently</a> - simple multithreading, written by me. Now in module mython.multi
+
+
+<li><a href="https://code.google.com/p/psutil/">psutil</a> - cross-platform process and utilities module
+
+<li><a href="http://pypi.python.org/pypi/pudb/0.92.15" >pudb</a> - advanced python debugger. Requires curses</li>
+
+<li><a href="https://github.com/pwaller/pyfiglet">pyfiglet</a> - port of figlet for python - renders text onto terminal
+
+
+<li><a href="http://www.python.org/pypi?:action=home">Python Package
+Index</a> - large and growing list of python packages at python.org. 
+Like CPAN for Python</li>
+
+<li><a href="http://sexpdata.readthedocs.org/en/latest/#">sexpdata</a> - S-expression parser
+
+<li><a href="http://stackoverflow.com/questions/4233476/sort-a-list-by-multiple-attributes">sort list by multiple values</a>
+
+
+<li><a href="https://docs.python.org/3/library/statistics.html#module-statistics">statistics</a> - averages and measures of spread - new in version 3.4</li>
+
+<li><a href="http://docs.python-guide.org/en/latest/scenarios/admin/">System Administration</a> - lists Fabric, Salt, Psutil, Ansible, Chef, Puppet, Blueprint, Buildout
+
+<li><a href="http://xautomation.sourceforge.net/index.html">xauth</a> - XAUT (the C library) and the corresponding Python module is a way to programatically simulate keyboard and mouse use, as well as manipulate windows. The inspiration for this came from AutoIt as well as AutoHotkey.
+
+
+
+<hr><pre>
+Author:  Mark Carter
+Updated: 05-Jul-2017
+</pre>
+</body>
+</html>

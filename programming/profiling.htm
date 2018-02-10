@@ -1,0 +1,43 @@
+<html><head>
+    <LINK REL=StyleSheet HREF="../style.css" TYPE="text/css">
+<title>profiling</title></head>
+<body>
+
+<a href="../index.html">Home</a> : <a href="programming.htm" >programming</a>
+
+
+<h1>Profiling</h1>
+
+<hr> <h2>gprof</h2>
+
+<p>
+<code>gprof</code> as been used effectively in project <code>neoleo</code> via the
+macro <code>m4/ax_gprof.m4</code>, which I wrote myself.
+</p>
+
+<p>Compile using debugging (e.g. <code>-O0 -g</code>) and <code>-pg</code> flag:
+<pre>g++ foo.cc -pg -O0 -g -o foo</pre>
+</p>
+
+<p>
+Run the executable to create the binary profile file <code>gmon.out</code>:
+<pre>foo</pre>
+</p>
+
+<p>
+Create a human-readable report:
+<pre>gprof foo gmon.out &gt; report.txt</pre>
+</p>
+
+
+<hr><h2>Links to other sites</h2>
+
+None
+
+<hr><pre>
+Author:  Mark Carter
+Created: 12-Jul-2017
+Updated: 12-Jul-2017
+</pre>
+</body>
+</html>

@@ -1,0 +1,92 @@
+<html><head>
+    <LINK REL=StyleSheet HREF="../style.css" TYPE="text/css">
+    <title>Fortran</title>
+</head>
+
+<body>
+  <a href="../../index.html">Home</a>
+  : <a href="../programming.htm" >Programming</a>
+
+<h1>Fortran</h1>
+
+"I don't know what the language of the year 2000 will look like, but I
+know it will be called Fortran." -- Tony Hoare
+
+<hr><h2>Arrays</h2>
+By convention, Fortran arrays are indexed from 1 and up.
+
+<hr><h2>Compiler flags</h2>
+
+<p><code>-fcheck=all</code> - implies array-temps, bounds, do, mem, pointer, recursion
+<p><code>-fcheck=bounds</code> - runtime checks on illegal array subscripts
+
+<hr><h2>Unclassified</h2>
+
+<p><code>call abort</code> - in gfortran this produces a backtrace
+    
+  
+  
+<hr><h2>Also on this site</h2>
+
+<li><a href="auto.htm">auto</a> - integrating Fortran with GNU Autotools
+    
+<li><a href="calendrical.htm">calendrical</a> - time and date functions
+
+<li><a href="fgsl.htm">fgsl</a> - fortran link to the GNU Scientific Library
+
+<li><a href="netcdf.htm">netcdf</a> - easier to use than HDF5
+  
+<li><a href="plplot.htm">plplot</a> - the plotting library
+
+<li><a href="read.htm">read</a>
+
+<li><a href="strings.htm">strings</a>
+
+  
+<hr><h2>Links to other sites</h2>
+
+<h3>Documentation</h3>
+
+<li><a href="http://www.sdsc.edu/~tkaiser/f90.html#Kind%20facility">Advanced Fortran 90</a> - quite extensive
+
+<li><a href="http://www.fortran90.org/src/best-practices.html">best practices</a>
+
+<li><a href="http://cs.ubishops.ca/ljensen/fortran/fortran.htm">Lin Jensen's</a> Fortran notes
+
+<li><a href="http://www.compileonline.com/compile_fortran_online.php">Online</a> compilation and execution of Fortran-95 code
+
+<li><a href="http://www1.gantep.edu.tr/~andrew/ep241/docs/scope/">scope</a> - scoping rules at the module and subroutine level
+
+<li><a href="http://degenerateconic.com/transfer/"><code>TRANSFER</code></a>  - can be used to achieve a sort of poor-man's polymorphism
+  
+<h3>Gists (mine)</h3>
+
+<li><a href="https://gist.github.com/blippy/e7add5016aadb109e909">Using ALLOCATABLE with hard-coded data</a> - no need to count size beforehand
+
+<h3>Libraries</h3>
+
+<li><a href="http://flibs.sourceforge.net/">flibs</a> - a collection of fortran modules on Sourceforge
+
+  
+<li><a href="http://sourceforge.net/projects/fortranposix/">fortranposib</a> - implementation of some POSIX functions in Fortran 90/95. "Not complete, and might not even work on all Unix systems."
+  
+<li><a href="http://fortranwiki.org/fortran/show/Libraries">Libraries</a> -  page on Fortran Wiki linking to a whole host of libraries, inc FGSL, flibs, BLAS, even a JSOn library
+
+
+  <h3>Unclassified</h3>
+  
+  
+  <li><a href="http://computer-programming-forum.com/49-fortran/f8d6d290fcf483a1.htm">number of seconds since Jan 1, 1970</a>
+
+  <li><a href="https://groups.google.com/forum/#!topic/comp.lang.fortran/mOMao-KLBc0">Which module documentation tool?</a> - question I asked on Google Groups about a suitable module documentation tool. Many candidates are listed on the <a href="http://fortranwiki.org/fortran/show/Automatic+documentation">Wiki</a> .
+
+
+
+	  
+<hr><pre>
+Author:  Mark Carter
+Created: 22-Nov-2011
+Updated: 02-Feb-2016
+</pre>
+</body>
+</html>

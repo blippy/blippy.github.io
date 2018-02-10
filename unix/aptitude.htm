@@ -1,0 +1,80 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Aptitude</title>
+</head>
+
+<body>
+<a href="../index.html">Home</a> : <a href="unix.htm">unix</a>
+
+
+<h1>Aptitude</h1>
+
+Recipes for using aptitude on Debian/Ubuntu
+
+<hr><h2>Install deb package</h2>
+
+<code>sudo dpkg -i foo.deb</code>
+
+<hr><h2>show</h2>
+
+<b>show</b> Displays detailed information about one or more packages. E.g.
+
+<pre>aptitude show bsdgames</pre>
+
+gives
+
+<pre>Package: bsdgames
+State: not installed
+Version: 2.17-15
+Priority: optional
+Section: universe/games
+Maintainer: Ubuntu MOTU Developers <ubuntu-motu@lists.ubuntu.com>
+Uncompressed Size: 2544k
+Depends: libc6 (>= 2.4), libgcc1 (>= 1:4.1.1-21), libncurses5 (>= 5.6+20071006-3), libstdc++6 (>=
+         4.2.1-4), wamerican | wordlist
+Conflicts: bsdgames-nonfree (< 2.14)
+Replaces: bsdgames-nonfree (< 2.14)
+Description: a collection of classic textual unix games
+ This is a collection of some of the text-based games and amusements that have been enjoyed for
+ decades on unix systems. 
+ 
+ Includes these programs: adventure, arithmetic, atc, backgammon, battlestar, bcd, boggle, caesar,
+ canfield, countmail, cribbage, dab, go-fish, gomoku, hack, hangman, hunt, mille, monop, morse,
+ number, pig, phantasia, pom, ppt, primes, quiz, random, rain, robots, rot13, sail, snake, tetris,
+ trek, wargames, worm, worms, wump, wtf</pre>
+
+<hr><h2>Remove unused kernels</h2>
+Remove all unused kernels with apt-get (<a href="http://www.commandlinefu.com/commands/view/10520/remove-all-unused-kernels-with-apt-get">xlink</a>):
+<pre>aptitude remove $(dpkg -l|egrep '^ii linux-(im|he)'|awk '{print $2}'|grep -v `uname -r`)</pre>
+
+<hr><h2>Update to new distribution</h2>
+
+<pre>
+aptitude update
+aptitude dist-upgrade
+do-release-upgrade -d
+</pre>
+
+
+
+<hr><h2>Unclassified</h2>
+
+
+Try taking a look at <code>apt-cache search</code> and <code>apt-get search</code>
+
+<p><b>List all installed packages:</b> <code>dpkg --get-selections</code>
+
+<p><b>List all the files in a package:</b> <code>dpkg -L PACKAGENAME</code>
+
+<p><b>Find the owning package of a file:</b> <code>dpkg -S /path/to/file</code>
+
+
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 25-Jan-2009
+Updated: 24-Apr-2015
+</pre>
+</body>
+</html>

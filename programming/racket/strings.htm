@@ -1,0 +1,39 @@
+<html>
+<head>
+  <meta content="text/html; charset=iso-8859-1"  http-equiv="CONTENT-TYPE">
+  <LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+  <title>Racket strings</title>
+</head>
+
+<body>
+
+<a href="../../index.html">Home</a> : <a href="../programming.htm" >programming</a> : <a href="racket.htm">racket</a>
+
+<h1>Racket strings</h1>
+
+
+<hr>
+
+<pre>
+(define (right$ str len)
+    "Return the right-most LEN characters of string STR as a string"
+    (substring str (- (string-length str) len) (string-length str)))
+</pre>
+
+Better:
+<pre>
+(require srfi/13)
+(string-take-right "asdf" 2)
+</pre>
+
+
+<p><code>(regexp-split #rx"," "foo,bar")</code> - split a string along commas
+<p><code>string-&gt;number</code> - convert a string to a number
+
+<hr><pre>
+Author:  Mark Carter
+Created: 27-Nov-2010
+Updated: 31-Jul-2011
+</pre>
+</body>
+</html>

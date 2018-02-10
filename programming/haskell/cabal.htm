@@ -1,0 +1,60 @@
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+  <title>Cabal</title></head>
+<body>
+
+
+<a href="../../index.html">Home</a> 
+: <a href="../programming.htm">programming</a>
+: <a href="haskell.htm">haskell</a>
+
+
+<h1>Cabal</h1>
+
+<hr><h2>New projects</h2>
+<pre>
+cabal sandbox init
+cabal init
+cabal configure
+cabal repl
+</pre>
+
+
+<hr><h2>Initialising projects from repos (esp my own)</h2>
+
+<pre>
+cabal sandbox init
+cabal install # install dependencies, and builds executables
+cabal repl # start a repl for experimentation
+</pre>
+
+<hr><h2>Unclassified</h2>
+<pre>
+#If you want to release the code for importation elsewhere:
+runhaskell Setup.hs configure --user
+runhaskell Setup.hs build
+runhaskell Setup.hs install
+
+#Using the module from ghci:
+import Foo.Bar
+
+#Adding user sources from another package:
+cabal sandbox add-source $dir # top level
+cabal install $pkgname
+
+#Build Haddock documentation:
+cabal haddock
+</pre>
+
+<hr><h2>Links to other sites</h2>
+
+None
+
+<hr><pre>
+Author:  Mark Carter
+Created: 11-Jul-2015
+Updated: 11-Jul-2015
+</small>
+</body>
+</html>

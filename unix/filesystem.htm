@@ -1,0 +1,39 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>filesystem</title>
+</head>
+
+<body>
+
+<a href="../index.html">Home</a> : <a href="unix.htm">unix</a>
+
+<h1>Filesystem</h1>
+
+Overview of the UNIX filesystem directory layout.
+
+<pre>
+/  - files needed at boot
+/etc - configuration files
+/lib - dynamically linked shared libraries (analogous to DLLs on Windows)
+/proc - a virtual directory corresponding to all processes running on the system
+/tmp - programs can write their temporary files here
+/usr - files needed after boot
+/usr/doc - docs for user apps, in many file formats
+/usr/include - header files for C compiler
+/usr/local or /opt - custom stuff that is not handled via the system's default software handling solution. Intended for local machine only.
+/usr/share - config files
+/usr/src - source code for the system's software, including Linux kernel
+/var - "variable data" - data that changes constantly when the system is running
+~/local or ~/opt - install into home dir
+</pre>
+
+<p>If you are in a heterogenous environment with shared home between lots of architectures etc, /import/x86 etc is a good place
+
+<p><code>man hier</code> -  description of the filesystem hierarchy
+
+<hr><pre>
+Author:  Mark Carter
+Created: 22-Nov-2010
+Updated: 17-Jan-2015
+</pre>
+</body></html>

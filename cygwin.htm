@@ -1,0 +1,78 @@
+<html><head>
+  <LINK REL=StyleSheet HREF="style.css" TYPE="text/css">
+  <title>cygwin</title>
+</head>
+<body>
+
+<p><a href="index.html">Home</a></p>
+
+<h1>Cygwin</h1>
+
+
+<hr><h2>chere</h2>
+
+This program allows you to create a <code>Bash Prompt Here</code> speed menu item in Windows Explorer. To install it, start a cygwin terminal as an administrator (or else you'll receive a message about "Hive not writeable", and type:
+<pre>chere -i</pre>
+
+<hr><h2>Interesting libraries</h2>
+
+<li><code>inetutils</code> - contains telnet + others</li>
+<li><code>make</code> - needed to install dotfiles repo</li>
+<li><code>openssh</code> - in category Net</li>
+
+
+<hr><h2>Rebasing</h2>
+
+If you start to get weird execution problems and fatal errors, then it is time to rebase cygwin:
+<ol>
+<li>Close all cygwin shells
+<li>Run:  <code>C:\cygwin\bin\ash.exe</code>
+<li><code>/bin/rebaseall</code>
+<li>Also try: <code> /bin/peflagsall</code>
+</ol>
+
+
+<hr><h2>Setup</h2>
+
+<pre>
+Install autoconf, automake, gcc-g++, git, make, openssh
+
+mkdir repos ; cd repos
+git clone ssh://vivo/home/mcarter/repos/redact.git
+cd redact/doc dotfile
+make bash
+make git
+make ssh
+bash
+</pre>
+
+<hr><h2>vivocyg</h2>
+
+Available as a setup from
+<li><a href="https://github.com/blippy/vivocyg">github</a> - available to download as an executable</li>
+<li>F:\windows-software\vivocyg-setup-1.0.exe (Samsung) - it does a proper installation</li>
+
+
+<hr><h2>X</h2>
+
+X is integrated in with cygwin. You should install packages <code>xinit</code>. That seems sufficient. To get the server to run at startup, put the "XWin Server" shortcut in Startup. For convenience, I have put a copy of this shortcut in tacc/cygwin.
+
+
+
+<hr><h2>Links to other sites</h2>
+
+
+<li><a href="http://www.cygwin.com/packages/">packages</a> - Cygwin
+package list. Lists all available packages, and package contents are
+searchable by regular expression.
+
+<li><a href="http://cygwinports.org/">ports</a> - unofficial projects
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 01-Oct-2011
+Updated: 18-Feb-2017
+</pre>
+</body>
+</html>

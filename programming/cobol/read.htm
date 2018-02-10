@@ -1,0 +1,93 @@
+<html><head>
+    <LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+<title>cobol</title></head>
+<body>
+
+<a href="../../index.html">Home</a> 
+: <a href="../programming.htm" >programming</a>
+: <a href="cobol.htm">cobol</a>
+
+
+<h1>READ a file</h1>
+
+<hr><h2>Method 1</h2>
+
+I think this is my preferred method.
+
+<pre>
+001000 IDENTIFICATION DIVISION.
+      * 2016-06-26 created by mcarter
+      * shell reads shell.cob and echos it to output
+001010 PROGRAM-ID. shell.
+
+002000 ENVIRONMENT DIVISION.
+002010 INPUT-OUTPUT SECTION.
+       FILE-CONTROL.
+           select fd-in assign to ws-fd-in-name
+                   organisation is line sequential.
+
+003000 DATA DIVISION.
+003010 FILE SECTION.
+       FD fd-in.
+       01 inline pic x(80).
+
+003020 WORKING-STORAGE SECTION.
+       01 ws-fd-in-name pic x(50).
+
+003030 LOCAL-STORAGE SECTION.
+003040 LINKAGE SECTION.
+
+004000 PROCEDURE DIVISION.
+       program-begin.
+           move "shell.cob" to ws-fd-in-name.
+           display "=== ECHOING FILE ==="
+           open input fd-in.
+
+           perform forever
+           read fd-in
+                   at end exit perform
+                   not at end display inline
+           end-read
+           end-perform
+
+
+           display "=== FINISHED ==="
+           close fd-in.
+
+       program-done.
+           stop run.
+
+</pre>
+
+
+
+<hr><h2>Method 2</h2>
+
+
+<pre>
+SET FILE-NOT-EOF TO TRUE
+PERFORM UNTIL FILE-EOF
+  READ FILE
+    AT END
+      SET FILE-EOF TO TRUE
+    NOT AT END
+      PERFORM PROCESS-RECORD
+  END-READ
+END-PERFORM
+</pre>
+
+<p><a href="http://stackoverflow.com/questions/11412221/cobol-program-to-read-a-flat-file-sequentially-and-write-it-to-an-output-file-n">xlink</a>
+
+
+
+<hr><h2>Links to other sites</h2>
+
+None
+
+<hr><pre>
+Author:  Mark Carter
+Created: 27-Jun-2016
+Updated: 27-Jun-2016
+</pre>
+</body>
+</html>

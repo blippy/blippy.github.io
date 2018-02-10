@@ -1,0 +1,354 @@
+ _____                   ______      
+|  __ \                 |  ____|     
+| |  | | ___ _   _ ___  | |__  __  __
+| |  | |/ _ \ | | / __| |  __| \ \/ /
+| |__| |  __/ |_| \__ \ | |____ >  < 
+|_____/ \___|\__,_|___/ |______/_/\_\
+
+MARK CARTER'S NOTES ON DEUS EX
+
+This work has been released into the Public Domain.
+
+
+
+AUGMENTATIONS
+=============
+
+Combat strength - multiplies damage inflicted in melee combat
+Microfibral muscle - push/lift heavy objects
+
+
+
+CONTROLS
+========
+
+Activate Goals/notes   G,F2
+Crouch                 X
+Drop/throw item        MMB, Tab
+Lean left              Q
+Lean Right             E
+Put item away          Backspace
+Reload Weapon          ;
+Toggle scope           [
+Toggle laser sight     ]
+Toggle walk/run        CAPS lock
+
+
+
+LOCATION NOTES
+==============
+
+Username and passwords are shown as pairs separated by commas.
+
+ATM refers to the ATM machines
+
+Location abbreviations:
+A51 - Area 51
+HK  - Hong Kong
+NWC - New West Coast
+NYC - New York City
+PRS - Paris
+VND - Vandenberg
+
+## UNATCO HQ
+
+Denton's login: jcd, bionicman
+Ammunitions door code coom van: 0451
+Van camera login: satcom, unatco_001
+
+Level:
+2 - Mandeley. Game room. Ignore the lockered room. They don't contain useful items
+3 - Gunther Hermann - agent - (login: ghermonn, zeitgeist)
+  - Anna Navarra - agent
+  - Sam Carter - munitions
+4 - Jaime Reyes (medical) Locked cupboard contains one biocell + one medikit + one aug
+  - Alex Jacobson (computer ops). Locked cupboard contains one lockpick
+
+  
+## NYC Liberty Island
+security: smashthestate, nsf001
+atm: 230023, 4558
+
+
+## NYC Castle Clinton
+9183
+
+
+## NYC 'ton (Hilton hotel)
+atm: 543654, 5544
+atm: 947761, 2867
+safe: 4321
+computer: pdenton, chameleon
+
+
+## NYC Hell's Kitchen
+
+
+## NYC Warehouse District
+warehouse basement: 9923
+login: tfrase, valleyforge
+generator underground password: righteous
+
+
+## NYC Battery park
+Secret passage behind phone booth: 6653
+
+
+## NYC Brooklyn Bridge
+Talk to Charlie. He'll get you into the tunnels.
+Women's restroom: 5482
+Mole's tunnel behind cardboard boxes at South
+
+
+## NYC Helibase
+login: etodd, saintmary
+suspension (i.e. augmentation) crate code: 9905
+
+
+## NYC Airfield
+hangar code: 5914
+
+In the trucks (viewed from back):
+left: 12 guage sabot shells
+Right: tranq darts, 10mm ammo
+
+
+## NYC 747 Airplane
+suspension (i.e. augmentation) crate code: 9905
+
+
+## NYC Hell's kitchen
+
+
+## NYC 20th St Warehouse
+security grid: tjefferson, newrevolution
+align comms dish: mcollins, revolution
+comms console: napolean, revolution
+Nano key in lady's toilet
+
+
+## NYC Hell's Kitchen
+Subway station: 6282
+
+
+## Secret MJ12 Facility
+Detention block door code: 4089
+All detention cells: 4679
+use the bot to attack soldiers: mj12, invader
+armory code: 2971
+medical area: 0199
+Exit door: 1125
+
+
+## HK MJ12 Helibase
+purge valve: 99871
+
+Barracks (left to right):
+1 - trophy cup. 10mm ammo
+2 - datacube (elevator: 989). nano key (for flight control room 2)
+3 - credit. multitool
+
+
+## HK Tonnichi Road
+security system: queenstower, security
+elevator bypass: 1709
+floor 7: 3444
+
+
+## HK Market
+Police station vault: 87342
+compund: 1997
+
+
+## HK Tong's base
+computer: jcdenton, sanctuary
+
+
+## HK Versalife
+elevator: 06288
+Find Mr Hundley to gain access to the labs
+elevator: 6512
+shutdown system: 525
+standard data entry: all_shifts, data_entry
+quickstop cashier: management, code324
+North end of Canal Road Tunnel: 55655
+
+
+## HK Nano manufacturing
+door seal: 768
+
+
+## NYC Brooklyn Naval Shipywards
+security: usfema, security
+0909
+lower ramp: 6655
+bridge, engineering raise: 9753
+ops: 83353
+armory: 71324
+login: kzhao, captain
+65678
+hangar: 4453
+
+
+## NYC Lower East side cemetary
+
+
+## PRS Defort-Rochereau
+maintenance lift: 4003
+contam room: 0001
+
+
+## PRS Catacombs
+
+
+## PRS Nightclub La Porte de l'Enfer
+storeroom: 1966
+
+
+## PRS Chateasu DuClare
+login: bduclare, nice_angel
+suspension vault: 1784
+nicolette, chad
+
+
+## PRS Knights Templar Cathedral
+sidon's vault: 1942
+fountain of wisdom: 0022
+number and a secret: 34501, 08711
+
+
+## PRS Metro
+
+
+## PRS Morgan Everett's Home
+suspension: 2384, 6426
+security: ?, pynchon
+morpheus: 8001
+Lucius DeBeers: I kept him alive. Anyone know what happens if I kill him?
+
+
+## VND Command
+activation: 5868
+login: command, zebra42
+login: tunnel01, omega2a
+
+
+## VND Computer
+login: gsavage, tiffany
+
+
+## VND Gas
+
+
+## NWC Subbase
+sub-bay doors: tech, sharkman
+
+
+## NWC Oceanlab
+5690
+security: oceanguard, kraken
+urv bay: APinkerton, Antennapedia
+
+
+## NWC Missile silo
+8456
+launch: elder, armageddon
+
+Silo levels:
+6 - top (exit)
+5 - main entrance
+4 - power bot
+3 - electrospiders (avoid this level)
+2 - saboteur - kill him
+1 - water entrance
+
+## A51 Bunker
+blast door: a51, xx15yz
+
+## A51 entrance
+sector 2 security grid: 8946
+chamber: 0169
+
+## A51 Final
+Lab B13: area51, bravo13
+explosives locker: 4225
+Aquinus Hub: 1038
+
+## A51 Page
+enable/disable: lab 12, graytest
+deactivation code: 7243
+router control room: page, uberalles
+aquinus substation+router: 6765
+coolant system: 2242
+primary router: icarus, panopticon
+
+
+
+WEAPONS
+=======
+
+Meaning of abbreviations:
+W - Width (number of cells across in inventory)
+H - Height (number of cells high in inventory)
+DMG - Base damage
+CLIP - clip size
+ACC - Base accuracy
+AMM - Ammo (single shot only implies it is used once, and is then disgarded)
+RNG - Accuracy range
+MAX - Maximum range
+
+Assualt rifle
+W: 2 H: 2 DMG: 3 CLIP: 30 ACC: 65% AMM: ?
+
+Assualt shotgun
+W: 2 H: 2 DMG: 20 CLIP: 12 ACC: 60% AMM: ? RNG: 75' MAX: 150'
+
+Dragon's Tooth Sword
+W: 4 H: 1 DMG: 100 CLIP: N/A ACC: 50% AMM: N/A
+
+GEP (Guided Explosive Projectile) Gun
+W: 4 H: 2 DMG: 300 CLIP: ? ACC: 75% AMM: rockets
+Hasta la vista, baby!
+
+Light Anti-tank Weapon (LAW)
+W: 4 H: 1 DMG: 100 CLIP: N/A ACC: 70% AMM: single shot only
+
+Mini-crossbow
+W: 1 H: 1 DMG: 25 CLIP: 4 ACC: 60% AMM: darts
+I found this difficult to use. Ammo is plentiful. It takes a while to work,
+but will bring down most things. Use it when you are protected from enemy
+attack.
+
+Pistol
+W: 1 H: 1 DMG: 14 CLIP: 6 ACC: 65% AMM: 10mm
+Ammo is plentiful, and is a useful weapon to have even later in the game.
+Useful at close quarters when the enemy is dancing around a lot. A single
+headshot finishes them.
+
+Plasma rifle
+W: 4 H: 2 DMG: 105 CLIP: 12 ACC: 60% AMM: ? RNG: 900' MAX: 1500'
+
+PS20
+W: 1 H: 1 DMG: 25 CLIP: N/A ACC: N/A AMM: Single shot only
+
+Riot prod
+W: 1 H: 1 DMG: 15 CLIP: 4 ACC: 75% AMM: charger
+
+Sawed-Off Shotgun
+W: 3 H: 1 DMG: 25 CLIP: 4 ACC: 70% AMM: buckshot, sabot
+
+Stealth pistol
+W: 1 H: 1 DMG: 8 CLIP: 10 ACC: 60% AMM: 10mm
+
+Sniper Rifle
+W: 4 H: 1 DMG: 25 CLIP: 6 ACC: 75% AMM: 3006 ammo
+
+
+
+HISTORY
+=======
+
+Author:  Mark Carter
+Email:   a l t . m c a r t e r@google mai l __ dot__ com
+Created: 20-Jul-2009
+Updated: 14-Nov-2009

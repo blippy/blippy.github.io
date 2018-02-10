@@ -1,0 +1,83 @@
+<html><head>
+  <LINK REL=StyleSheet HREF="style.css" TYPE="text/css">
+  <title>SC</title>
+</head>
+<body>
+
+<p><a href="index.html">Home</a></p>
+
+<h1>SC</h1>
+
+sc - unix spreadsheet calculator crib sheet
+
+<pre>
+
+E) CELL ENTRY/EDITING
+E edit string part
+c Copy a marked cell to current cell (it adjusts formula)
+e edit number
+m Followed by any lower-case letter, marks the current cell with that letter.
+
+G) FILES
+P write out file in sc format
+W write out in ascii format (it appends `asc' extension)
+
+H) ROW AND COLUMN COMMANDS
+ic insert column (left/right??)
+ir insert row above
+
+I) RANGE COMMANDS
+rd range define: assign a name to a cell or a range of cells
+
+FORMATTING
+f whole column
+  &gt; &lt; increase/decrease physical width
+  + - increase/decrease decimal places
+
+
+</pre>
+
+<hr><h2>Examples</h2>
+Files can be found in repo tacc/sc
+
+<h3>Example01</h3>
+
+Combining two input sc files (inp1.sc and inp2.sc) and producing an ASCII output file out.asc:
+<pre>cat inp1.sc inp2.sc | sc -W % - &gt; out.asc</pre>
+where inp1.sc is:
+<pre>
+let A0 = 10
+let A2 = @sum(A0:A1)
+goto A2 A0
+</pre>
+and inp2.sc is:
+<pre>
+let A1 = 20
+let foo = 20 # where is foo is some cell that you have defined using rd
+</pre>
+
+
+<hr><h2>Macros</h2>
+
+<h3>put - write out sc-parseable output</h3>
+<li><code>put ""</code> - save the sc file using current file-name
+<li><code>put "foo.sc"</code> - save the sc file as foo.sc
+
+<h3>write - write output as ascii</h3>
+<li><code>write ""</code> - writes giving as asc extension based on filename
+<li><code>write "foo.asc"</code> - save the ASCCI test as file foo.asc
+
+<h3>quit</h3>
+Quits without saving. Use the <code>put</code> statement if you want to save your work.
+
+<hr><h2>psc</h2>
+
+psc - prepare sc files - allows you to do things like convert CSV files to sc format. E.g. <code>psc -d , &lt;file.sc &gt;file.sc</code>
+
+<hr><pre>
+Author:  Mark Carter
+Created: 16-Apr-2012
+Updated: 10-Mar-2016
+</pre>
+</body>
+</html>

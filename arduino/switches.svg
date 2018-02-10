@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?> 
+<!DOCTYPE svg PUBLIC "-//W3C//Dtd SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/Dtd/svg11.dtd">
+<svg width="680.0" height="545.0" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+<!-- Created by FidoCadJ ver. 0.24.7, export filter by Davide Bucci -->
+<g transform="translate(260.0,15.0) scale(1.2954545454545454,1) "><text x="0" y="20.0" font-family="aakar" font-size="20.0" font-style="" font-weigth="" fill="#000000">5V</text>
+</g>
+<rect x="265.0" y="215.0" rx="0" ry="0" width="20.0" height="45.0" style="stroke:#000000;stroke-width:2.5;fill-rule: evenodd;" fill="none"/>
+<line x1="275.0" y1="200.0" x2="275.0" y2="215.0" style="stroke:#000000;stroke-width:2.5;fill-rule: evenodd;" fill="none"/>
+<line x1="275.0" y1="260.0" x2="275.0" y2="275.0" style="stroke:#000000;stroke-width:2.5;fill-rule: evenodd;" fill="none"/>
+<g transform="translate(325.0,225.0) scale(1.0160427807486632,1) "><text x="0" y="34.0" font-family="aakar" font-size="34.0" font-style="" font-weigth="" fill="#000000">10K ("pull-up resistor")</text>
+</g>
+<line x1="275.0" y1="100.0" x2="275.0" y2="100.0" style="stroke:#000000;stroke-width:2.5;fill-rule: evenodd;" fill="none"/>
+<line x1="275.0" y1="100.0" x2="275.0" y2="100.0" style="stroke:#000000;stroke-width:2.5;fill-rule: evenodd;" fill="none"/>
+<line x1="275.0" y1="50.0" x2="275.0" y2="100.0" style="stroke:#000000;stroke-width:2.5;fill-rule: evenodd;" fill="none"/>
+<line x1="275.0" y1="50.0" x2="275.0" y2="200.0" style="stroke:#000000;stroke-width:2.5;fill-rule: evenodd;" fill="none"/>
+<line x1="275.0" y1="275.0" x2="275.0" y2="405.0" style="stroke:#000000;stroke-width:2.5;fill-rule: evenodd;" fill="none"/>
+<line x1="275.0" y1="405.0" x2="390.0" y2="405.0" style="stroke:#000000;stroke-width:2.5;fill-rule: evenodd;" fill="none"/>
+<line x1="385.0" y1="405.0" x2="410.0" y2="405.0" style="stroke:#000000;stroke-width:2.5;fill-rule: evenodd;" fill="none"/>
+<line x1="435.0" y1="405.0" x2="460.0" y2="405.0" style="stroke:#000000;stroke-width:2.5;fill-rule: evenodd;" fill="none"/>
+<line x1="410.0" y1="405.0" x2="435.0" y2="390.0" style="stroke:#000000;stroke-width:2.5;fill-rule: evenodd;" fill="none"/>
+<line x1="460.0" y1="405.0" x2="505.0" y2="405.0" style="stroke:#000000;stroke-width:2.5;fill-rule: evenodd;" fill="none"/>
+<line x1="505.0" y1="405.0" x2="505.0" y2="505.0" style="stroke:#000000;stroke-width:2.5;fill-rule: evenodd;" fill="none"/>
+<polygon points="490.0,515.0 520.0,515.0 505.0,530.0 505.0,530.0 " style="stroke:#000000;stroke-width:2.5;fill-rule: evenodd;" fill="none"/>
+<line x1="505.0" y1="505.0" x2="505.0" y2="515.0" style="stroke:#000000;stroke-width:2.5;fill-rule: evenodd;" fill="none"/>
+<line x1="280.0" y1="405.0" x2="95.0" y2="405.0" style="stroke:#000000;stroke-width:2.5;fill-rule: evenodd;" fill="none"/>
+<circle cx="95.0" cy="405.0" r="5.0" style="stroke:#000000;stroke-width:0.33" fill="#000000"/>
+<g transform="translate(15.0,370.0) scale(1.2954545454545454,1) "><text x="0" y="20.0" font-family="aakar" font-size="20.0" font-style="" font-weigth="" fill="#000000">Some IC pin</text>
+</g>
+</svg>

@@ -1,0 +1,73 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <title>fluxbox</title>
+</head>
+
+<body>
+
+<a href="../index.html">Home</a> : <a href="unix.htm">unix</a>
+
+
+<h1>fluxbox</h1>
+
+<hr><h2>Aerosnap</h2>
+
+In <code>~/.fluxbox/keys</code>:
+<pre>
+# Tiling
+<strike>
+#Control Mod1 Left :MacroCmd {ResizeTo 50% 100%} {MoveTo 00 00 Left}
+</strike>
+Mod4 Left :MacroCmd {ResizeTo 50% 100%} {MoveTo 00 00 Left}
+Mod4 Right :MacroCmd {ResizeTo 50% 100%} {MoveTo 00 00 Right}
+Mod4 Up :MacroCmd {ResizeTo 100% 50%} {MoveTo 00 00 Up}
+Mod4 Down :MacroCmd {ResizeTo 100% 50%} {MoveTo 00 00 Bottom}
+Mod4 Return :ToggleCmd {Maximize} {Restore}
+
+# Useful shortcuts
+Mod4 f :exec firefox
+Mod4 m :exec thunderbird
+Mod4 t :exec xterm                       
+</pre>
+
+<p>
+`Mod4 ' is the left-window button. These keys may already by used, e.g. by 
+:SendToPrevWorkspace, so you may have to comment out the latter.
+</p>
+
+<hr><h2>Background colour</h2>
+
+In <code>~/.fluxbox/startup</code>, add the following line before <code>exec fluxbox</code>:
+<pre>
+/usr/bin/fbsetroot -solid gray30
+</pre>
+
+<hr><h2>Start menu</h2>
+
+In <code>$HOME/.fluxbox/init</code>, you need to add <code>RootMenu</code>:
+<pre>
+session.screen0.toolbar.tools:  RootMenu, iconbar, systemtray, clock
+</pre>
+
+To prevent user from dragging window into another workspace:
+<pre>
+session.screen0.workspacewarping:      false
+</pre>
+
+<hr><h2>Time</h2>
+
+Change the line in <code>~/.fluxbox/init</code> to:
+<pre>
+session.screen0.strftimeFormat: %a %x %X
+</pre>
+
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 13-Apr-2017
+Updated: 12-Jan-2018
+</pre>
+
+</body></html>

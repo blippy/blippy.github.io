@@ -1,0 +1,92 @@
+<html><head>
+  <LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+  <title>Quicklisp</title></head>
+<body>
+
+<a href="../../index.html">Home</a> : <a href="../programming.htm">programming</a> : <a href="lisp.htm">lisp</a>
+
+<h1>Quicklisp</h1>
+
+Lisp's least bad packaging system yet (TM). It is a  dependency-aware repository of libraries. You can specify a library that you want installed, and 
+Quicklisp will handle the dependencies. Think <code>apt-get</code> for Lisp. 
+
+<hr><h2>Getting started</h2>
+
+<pre>
+(load "quicklisp.lisp")
+(quicklisp-quickstart:install)
+
+(ql:quickload "system-name") ; load a system
+(ql:register-local-projects) ; sorta
+(ql:system-apropos "term") ; to find systems
+(ql:update-client) ; new version takes effect upon restart 
+(ql:update-dist "quicklisp") ; upgrade distribution 
+</pre>
+
+
+<hr><h2>Interesting libraries</h2>
+
+<li><a href="http://8arrow.org/cl-dbi/">cl-dbi</a> - database independent interface</li>
+
+<li>cl-markdown - a markdown processor
+
+<li><a href="https://github.com/AccelerationNet/data-table">data-table</a> - providing a data-table data-structure that has rows of data and column names and types. includes routines for reading/writing, converting, combining and sub-tabling. Easy interation with databases, and generating complex reports that contain multiple sections. 
+
+<li><a href="http://www.quicklisp.org/beta/UNOFFICIAL/docs/folio/readme.html">folio</a> - features AS (type conversion), boxes, and collections.
+
+
+<li><a href="https://github.com/m2ym/optima">optima</a> -  fast pattern matching library. <code>(match "foo" ("foo" "bar")) =&gt; "bar"</code>. Also allows for place-patterns, guard-patterns, and other patterns
+
+<li><a href="https://marijnhaverbeke.nl/postmodern/index.html#quickstart">postmodern</a> - interact with PostgreSQL databases
+
+<li><a href="https://github.com/m-n/repl-utilities">repl-utilities</a> - ease life at the repl
+
+
+<li><a href="http://tkpapp.blogspot.co.uk/2013/01/announcing-trivial-project-pathname.html">trivial-project-pathname</a> - resolving pathnames relative to some directory, usually the sources
+
+<li><a href="http://common-lisp.net/project/trivial-shell/">trivial-shell</a> - independent interface to the OS. It includes <code>get-env-var</code>,  <code>os-process-id</code>,  <code>shell-command</code>.
+
+<hr><h2>Tips</h2>
+
+<p>To load quicklisp every time you start lisp, type <code>(ql:add-to-init-file)</code>.</p>
+
+<p><code>(ql:qsystem-list)</code> works similarly to <code>system-apropos</code>, I think.</p>
+
+<p><code>(ql:system-apropos "") </code> will list all the packages you can install. You can also view a it on <a href="http://www.quicklisp.org/beta/releases.html">this webpage</a>.
+
+
+<hr><h2>Problems</h2>
+
+<p>CLISP 2.49 win32 installation failure - see <a href="https://groups.google.com/group/quicklisp/browse_thread/thread/1aa89e7a12f41456?hl=en#" >here</a></p> 
+
+<hr><h2>Unclassified</h2>
+
+<p>Quicklisp sources are stored in <code>~/.config/quicklisp-clisp/dists/quicklisp/software</code>
+
+
+
+<hr><h2>Links to other sites</h2>
+
+<li><a href="http://blog.quicklisp.org/">Blog</a> - official</li>
+
+<li><a href="http://www.cliki.net/Quicklisp" >Cliki:Quicklisp</a> - wiki page dedicated to Quicklisp</li>
+
+<li><a href="http://xach.livejournal.com/278047.html?thread=674335">Making
+a small Lisp project with quickproject and Quicklisp</a> </li>
+
+<li><a href="http://www.quicklisp.org/beta/releases.html">Projects</a> - list of libraries to install</li>
+
+<li><a href="http://www.quicklisp.org/beta/UNOFFICIAL/docs/">Project info</a> - unofficial work-in-progress snapshot of documentation from projects available in Quicklisp. It details what the projects 'do'.
+
+<li><a href="http://www.quicklisp.org/" >Quicklisp</a> - main page</li>
+
+<li><a href="http://xach.livejournal.com/278047.html">quickproject</a> - how to set up a project quickly in Quicklisp
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 04-Nov-2010
+Updated: 18-Nov-2016
+</pre>
+</body>
+</html>

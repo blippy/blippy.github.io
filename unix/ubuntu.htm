@@ -1,0 +1,69 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Ubuntu</title>
+</head>
+
+<body>
+<a href="../index.html">Home</a> : <a href="unix.htm">unix</a>
+
+
+<h1>Ubuntu</h1>
+
+
+Some set-up notes. Geared towards 16.10.
+
+
+<hr><h2>Create launcher item</h2>
+
+The conventional location is <code>~/.local/share/applications</code>, but it will still work if you keep it in a place like <code>/home/mcarter/redact/docs/ernst-desktop</code>.
+<p>
+Create a file called  <code>ernst.desktop</code>:
+<pre>
+[Desktop Entry]
+Name=ernst
+Comment=mcarter
+Exec=ssh -p 2222 -X mcarter@ernst
+Icon=/home/mcarter/redact/docs/ernst-desktop/ernst.png
+Terminal=true
+Type=Application
+StartupNotify=true
+</pre>
+
+Drag the resulting file onto the launcher.
+
+<hr><h2>Deactivate on-line search</h2>
+
+Turn off on-line search results, which should speed things up:<code>System Settings: Security &amp; Privacy: Search: switch off Include online search results</code>
+
+<hr><h2>LXDE</h2>
+
+<h3>PCManFM</h3>
+
+To fix PCManFM not allowing the mounting of windows partition:
+<pre>
+sudo usermod -a -G sudo mcarter
+</pre>
+
+
+<hr><h2>Suggested software</h2>
+
+<li><code>kaffeine + libxine2-x + w-scan</code> - for playing TV. It works, but I am not sure about recording. Similarly: dvb-apps, kodi-pvr-dvbviewer. mythtv seemed broken in 16.10</li>
+
+<li><code>remmina</code> - vnc viewer</li>
+
+<li><code>xfe</code> - lightweight file manager</li>
+
+<hr><h2>Links to other sites</h2>
+
+<li><a href="http://yesanotherubuntublog.blogspot.co.uk/2011/07/how-to-disable-authentication-for.html">How To Disable Authentication For Ubuntu Software Center</a> - written in 2011, but it worked in Oct 2013.
+
+
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 21-Oct-2013
+Updated: 17-Oct-2016
+</pre>
+</body>
+</html>

@@ -1,0 +1,53 @@
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+  <title>C++</title></head>
+<body>
+
+
+<a href="../../index.html">Home</a> : <a href="../programming.htm">programming</a>
+: <a href="cxx.htm">cxx</a>
+
+<h1>Parsing</h1>
+
+<hr><h2>Parsing expressions</h2>
+
+Using the top-down approach (the "classic solution"):
+<pre>
+E --&gt; T {( &quot;+&quot; | &quot;-&quot; ) T}
+T --&gt; F {( &quot;*&quot; | &quot;/&quot; ) F}
+F --&gt; P [&quot;^&quot; F]
+P --&gt; v | &quot;(&quot; E &quot;)&quot; | &quot;-&quot; T
+</pre>
+
+<a href="https://www.engr.mun.ca/~theo/Misc/exp_parsing.htm#classic">xlink</a>
+
+<hr><h2>Quoted strings</h2>
+
+The follinw regex will work:
+<pre>
+&quot;\&quot;(?:[^\&quot;\\\\]|\\\\.)*\&quot;&quot;
+</pre>
+and was used for blang.
+
+<p><a href="https://stackoverflow.com/questions/249791/regex-for-quoted-string-with-escaping-quotes">xlink</a></p>
+
+
+<hr><h2>Links to other sites</h2>
+
+<li><a href="https://stackoverflow.com/questions/45489184/how-do-i-undefine-yyparse-in-bison">how do i undefine yyparse() in bison</a></li>
+
+<li><a href="https://stackoverflow.com/questions/34229328/writing-a-very-simple-lexical-analyser-in-c">lexical analyser</a></li>
+
+<li><a href="http://ryanflannery.net/teaching/common/recursive-descent-parsing/">recursive descent parsing in c/c++</a></li>
+
+
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 22-Oct-2016
+Updated: 08-Aug-2017
+</small>
+</body>
+</html>

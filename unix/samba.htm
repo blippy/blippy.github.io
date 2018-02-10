@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <title>samba</title>
+</head>
+
+<body>
+
+<a href="../index.html">Home</a> : <a href="unix.htm">unix</a>
+
+
+<h1>samba</h1>
+
+<hr><h2>Installation configuration</h2>
+
+<h3>Arch Linux</h3>
+
+<pre>
+sudo pacman -S samba
+sudo systemctl start smbd.service
+sudo systemctl enable smbd.service
+</pre>
+
+If you get something goofy about permissions then
+<pre>sudo rm -rf /var/cache/samba</pre>
+
+You may need some extra stuff as noted in the Debian section.
+
+<h3>Debian</h3>
+Install on Debian-like systems: <code>sudo apt-get install samba samba-common nbtscan</code>
+
+In /etc/samba/samba.conf, add the following line to the Misc section: 
+<pre>
+   include = /etc/samba/smb.conf.cubie
+</pre>
+
+Create the file /etc/samba/smb.conf.cubie:
+<pre>
+[homes]
+   comment = Home Directories
+   read only = no
+   create mask = 0775
+   directory mask = 0775
+   valid users = %S
+</pre>
+
+Restart samba:
+<pre>
+	/etc/init.d/samba restart
+</pre>
+
+<hr><h2>Some things which may or may not help</h2>
+
+
+<pre>
+Determine your NetBIOS Name:
+   nbtscan 127.0.0.1
+It will return a name like: CUBIETRUCK
+
+smbpasswd -a joe
+</pre>
+
+
+<hr><h2>Links to other sites</h2>
+
+None
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 20-Apr-2014
+Updated: 17-Nov-2017
+</pre>
+
+</body></html>

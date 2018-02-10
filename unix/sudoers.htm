@@ -1,0 +1,27 @@
+<html><head>
+<LINK REL=StyleSheet HREF="../style.css" TYPE="text/css">
+<title>sudoers</title>
+</head>
+
+<body>
+
+<a href="../index.html">Home</a> : <a href="unix.htm">unix</a>
+
+<h1>sudoers</h1>
+
+
+It is very easy to give a specific user passwordless sudo privileges:
+<pre>
+echo "mcarter ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/mcarter
+
+USE=`whoami` ; echo "$USE ALL=(ALL) NOPASSWD: ALL" | sudo tee /etc/sudoers.d/$USE
+
+</pre>
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 30-May-2013
+Updated: 25-Apr-2015
+</pre>
+</body></html>

@@ -1,0 +1,38 @@
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+  <title>Haskell literate programming</title></head>
+<body>
+
+
+<a href="../../index.html">Home</a> 
+: <a href="../programming.htm">programming</a>
+: <a href="haskell.htm">haskell</a>
+
+
+<h1>Haskell literate programming</h1>
+
+.LHS files are used for literate programming in Haskell. Their processing can be enabled using:
+
+<pre>
+cabal install pandoc
+</pre>
+This will work on Windows.
+
+<p>To process an LHS file into HTML, issue a command like:
+<pre>
+pandoc --from markdown+lhs --to html foo.lhs -o foo.html
+</pre>
+  
+
+<hr><h2>Links to other sites</h2>
+
+None
+
+<hr><pre>
+Author:  Mark Carter
+Created: 09-Jul-2015
+Updated: 09-Jul-2015
+</small>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<html><head>
+  <LINK REL=StyleSheet HREF="../style.css" TYPE="text/css">
+  <title>Raspberry Pi</title>
+</head>
+<body>
+
+<p><a href="../index.html">Home</a></p>
+
+<h1>Raspberry Pi</h1>
+
+<hr><h2>Boot to sata</h2>
+
+<pre>
+sudo nano /boot/cmdline.txt
+so that
+root=/dev/sda2
+</pre>
+
+
+
+<hr><h2>Creating a root image on a USB</h2>
+
+Somewhat incomplete, but should get you much of the way there.
+
+<pre>
+sudo mkfs -t ext4 /dev/sda1 # prolly unnecesary
+sudo dd if=/dev/root of=/dev/sda1 bs=4M
+sudo e2fsck /dev/sda1
+sudo resize2fs /dev/sda1
+</pre>
+
+
+<hr><h2>Power usage</h2>
+
+According to <a href="http://au.answers.yahoo.com/question/index?qid=20120118052015AAbpOSU">Yahoo Answers</a>, USB pen drives consume about 5v @ 145mA (725mW) at their heaviest load, in write mode. On 15-Sep-2013, I estimated that the yearly power consumption of an RPi was about &pound;5 (DB04/89).
+
+<hr><h2>See also</h2>
+
+<li><a href="ultibo.htm">ultibo</a></li>
+
+<hr><h2>Links to other sites</h2>
+
+
+<li><a href="https://shop.pimoroni.com/products/button-shim">Button shim</a></li>
+
+<li><a href="https://github.com/rsta2/circle">circle</a> - A C++ bare metal environment for Raspberry Pi with USB </li>
+
+<li><a href="https://shop.pimoroni.com/products/display-o-tron-hat">Display-O-Tron</a></li>
+
+<li><a href="https://thepihut.com/collections/brand-pimoroni/products/micro-dot-phat">Micro Dot</a></li>
+
+<li><a href="https://shop.pimoroni.com/">pimoroni</a> - place to buy Pi/Arduino stuff</li>
+
+<li><a href="https://www.raspberrypi.org/blog/weve-got-offices/">Rob Bishop</a></li>
+
+<hr><pre>
+Author:  Mark Carter
+Created: 11-Aug-2013
+Updated: 12-Dec-2017
+</pre>
+</body>
+</html>

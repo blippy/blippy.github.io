@@ -1,0 +1,96 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<LINK REL=StyleSheet HREF="style.css" TYPE="text/css">
+<title>Arduino</title>
+</head>
+
+<body>
+<a href="../index.html">Home</a>
+
+
+<h1>Arduino</h1>
+
+<hr><h2>Circuit design</h2>
+
+<h3>FidoCadj</h3>
+
+A good intuitive tool (<a href="http://darwinne.github.io/FidoCadJ/index.html">xlink</a>). To use:
+<pre>
+java -jar fidocadj.jar
+</pre>
+
+<h3>Fritzing</h3>
+
+Install: 
+<pre>
+apt install fritzing fritzing-parts
+</pre>
+
+Run: <code>Fritzing</code> (note caps).
+
+<h3>xcircuit</h3>
+
+It works, but seems a bit finicky, and crashed. Use FidoCadj instead.
+
+
+<hr><h2>Powering</h2>
+
+<b>Barrel</b>: 9-12V DC, minimum 250mA, preferrably 500mA or even 1A for heavy circuits. Plug must be centre-positive.
+
+<hr><h2>Setup</h2>
+<pre>
+Tools : Port : /dev/ttyACM0
+
+sudo usermod -a -G dialout `whoami`
+sudo chmod a+rw /dev/ttyUSB0
+</pre>
+
+<hr><h2>Also on this site</h2>
+
+<li><a href="switches.htm">switches</a> - using pull-up resistor</li>
+
+<hr><h2>Links to other sites</h2>
+
+<h3>Distributors</h3>
+
+<li><a href="https://www.mouser.co.uk/">Mouser</a></li>
+
+<h3>Devices</h3>
+
+<p>
+Displays
+<li><a href="https://shop.pimoroni.com/products/display-o-tron-lcd">display-o-tron</a>. See also my github <a href="https://github.com/blippy/lcddogmspi">repo</a> about using it</li>
+<li><a href="https://www.adafruit.com/product/454">miniature 8x8 red LED matrix</a></li>
+</p>
+
+<p>
+Other
+<li><a href="https://shop.pimoroni.com/products/voltage-regulators">voltage regulator</a></li>
+</p>
+
+<h3>Forums</h3>
+
+<li><a href="https://forum.arduino.cc/index.php?topic=526780.0">Connecting an independently powered an RPi and Arduino</a></li>
+<li><a href="https://forum.arduino.cc/index.php?topic=527070.0">Open drains</a></li>
+
+<h3>Howtos</h3>
+
+<li><a href="https://www.youtube.com/watch?v=McwnsR1C29I">Controlling piezo buzzer loudness with a potentiometer</a> - mentions <code>map()</code> command, and a volume level gotcha</li>
+
+
+<h3>My projects</h3>
+
+<a href="https://create.arduino.cc/projecthub/aardweeno">Project Hub</a>
+
+<li><a href="https://create.arduino.cc/projecthub/aardweeno/controlling-an-arduino-from-a-pi3-using-i2c-59817b?ref=user&ref_id=394700&offset=0">i2c</a> - communication between RPi and Arduino</li>
+
+<li><a href="https://create.arduino.cc/projecthub/aardweeno/om-meditation-timer-b6e6e7">om</a> - meditation timer</li>
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 09-Jan-2018
+Updated: 08-Feb-2018
+</pre>
+</body>
+</html>

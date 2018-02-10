@@ -1,0 +1,23 @@
+<html><head>
+<LINK REL=StyleSheet HREF="../style.css" TYPE="text/css">
+<title>crontab</title>
+</head>
+
+<body>
+
+<a href="../index.html">Home</a> : <a href="unix.htm">unix</a>
+
+<h1>crontab</h1>
+
+To simulate the cron environment (<a href="http://matthew.mceachen.us/blog/howto-simulate-the-cron-environment-1018.html">xlink</a>):
+<pre>env -i /bin/bash --noprofile --norc</pre>
+On each cron line, you will probably want to your login environment, so use something like:
+<pre>bash -l myscript</pre>
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 16-Dec-2012
+Updated: 16-Dec-2012
+</pre>
+</body></html>

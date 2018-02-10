@@ -1,0 +1,23 @@
+# http://mcturra2000.wordpress.com/2012/12/08/index-valuations/
+tab <- read.csv("~/Documents/StatsList.csv", header= TRUE)
+summary(tab)
+tab <- tab[ , which(names(tab) %in% c("EPIC", "MarketCap", "PER", "FTSE_Index"))]
+summary(tab)
+
+
+s <- subset(tab, tab$FTSE_Index == "FTSE100")
+s
+v <- as.vector(s$PER)
+median(v, na.rm=TRUE)
+
+s <- subset(tab, tab$FTSE_Index == "FTSE250")
+s
+v <- as.vector(s$PER)
+median(v, na.rm=TRUE)
+
+s <- subset(tab, tab$FTSE_Index == "AIM")
+o <- s[order(s$MarketCap),]
+v <- as.vector(o$PER)
+w <- rev(v)
+w[0:100]
+median(w[0:100], na.rm=TRUE)

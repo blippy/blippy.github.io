@@ -1,0 +1,51 @@
+<html>
+<head>
+  <meta content="text/html; charset=iso-8859-1"  http-equiv="CONTENT-TYPE">
+  <LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+  <title>Racket-filesyste,</title>
+</head>
+
+<body>
+
+<a href="../../index.html">Home</a> : <a href="../programming.htm" >programming</a> : <a href="racket.htm">racket</a>
+
+<h1>Racket fielsystem</h1>
+
+File and directory handling
+<hr>
+
+<pre>
+#lang racket
+;; Finds Racket sources in all subdirs
+(for ([path (in-directory)])
+  (when (regexp-match? #rx"[.]rkt$" path)
+    (printf "source file: ~a\n" path)))
+
+</pre>
+
+
+<hr>
+
+Recurse directory:
+
+<pre>
+(find-files (lambda (x) x) "/")
+</pre>
+
+
+<hr><h2>Slurp file</h2>
+
+<pre>
+(require racket/file)
+(require racket/path)
+
+(display (file->string (build-path (find-system-path 'doc-dir) ".config" "racket" "epics.txt")))
+</pre>
+
+<hr><pre>
+Author:  Mark Carter
+Created: 28-Nov-2010
+Updated: 01-Aug-2011
+</pre>
+</body>
+</html>

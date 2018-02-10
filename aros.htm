@@ -1,0 +1,82 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<LINK REL=StyleSheet HREF="style.css" TYPE="text/css">
+<title>Aros</title>
+</head>
+
+<body>
+<a href="index.html">Home</a>
+
+
+<h1>Aros</h1>
+
+<hr><h2>Configuring</h2>
+
+<h3>Keyboard</h3>
+
+<p>Menu : Icarus : prefs : Input. The settings persist.</p>
+
+<h3>Network</h3>
+
+<p>The ASUS VivoPC works with rtl8169.device</p>
+
+<hr><h2>FTP</h2>
+
+<p>
+The best way to save data is via FTP using client software on AROS, and server software on Linux.
+</p>
+
+<h3>Client-side</h3>
+
+On AROS, use the client: <code>AROS: Tools: MarranoFTP</code>
+
+<h3>Server-side</h3>
+
+You can use a proper FTP server, but that's usually too much effort to set up. I prefer
+to use the python 2/3 FTP library <code>pyftpdlib</code>, which you can install using
+a command like:
+<pre>sudo pip install pyftpdlib</pre>
+
+You will need to create the server software. I have created a
+<a href="https://gist.github.com/blippy/8a963e3d614eea4223c97b745663fc12">gist</a>
+for that purpose. Place it in the directory you want to serve from, and start
+it via:
+<pre>
+python3 pyftpd.py
+</pre>
+
+This will create an FTP server with username <code>user</code> and password <code>12345</code>
+on port <code>2121</code>. You should use these settings in MarranoFTP.
+
+<p>
+<b>Security alert:</b> there is no security! Make sure you run the server behind a firewalled
+router so that you are not exposing you data over the whole of the Interwebs. Close the sever
+when you no longer need it.
+
+</p>
+
+
+<hr><h2>Software</h2>
+
+<p>
+<b>Janus-UAE</b> is <code>AROS:System:AmiBridge:AmigaApps:AROS M68K</code>. It did not work
+for me on 06-Oct-2017. A lot of set-up is probably required.
+</p>
+
+<hr><h2>Links to other sites</h2>
+
+<li><a href="http://wiki.amigaos.net/wiki/AmigaOS_Manual:_ARexx">ARexx manual</a></li>
+
+<li><a href="http://vmwaros.blogspot.co.uk/2017/06/icaros-desktop-221-is-ready.html">Icarus Desktop 2.2.1 upgrade instructions</a></li>
+
+<li><a href="http://aros.sourceforge.net/documentation/users/using.php#net-on-qemu-linux">Network on QEMU/Linux</a></li>
+
+<li><a href="http://hessling-editor.sourceforge.net/">The Hessling Editor</a> - an editor powered by Rexx</li>
+
+<hr><pre>
+Author:  Mark Carter
+Created: 04-Oct-2017
+Updated: 23-Oct-2017
+</pre>
+</body>
+</html>

@@ -1,0 +1,36 @@
+<html>
+<head>
+  <LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+  <title>Doctools</title>
+</head>
+<body>
+
+<a href="../../index.html">Home</a> 
+: <a href="../programming.htm">programming</a> 
+: <a href="lisp.htm">lisp</a>
+
+<h1>Doctools</h1>
+
+Packages for generating Lisp package documentation
+
+
+The <a href="lili.html">lili</a> documentation can be generated using
+<pre>
+(progn
+  (ql:quickload "cl-api")
+  (cl-api:api-gen :lili #P"/home/mcarter/info/repos/nokilli/website/website1/www/htdocs/programming/lisp/")
+  t)
+</pre>
+
+
+<h2>Links to other sites</h2>
+
+<li><a href="http://www.cliki.net/documentation%20tool">Cliki:doctools</a> - list of various of Lisp package documentation tools
+
+<hr><pre>
+Author:  Mark Carter
+Created: 07-Oct-2012
+Updated: 13-Feb-2013
+</pre>
+</body>
+</html>

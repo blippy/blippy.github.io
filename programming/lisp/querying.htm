@@ -1,0 +1,58 @@
+<html>
+  <head>
+    <LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+    <title>Querying</title>
+  </head>
+  <body>
+
+<a href="../../index.html">Home</a> : <a href="../programming.htm">programming</a> : <a href="lisp.htm">lisp</a>
+
+
+
+<h1>SQL-like queries in Lisp</h1>
+
+Here are some ways that you can write SQL-like queries in Lisp:
+
+<pre>
+;; SELECT * FROM List: 
+(remove-if (complement p) List) 
+;; SELECT do-stuff List: 
+(mapcar #'do-stuff list) 
+;; SELECT DISTINCT do-stuff List: 
+(remove-duplicates (mapcar #'do-stuff List)) 
+;; SELECT do-stuff 
+;; FROM   List 
+;; WHERE  p 
+(mapcan #'(lambda (tuple) (if (p tuple) (list (do-stuff tuple)))) 
+         List) 
+;; SELECT * 
+;; FROM List1 INNER JOIN List2 ON (p) 
+(mapcan #'(lambda (a) 
+            (mapcan #'(lambda (b) 
+                         (if (p a b) (list (list a b)))) 
+                      List2) 
+         List1) 
+</pre>
+
+
+<hr><h2>Links to other sites</h2>
+
+
+<li><a href="http://russ.unwashedmeme.com/blog/?p=171">group-by</a> - A Common Lisp library to help group data into trees
+
+<li><a href="https://groups.google.com/group/comp.lang.lisp/browse_thread/thread/56a8f2ea956a5b72?hl=en">Source</a> - Google group discussion on which this page was started
+
+<li><a href="http://dunsmor.com/lisp/onlisp/onlisp_23.html">query compiler</a> - chapter 18 of On Lisp
+
+
+
+
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 26-Mar-2011
+Updated: 07-Feb-2013
+</pre>
+</body>
+</html>

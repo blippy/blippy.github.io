@@ -1,0 +1,40 @@
+<html>
+<head>
+  <meta content="text/html; charset=iso-8859-1"  http-equiv="CONTENT-TYPE">
+  <LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+  <title>Awk</title>
+</head>
+
+<body>
+
+<a href="../../index.html">Home</a> 
+: <a href="../programming.htm" >programming</a> 
+: <a href="racket.htm">racket</a>
+
+<h1>Awk</h1>
+
+An implementation of awk in racket. Example:
+
+<pre>
+#lang racket/base
+(require mzlib/awk)
+
+;; Reads the number of uncommented lines
+(awk (read-line) (line) ((nlines 0))
+  ("^\\s*;"  nlines)              ; A comment line.
+  (else (+ nlines 1)))            ; Not a comment line.
+</pre>
+
+
+<hr><h2>Links to other sites</h2>
+
+<li><a href="http://www.scsh.net/docu/html/man-Z-H-9.html#node_sec_8.2.1">scsh awk</a> - link to implementation and examples in Scheme Shell, which will apparently help you with racket.
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 01-Oct-2011
+Updated: 01-Oct-2011
+</pre>
+</body>
+</html>

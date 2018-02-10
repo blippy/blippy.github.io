@@ -1,0 +1,52 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<LINK REL=StyleSheet HREF="../style.css" TYPE="text/css">
+<title>Port 80</title>
+</head>
+
+<body>
+<a href="../index.html">Home</a> : <a href="windows.htm">Windows</a>
+
+
+<h1>Port 80</h1>
+
+Unblocking it for use by Apache or IIS.
+
+<hr><h2>First clues</h2>
+
+Run the command <code>netstat -ano | find ":80"</code> . The last column will tell you the PID of anything that might be running on port 80. You can see what the application is by looking at Windows Task Manager : Processes. Ensure you check the box "Show processes from all users". You can make the PID column viewable by selecting menu item View : Select Columns. If the PID is 4, then you've got additional problems, because you cannot just kill that process.
+
+<hr><h2>SQL</h2>
+
+Go into services, and disable anything to do with SQL. This is a known fix on 16-Jan-2012 for the PID 4 problem.
+
+<hr><h2>http.sys</h2>
+
+it might be that Win 7 is running a service called http.sys . The fix is:
+<ol>
+<li>Launch RegEdit
+<li>Go to: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HTTP
+<li>Add a new DWORD (32-bit) value
+<li>Name it 'NoRun' not including the quotes
+<li>Double click the new property
+<li>In the Value data field type '1' not including quotes and click OK
+<li>Re-boot your computer
+</ol>
+
+<a href="http://blog.teliaz.com/2009/apache-on-windows-7-wampserver-solution">External link</a>
+
+
+<hr><h2>External links</h2>
+
+
+
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 15-Jan-2012
+Updated: 15-Jan-2012
+</pre>
+</body>
+</html>

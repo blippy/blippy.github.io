@@ -1,0 +1,85 @@
+<html>
+<head>
+  <LINK REL=StyleSheet HREF="../style.css" TYPE="text/css">
+  <title>rsync</title>
+</head>
+
+<body>
+
+<a href="../index.html">Home</a> : <a href="unix.htm">unix</a>
+
+<h1>rsync</h1>
+
+Works in Lycos, Debian, probably Slackware.<br>
+
+<br>
+
+<h2>Installation</h2>
+
+Add package <span style="font-family: monospace;">rsync</span><br>
+
+<br>
+
+According to <span style="font-family: monospace;">man rsyncd.conf</span>
+:<br>
+
+Add following line to <span style="font-family: monospace;">/etc/inetd.conf</span>
+, using tabs as field delimiters:<br>
+
+<span style="font-family: Courier New,Courier,monospace;">rsync&nbsp;&nbsp;
+stream&nbsp;&nbsp; tcp&nbsp;&nbsp;
+nowait&nbsp;&nbsp; root&nbsp;&nbsp; /usr/bin/rsync
+rsyncd --daemon</span><br>
+
+<br>
+
+Restart inetd :<br>
+
+<span style="font-family: monospace;">/etc/init.d/inetd
+restart<br>
+
+<br>
+
+</span>Create a basic
+/etc/rsyncd.conf (a fully-fledged version is more complicated than
+this):<span style="font-family: monospace;"><br>
+
+</span><span style="font-family: Courier New,Courier,monospace;">transfer
+logging = true</span><br style="font-family: Courier New,Courier,monospace;">
+
+<span style="font-family: Courier New,Courier,monospace;">log
+format %h %o %f %l %b</span><br style="font-family: Courier New,Courier,monospace;">
+
+<span style="font-family: Courier New,Courier,monospace;">log
+file = rsyncd.log</span><span style="font-family: monospace;"><br>
+
+</span><br>
+
+Examine /var/log/syslog to confirm that there are no errors produced by
+the startup of rsync .<br>
+
+<h2>Usage examples</h2>
+
+Uploading a file to a remote server:<br>
+
+&nbsp;&nbsp;&nbsp; <span style="font-family: monospace;">rsync -av
+afile
+auser@ip:afile</span><br>
+
+<br>
+
+afile is a file, auser is a username, ip is an IP address or website
+name.</div>
+
+<hr><h2>Links to other sites</h2>
+
+<hr><a href="http://www.linuxquestions.org/linux/answers/Networking/Using_rsync_to_mirror_data_between_servers">Mirroring</a> - how to rsync over ssh
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 14-May-2005
+Updated: 15-Oct-2012
+</pre>
+</body>
+</html>

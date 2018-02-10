@@ -1,0 +1,131 @@
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+  <title>Python and Google</title>
+</head>
+
+<body>
+
+<a href="../../index.html">Home</a> : 
+<a href="../programming.htm">programming</a> :
+<a href="python.htm">python</a>
+
+<h1 >Python and Google</h1>
+
+
+<hr><h2>CSV download</h2>
+
+<pre>
+import requests
+DOC_URL = 'https://docs.google.com/spreadsheet/ccc?key=0AoOWveO-dNo5dFNrWThhYmdYW9UT1lQQkE&output=csv'
+csv_content = requests.get(DOC_URL).text
+</pre>
+<a href="http://stackoverflow.com/questions/15138755/python-3-saving-csv-file-from-google-docs">xlink</a>
+
+
+<hr><h2>Laborious way</h2>
+<pre>
+import gdata.docs
+import gdata.docs.service
+import gdata.spreadsheet.service
+import re, os
+
+username = 'whoever@gmail.com'
+passwd = 'whatever'
+doc_name = 'MyDoc'
+
+# Connect to Google
+gd_client = gdata.spreadsheet.service.SpreadsheetsService()
+gd_client.email = username
+gd_client.password = passwd
+gd_client.source = 'www.markcarter.me.uk'
+gd_client.ProgrammaticLogin()
+
+q = gdata.spreadsheet.service.DocumentQuery()
+q['title'] = doc_name
+q['title-exact'] = 'true'
+feed = gd_client.GetSpreadsheetsFeed(query=q)
+spreadsheet_id = feed.entry[0].id.text.rsplit('/',1)[1]
+feed = gd_client.GetWorksheetsFeed(spreadsheet_id)
+worksheet_id = feed.entry[0].id.text.rsplit('/',1)[1]
+
+rows = gd_client.GetListFeed(spreadsheet_id, worksheet_id).entry
+
+for row in rows:
+    for key in row.custom:
+        print " %s: %s" % (key, row.custom[key].text)
+    print
+    
+print "Finished"
+</pre>
+<a href="http://www.payne.org/index.php/Reading_Google_Spreadsheets_in_Python">External Source</a>
+
+<hr><h2>gspread</h2>
+
+<style type="text/css">
+pre.code {
+    font-style: Lucida,"Courier New";
+}
+
+.number {
+    color: #0080C0;
+}
+.operator {
+    color: #000000;
+}
+.string {
+    color: #008000;
+}
+.comment {
+    color: #808080;
+}
+.name {
+    color: #000000;
+}
+.error {
+    color: #FF8080;
+    border: solid 1.5pt #FF0000;
+}
+.keyword {
+    color: #0000FF;
+    font-weight: bold;
+}
+.text {
+    color: #000000;
+}
+
+</style>
+
+<pre class="code">
+<span class="keyword">import</span> <span class="name">gspread</span> <span class="comment"># https://github.com/burnash/gspread</span>
+
+<span class="keyword">def</span> <span class="name">using_gspread</span><span class="operator">(</span><span class="operator">)</span><span class="operator">:</span>
+    <span class="name">gc</span> <span class="operator">=</span> <span class="name">gspread</span><span class="operator">.</span><span class="name">login</span><span class="operator">(</span><span class="string">"foo.bar@gmail.com"</span><span class="operator">,</span> <span class="name">mypassword</span><span class="operator">)</span>
+    <span class="name">url</span> <span class="operator">=</span> <span class="string">"https://docs.google.com/spreadsheet/ccc?key=0AvgR2LZ8mUlDdDcyUnNBcTZwZ2VoWndDWEp1Y0pNbmc"</span>
+    <span class="name">wb</span> <span class="operator">=</span> <span class="name">gc</span><span class="operator">.</span><span class="name">open_by_url</span><span class="operator">(</span><span class="name">url</span><span class="operator">)</span>
+    <span class="name">ws</span> <span class="operator">=</span> <span class="name">wb</span><span class="operator">.</span><span class="name">worksheet</span><span class="operator">(</span><span class="string">"PorGo"</span><span class="operator">)</span>
+    <span class="name">vals</span> <span class="operator">=</span> <span class="name">ws</span><span class="operator">.</span><span class="name">get_all_values</span><span class="operator">(</span><span class="operator">)</span>
+
+
+    <span class="comment"># print vals</span>
+    <span class="name">vals1</span> <span class="operator">=</span> <span class="operator">[</span> <span class="operator">[</span><span class="name">c</span> <span class="keyword">if</span> <span class="name">c</span> <span class="keyword">is</span> <span class="keyword">not</span> <span class="name">None</span> <span class="keyword">else</span> <span class="string">''</span> <span class="keyword">for</span> <span class="name">c</span> <span class="keyword">in</span> <span class="name">r</span> <span class="operator">]</span> <span class="keyword">for</span> <span class="name">r</span> <span class="keyword">in</span> <span class="name">vals</span><span class="operator">]</span>
+    <span class="name">vals2</span> <span class="operator">=</span> <span class="operator">[</span> <span class="operator">[</span><span class="name">r</span><span class="operator">[</span><span class="number">0</span><span class="operator">]</span><span class="operator">,</span> <span class="name">r</span><span class="operator">[</span><span class="number">5</span><span class="operator">]</span><span class="operator">,</span> <span class="name">r</span><span class="operator">[</span><span class="number">6</span><span class="operator">]</span><span class="operator">,</span> <span class="name">r</span><span class="operator">[</span><span class="number">7</span><span class="operator">]</span><span class="operator">,</span> <span class="name">r</span><span class="operator">[</span><span class="number">11</span><span class="operator">]</span><span class="operator">]</span> <span class="keyword">for</span> <span class="name">r</span> <span class="keyword">in</span> <span class="name">vals1</span><span class="operator">]</span>
+
+    <span class="comment"># print vals1</span>
+    <span class="name">vals2</span> <span class="operator">=</span> <span class="name">tab</span><span class="operator">.</span><span class="name">pad</span><span class="operator">(</span><span class="name">vals2</span><span class="operator">)</span>
+    <span class="name">vals3</span> <span class="operator">=</span> <span class="name">string</span><span class="operator">.</span><span class="name">join</span><span class="operator">(</span><span class="operator">[</span> <span class="name">string</span><span class="operator">.</span><span class="name">join</span><span class="operator">(</span><span class="name">r</span><span class="operator">,</span> <span class="string">'  '</span><span class="operator">)</span> <span class="keyword">for</span> <span class="name">r</span> <span class="keyword">in</span> <span class="name">vals2</span><span class="operator">]</span><span class="operator">,</span> <span class="string">"\n"</span><span class="operator">)</span>
+    <span class="keyword">print</span> <span class="name">vals3</span><span class="text"></span>
+</pre>
+
+<p><a href="https://github.com/burnash/gspread">gspread</a> - burnash's <b>excellent</b> git repo for manipulating spreadsheets. It's probably the best place to start. It is also pip-installable. I have my own example usage in <code>accts/snapshot.py</code>
+
+<hr><h2>Links to external sites</h2>
+
+None, other than those listed above
+
+<hr><pre>
+Author:  Mark Carter
+Created: 03-Nov-2012
+Updated: 16-Mar-2014
+</pre>
+</body></html>

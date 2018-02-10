@@ -1,0 +1,45 @@
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+  <title>Jupyter</title></head>
+<body>
+
+
+<a href="../../index.html">Home</a> 
+: <a href="../programming.htm">programming</a>
+: <a href="haskell.htm">haskell</a>
+
+
+<h1>Haskell Jupyter</h1>
+
+Notes on getting Jupyter working with IHaskell, assuming:
+<ul>
+<li>ghci 7.10.3
+<li>Arch Linux
+</ul>
+
+<hr><h2>Installing</h2>
+
+<pre>
+  stack install # puts it in ~/.local/bin/install
+  ihaskell install # puts it where Jupyter will find it
+</pre>
+
+<hr><h2>Running</h2>
+
+<pre>
+jupyter notebook --no-browser --ip='*'
+</pre>
+
+<hr><h2>Also on this site</h2>
+
+<li><a href="jupyter01.htm">jupyter01</a> - reference material of mine last updated 17-Jul-2015
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 21-Oct-2015
+Updated: 21-Oct-2015
+</small>
+</body>
+</html>

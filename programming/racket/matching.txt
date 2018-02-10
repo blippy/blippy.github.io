@@ -1,0 +1,1 @@
+;;Pattern matching(require (lib "match.ss" "mzlib"))(define (mymatch  x)  (match x     ("hello" 'world) ;;match "hello"    (() 'thanks-for-nothing ) ;;match the empty list    (x 'catch-all-response))) ;;match itself(mymatch "hello") ;; => world(mymatch ()) ;; => thanks-for-nothing(mymatch 'gobbledegook) ;; => catch-all-response

@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+
+
+  
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+
+
+  
+  <meta name="author" content="mcarter" >
+
+  
+  <title>loops</title>
+</head>
+
+
+<body style="background-color: rgb(255, 255, 255);">
+
+<a href="../../index.html">Home</a> : <a href="../programming.htm">programming</a> : <a href="lisp.htm">lisp</a>
+
+
+<h1>Loops</h1>
+
+
+I'm collecting a list of loop idioms that might be of use in some
+instances.<br>
+
+
+<br>
+
+
+<pre>(loop for bytes-read = (r-s b f) then (r-s b f)<br> while (plusp bytes-read)<br> summing bytes-read) <br></pre>
+
+
+<br>
+<hr style="width: 100%; height: 2px;">
+<h2>while-type loops</h2>
+<pre>(let ((i 0))<br>  (loop if (&lt; i 10) <br>	do (print i) (setf i (1+ i))<br>	else do (return)))<br><br></pre>
+<pre>gives (compressed onto one line):<br></pre>
+1 2 3 4 5 6 7 8 9 NIL
+
+<hr style="width: 100%; height: 2px;">
+<h2>Links to other sites</h2>
+
+<a href="http://common-lisp.net/project/iterate/">iterate</a> - external package designed to be a better LOOP<br>
+<a href="http://www.gigamonkeys.com/book/loop-for-black-belts.html">LOOP
+for black belts</a> - Peter Siebel's chapter from Practical
+Common Lisp
+<hr style="width: 100%; height: 2px;"><small>Contact
+me: mcturra2000 yahoo co uk <br>
+
+
+Author: Mark Carter<br>
+
+
+Created: 09-Apr-2006<br>
+Updated: 26-Jul-2006<br>
+
+
+http://www.markcarter.me.uk/computing/lisp/loops.htm<br>
+
+
+mcref01x </small>
+</body>
+</html>
+ng/lisp/loops.htm<br>
+
+
+mcref01x </small>
+</body>
+</html>
+tml>
+

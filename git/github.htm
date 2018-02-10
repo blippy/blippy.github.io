@@ -1,0 +1,47 @@
+<html><head>
+    <LINK REL=StyleSheet HREF="../style.css" TYPE="text/css">
+    <title>git config</title>
+</head>
+
+<body>
+<a href="../index.html">Home</a> : <a href="git.htm">git</a>
+
+<h1>Github</h1>
+
+Github, and alternatives.
+
+
+<hr><h2>Github</h2>
+
+<li>Clone: <code>git clone git@github.com:blippy/tacc.git</code>
+
+<li>Pushing back: commit your changes, then: <code>git push</code>. If you get an error message like 
+<code>   You can't push to git://github.com/user/repo.git</code>, then you need to edit <code>.git/config</code> so that the url line reads:
+<code>   url = git@github.com:blippy/tacc.git</code>
+
+
+<hr><h2>Forks</h2>
+
+<p>Merging from upstream:
+<pre>
+  git fetch upstream
+  git merge upstream/master
+  git push # push the merge to your github fork
+</pre>
+
+<a href="http://stackoverflow.com/questions/7244321/how-to-update-a-github-forked-repository">xlink</a> Also explains how to set "upstream".
+
+<hr><h2>Links to other sites</h2>
+
+
+<li><a href="https://help.github.com/articles/editing-and-deleting-releases/">Releases</a> - workflow for shipping software to end users</li>
+
+
+	  
+<hr><pre>
+Author:  Mark Carter
+Created: 05-May-2014
+Updated: 14-Nov-2017
+</pre>
+</body>
+</html>

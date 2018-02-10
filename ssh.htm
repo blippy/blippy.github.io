@@ -1,0 +1,125 @@
+<html><head>
+  <LINK REL=StyleSheet HREF="style.css" TYPE="text/css">
+  <title>Ssh</title>
+</head>
+<body>
+
+<p><a href="index.html">Home</a></p>
+
+<h1>Ssh</h1>
+
+<hr><h2>Generate keys</h2>
+<pre>ssh-keygen -t rsa</pre>
+
+<hr><h2>Install public key on remote host</h2>
+
+Automatically install your public key to the remote host (this actually is included in the openssh package):
+<pre>
+    ssh-copy-id user@remotehost [-p nnnn]
+</pre>
+or
+<pre>
+    cat ~/.ssh/id_rsa.pub | ssh user@machine "mkdir ~/.ssh; cat &gt;&gt; ~/.ssh/authorized_keys"
+</pre>
+
+
+
+<hr><h2>Disable ssh timeout</h2>
+
+<h3>Server side:</h3>
+Works on Debian (confirmed on 03-Dec-2014). On the server, edit <code>/etc/ssh/sshd_config</code> so that it contains the following lines:
+<pre>
+PermitRootLogin no
+ClientAliveInterval 30
+TCPKeepAlive yes 
+ClientAliveCountMax 99999
+AllowUsers user1
+Port 2222
+</pre>
+Note that it you can specify multiple <code>Port</code> statements.
+
+
+<p>Restart ssh:
+<pre>
+   /etc/init.d/ssh restart
+</pre>
+
+<h3>Client side</h3>
+
+The server side tweak should be sufficient in itself. Apply this
+client-side fix only if you do not have access to root privileges on
+the remote machine. On the local machine,
+edit <code>/etc/ssh/ssh_config</code> so that it contains the
+following line:
+
+<pre>
+ServerAliveInterval 100
+</pre>
+
+<a href="http://docs.oseems.com/application/ssh/disable-timeout">External link</a>
+
+<hr><h2>Fuse</h2>
+
+Assuming ssh has been set up on the remote machine, fuse only needs
+installation on the local machine:
+<pre>   sudo apt-get install sshfs</pre>
+
+Typical user usage might be:
+<pre>
+sshfs hostname: mountpoint
+sshfs cubietruck:/home/mcarter ~/cubie -p 2222
+
+fusermount -u mountpoint
+fusemount -u ~/cubie
+</pre>
+
+<hr><h2>Tunneling</h2>
+
+Example where you have ipython3 serving on the remote on port 8888. The server is serving ssh on port 2222, and you want to make the service port 9000 on your local machine. You would issue this command:
+<pre>
+ssh -L 9000:localhost:8888 mcarter@www.markcarter.me.uk -p 2222
+</pre>
+
+In your local browser:
+<pre>
+http://localhost:9000
+</pre>
+
+<p>(xlink: <a href="https://gist.github.com/scy/6781836">Opening and closing an SSH tunnel in a shell script the smart way</a>)
+
+
+<hr><h2>User's ~/.ssh directory</h2>
+
+<h3>~/.ssh/config file</h3>
+<pre>
+Host *
+    ServerAliveInterval 300
+    ServerAliveCountMax 2
+
+Host klein
+        Port 2222
+
+Host vivo
+        Port 2222
+</pre>
+
+<h3>Fix mangled file permissions</h3>
+
+<pre>
+#!/usr/bin/env bash
+chmod 700 ~/.ssh
+chmod 600 ~/.ssh/id_rsa
+chmod 644 ~/.ssh/id_rsa.pub
+chmod 644 ~/.ssh/authorized_keys
+chmod 644 ~/.ssh/known_hosts
+</pre>
+
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 04-Apr-2012
+Updated: 19-Sep-2015
+</pre>
+</body>
+</html>

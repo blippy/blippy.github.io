@@ -1,0 +1,57 @@
+<html>
+<head>
+  <LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+  <title>Gold miners</title>
+</head>
+
+<body>
+<a href="../../index.html">Home</a> 
+: <a href="../money.htm">money</a>
+: <a href="sectors.htm">sectors</a>
+
+
+<h1>Gold Miners</h1>
+
+
+Here are some things to think about when looking at gold miners.
+
+<p>
+<b>[OT] Ore tonnage</b> - the amount of mineral-bearing rock extracted from the ground. E.g. 320kt - 320,000 metric tonnes per annum
+
+<p>
+<b>[GRA] Grade</b> measured in g/t (grams per metric tonne) - the amount of gold, in grams, per tonne of ore. What grades might be typical? To answer that question, I looked at a page on Gold Miner Pulse, which lists the grades for each mining company <a href="http://www.goldminerpulse.com/gold-chart-ore-value.php">xlink</a>. From that data for 13-jan-2012, I split it into quintiles:
+<pre>
+P20  0.54
+P40  0.92
+P60  1.67
+P80  3.90
+</pre>
+So, for example, 20% of the companies have mines with a grade of 0.54 g/t or less. The median is 1.09 g/t.
+<p>Raw data:<code>(print-quintiles '(0.937 2.7 0.786 0.458 3.868 2.095 1.012 1.453 3.024 10.849 0.483 0.575 1.66 1.594 1.727 0.083 0.836 1.756 0.905 1.018 5.981 0.937 0.829 7.024 5.748 1.128 0.682 3.734 6.192 2.296 8.062 0.49  0.728 4.31  0.376 0.513 0.905 0.98  0.912 0.324 0.953 0.575 0.23  2.157 0.32  0.757 3.934 4.324 4.103 5.788 0.620 0.467 5.512 0.253 16.51 0.466 5.809 0.596 1.714 10.2  1.929 1.683 0.405 0.932 0.5   3.447 1.13  1.222 1.094 1.783 0.704 1.441 1.993 0.461 0.665))</code>. there are 75 data points in the sample.
+
+<p>
+<b>[RF] Recovery Factor</b> The percentage of gold in the ore that can actually be recovered. Obviously, it is impossible to extract absolutely all of it.
+
+<p>
+<b>[POG] Price of Gold</b> On 16-Jan-2012, it was 1642 USD/oz.
+
+<p>
+<b>[TO] Turnover</b> Revenues . Given the above information, you can just multiply everything together - not forgetting to convert grams into ounces. The formula is:
+<pre> TO = OT * GRA * RF * POG * 0.035273</pre>
+1 gram is the same as 0.035273 oz. So, for example, if a mine was producing 320kt of ore pa at a grade of 1.1 g/t with a recovery factor of 90% and assuming a price of gold of 1600 USD/oz, then you would expect its annual turnover to be 373,237 USD pa (=320k * 1.1 * 0.9 * 1600 * 0.035273).
+
+
+<hr><h2>Links to other sites</h2>
+
+
+<li><a href="http://seekingalpha.com/article/1355421-how-low-can-gold-go">How Low Can Gold Go?</a> - fascinating article and comments on SeekingAlpha from 19-Apr-2013
+
+<li><a href="http://seekingalpha.com/article/1346991-the-true-all-in-cost-to-mine-gold-complete-2012-figures">True All-In Cost To Mine Gold: Complete 2012 Figures</a> - Seeking Alpha article from 17-Apr-2013
+
+<hr><pre>
+Author:  Mark Carter
+Created: 16-Jan-2012
+Updated: 22-Jun-2013
+</pre>
+</body>
+</html>

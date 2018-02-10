@@ -1,0 +1,71 @@
+<html><head>
+<LINK REL=StyleSheet HREF="../style.css" TYPE="text/css">
+<title>processes</title>
+
+<style type="text/css">
+.comment { color: #999999; font-style: italic; }
+.pre { color: #000099; }
+.string { color: #009900; }
+.char { color: #009900; }
+.float { color: #996600; }
+.int { color: #999900; }
+.bool { color: #000000; font-weight: bold; }
+.type { color: #FF6633; }
+.flow { color: #FF0000; }
+.keyword { color: #990000; }
+.operator { color: #663300; font-weight: bold; }
+.operator { color: #663300; font-weight: bold; }
+</style>
+
+
+
+</head>
+
+<body>
+
+<a href="../index.html">Home</a> : <a href="unix.htm">unix</a>
+
+<h1>Processes</h1>
+
+<hr><h2>C source example</h2>
+
+
+
+<pre><span class="comment">// gcc -o pss pss.c -lprocps
+</span><span class="pre">
+#include &lt;stdio.h&gt;
+#include &lt;string.h&gt;
+#include &lt;proc/readproc.h&gt;
+</span><span class="type">
+int</span><span class="keyword"> main</span><span class="operator">(</span><span class="type">int</span> argc<span class="operator">,</span><span class="type"> char</span><span class="operator">**</span> argv<span class="operator">) {</span>
+  PROCTAB<span class="operator">*</span> proc<span class="operator"> =</span> openproc<span class="operator">(</span>PROC_FILLMEM<span class="operator"> |</span> PROC_FILLSTAT<span class="operator"> |</span> PROC_FILLSTATUS<span class="operator">);</span>
+  proc_t proc_info<span class="operator">;</span>
+  memset<span class="operator">(&amp;</span>proc_info<span class="operator">,</span><span class="int"> 0</span><span class="operator">,</span><span class="keyword"> sizeof</span><span class="operator">(</span>proc_info<span class="operator">));</span><span class="flow">
+  while</span><span class="operator"> (</span>readproc<span class="operator">(</span>proc<span class="operator">, &amp;</span>proc_info<span class="operator">) !=</span> NULL<span class="operator">) {</span>
+    printf<span class="operator">(</span><span class="string">"%20s:\t%5ld\t%5lld\t%5lld\n"</span><span class="operator">,</span>
+           proc_info<span class="operator">.</span>cmd<span class="operator">,</span> proc_info<span class="operator">.</span>resident<span class="operator">,</span>
+           proc_info<span class="operator">.</span>utime<span class="operator">,</span> proc_info<span class="operator">.</span>stime<span class="operator">);
+  }</span>
+  closeproc<span class="operator">(</span>proc<span class="operator">);
+}</span>
+</pre>
+
+
+<hr><h2>Links to other sites</h2>
+
+
+<li><a href="http://common-lisp.net/project/cl-proc/">cl-proc</a> - a Quicklisp installable library for Lisp that accesses libproc - although it didn't seem to want to compile when I tried to (ql:quickload "proc") on 17-Mar-2013
+
+
+<li><a href="http://codingrelic.geekhold.com/2011/02/listing-processes-with-libproc.html">libproc</a> - containes an overview on a library for looping through processes. You'll probably want to start here
+
+<li><a href="http://gitorious.org/procps">procps-ng</a> - Debian, Fedora and openSUSE fork of procps - git repo for source code for ps, and suchlike
+
+<li><a href="http://code.google.com/p/procpy/">procpy</a> -python wrapper for procps library - will probably also provide handy hints as to what to do
+
+<hr><pre>
+Author:  Mark Carter
+Created: 17-Mar-2013
+Updated: 17-Mar-2013
+</pre>
+</body></html>

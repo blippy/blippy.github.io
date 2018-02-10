@@ -1,0 +1,41 @@
+<html>
+<head>
+  <meta content="text/html; charset=iso-8859-1"  http-equiv="CONTENT-TYPE">
+  <LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+  <title>Racket-ncurses</title>
+</head>
+
+<body>
+
+<a href="../../index.html">Home</a> : <a href="../programming.htm" >programming</a> : <a href="racket.htm">racket</a>
+
+<h1>Racket curses</h1>
+
+This page contains notes on using curses with racket.
+
+There is a curses-demo.rkt file in <code>racket/collects/mzscheme/examples</code>.Their suggested compilation method isn't quite right. Here's what I did, which worked:
+<pre>
+mzc --xform curses.c
+mzc --3m --cc curses.3m.c 
+mzc --3m --ld curses.so curses_3m.o -lcurses
+racket -r curses-demo.rkt 
+</pre>
+
+
+
+<hr><h2>Links to external sites</h2>
+
+<a href="http://groups.google.com/group/plt-scheme/browse_thread/thread/6ac85187e93a6c22?pli=1">
+Keyboard input help</a> - thread Google Groups, which served as a basis for this web page.
+<br>
+
+
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 20-Oct-2010
+Updated: 20-Oct-2010
+</pre>
+</body>
+</html>

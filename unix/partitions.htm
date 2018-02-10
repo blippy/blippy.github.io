@@ -1,0 +1,99 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>Partitions</title>
+</head>
+
+<body>
+<a href="../index.html">Home</a> : <a href="unix.htm">unix</a>
+
+
+<h1>Partitions</h1>
+
+<hr><h2>Grub</h2>
+
+<h3>Default</h3>
+
+It is possible to set GRUB_DEFAULT as a string, but I don't remember
+how to detect the possibilities.
+
+<pre>
+
+<b>Set grub to boot on last user-selected menu item:</b>
+# sudo vim /etc/default/grub:
+GRUB_DEFAULT=saved
+GRUB_SAVEDEFAULT=true
+sudo update-grub # required as at 11-Mar-2015; but not 'sudo grub-install'
+
+
+<b>Set default boot item without editing files:</b>
+# sudo grub-set-default &lt;N&gt; # count from 0
+
+</pre>
+
+
+<h3>Other</h3>
+<p>Recreate the configuration if you change disk layout: <code>sudo grub-mk config -o /boot/grub/grub.cfg</code>
+
+<p>Install the new layout: <code>sudo grub-install /dev/sda</code>
+
+<p>Get the UUID of the partitions for use in <code>/etc/fstab</code> :  <code>sudo blkid</code>
+
+<p>GUI for customising the boot process: <code>sudo grub-customiser</code>
+
+<h2>Menu identification</h2>
+
+Run
+<pre>
+grep ^menuentry /boot/grub/grub.cfg | nl -v 0
+</pre>
+
+Use <code>grub-set-default</code> with the value of N, or use the name.
+
+<hr><h2>Identifying disks</h2>
+
+To see what disks may have been mounted, try <code>sudo fdisk -l</code>. 
+
+<p>What looks like a potentially better solution is to use <code>udisks</code>, which can be installed in Ubuntu: <code>sudo apt-get install udisks</code>. A normal user can then list the disks using the command: <code>udisks --enumerate</code>. It also looks possible to mount devices using this command, although i haven't figured that out yet.
+
+<hr><h2>ISO to USB writing</h2>
+
+If you have a bootable ISO file - e.g. an Ubuntu ISO - then you can "install" it to a USB device using the following commands:
+
+<pre>
+dd bs=4M if=whatever.iso of=/dev/sdX
+sync
+</pre>
+
+where sdX is something like sdb. Using "sdb1" is likely to be wrong, as it will mean that the bootloader will be put in the wrong place.
+
+<hr><h2>Labels</h2>
+
+To name a Linux partition (<a href="http://linux.about.com/od/ptn_howto/a/hwtptn07t00.htm">xlink</a>):
+<pre>    sudo tune2fs -L &lt;label&gt; /dev/&lt;drive&gt;</pre>
+NTFS partition renaming: (<a href="http://www.linuxquestions.org/questions/linux-software-2/tool-to-change-the-label-of-a-ntfs-disk-partition-400923/">xlink</a>):
+<pre>    sudo ntfslabel -f /dev/&lt;drive&gt;  &lt;label&gt;</pre>
+Listing the partitions by label (<a href="http://unix.stackexchange.com/questions/14165/list-partition-labels-from-the-command-line">xlink</a>):
+<pre>    ls /dev/disk/by-label</pre>
+
+
+<hr><h2>Unclassified</h2>
+
+Other commands:
+
+<li><code>e2fsck /dev/sda1</code> - check a Linux ext2/ext3/ext4 file system</li>
+<li><code>parted resizepart NUMBER END</code> can be used to resize partition</li>
+<li><code>resize2fs /dev/sda1</code> - ext2/ext3/ext4 file system resizer. NB use <code>fdisk</code> or <code>parted</code> first if you want to expand the partition
+
+<hr><h2>Links to other sites</h2>
+
+<li><a href="http://c-mobberley.com/wordpress/index.php/2013/04/13/moving-raspberry-pi-root-folders-from-sd-card-to-usb-hdd/">cloning/moving file systems</a> - 
+Move Raspberry Pi Root File System (rootfs) From SD Card To Usb / HDD - but it is actually relevant to cloning in general
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 15-Jun-2013
+Updated: 23-Oct-2017
+</pre>
+</body>
+</html>

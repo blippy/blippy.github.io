@@ -1,0 +1,66 @@
+<html><head>
+<LINK REL=StyleSheet HREF="../style.css" TYPE="text/css">
+<title>mail</title>
+</head>
+
+<body>
+
+<a href="../index.html">Home</a> : <a href="mail.htm">mail</a>
+
+<h1>Procmail</h1>
+
+Procmail is an LDA (Local Delivery Agent)
+
+
+
+<hr><h2>Installation</h2>
+
+As at 30-May-2013, I recommend against using Dovecot and maildrop on Mint 15. Maildrop had "authdaemon" problems which I couldn't resolve, and doesn't seem worth the hassle of getting to work.
+
+<p>Install the required components:
+<pre>sudo apt-get install procmail nmh</pre>
+Set up your regular user ~/Mail directory:
+<pre>/usr/bin/mh/install-mh</pre>
+To get postfix to process a user's procmail filters, edit /etc/postfix/main.cf
+to include the line:
+<pre>
+mailbox_command = /usr/bin/procmail
+</pre>
+Restart postfix:
+<pre>sudo postfix reload</pre>
+
+
+<hr><h2>.Procmailrc recipes</h2>
+
+<h3>Forwarding</h3>
+<pre>
+LOGFILE=${HOME}/procmail.log
+#MAILDIR=${HOME}/Maildir
+#SPAM=kink
+# need to sudo aptitude install nmh
+STORE=/usr/lib/mh/rcvstore
+
+
+#:0 B
+#* spam-blah-exampale
+#| $STORE +spam
+
+#:0 B
+#* BLVN
+#| $STORE +BLVN
+
+# Forward everything to me at gmail
+:0:
+! myemailaddress@gmail.com
+</pre>
+
+<hr><h2>Link to other sites</h2>
+
+None
+
+<hr><pre>
+Author:  Mark Carter
+Created: 15-Jun-2013
+Updated: 10-Feb-2016
+</pre>
+</body></html>

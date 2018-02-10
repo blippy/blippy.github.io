@@ -1,0 +1,67 @@
+<html><head>
+<LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+<title>autotools</title></head>
+<body>
+
+<a href="../../index.html">Home</a> 
+: <a href="../programming.htm" >programming</a>
+: <a href="autotools.htm" >autotools</a>
+
+
+<h1>HDF5</h1>
+<hr>
+
+A particular problem seems to arise with HDF5 conditional compilation: ubuntu has a pkg-config file, but Arch does not. So you have to eskew how you might normally do it, and avoid <code>AX_LIB_HDF5</code>.
+
+<hr><h2><code>configure.ac</code></h2>
+
+<pre>
+...
+AC_PROG_CXX
+...
+AC_CHECK_HEADERS([hdf5.h])
+AM_CONDITIONAL([MY_HDF5], [test x$ac_cv_header_hdf5_h == xyes])
+...
+</pre>
+
+AC_CHECK_HEADERS sets ac_cv_header_hdf5_h to yes or no, along with a few other bits that you can check in config.log. Note that that there is a general mechanism in play here, so see the autotools documentation.
+
+AM_CONDITIONAL then sets up a variable MY_HDF5 that you can utilise in your Makefile.am
+
+
+<hr><h2><code>src/Makefile.am</code></h2>
+
+In brief, you can now see if MY_HDF5 is set to 1 or not:
+<pre>
+if MY_HDF5
+...
+endif
+</pre>
+
+My specific setup in the <code>h5mc project is</code>:
+<pre>
+if MY_HDF5
+bin_PROGRAMS += h5new shsl
+
+#EXTRA_PROGRAMS = shsl
+
+#EXTRA_hdf_SOURCES = common5.cc
+#hdf_PROGRAMS = shsl
+hdf_LDADD = -lhdf5 -lcxxstats
+hdf_SOURCES = common.cc common5.cc
+
+h5new_LDADD = -lhdf5 -lcxxstats
+h5new_SOURCES = h5new.cc common.cc common5.cc 
+
+shsl_LDADD = $(hdf_LDADD)
+shsl_SOURCES = shsl.cc $(hdf_SOURCES)
+
+endif
+</pre>
+<hr><pre>
+Author:  Mark Carter
+Created: 20-Oct-2016
+Updated: 20-Oct-2016
+</pre>
+</body>
+</html>

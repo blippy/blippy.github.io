@@ -1,0 +1,54 @@
+<html>
+<head>
+  <LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+  <title>Common Lisp Tips</title>
+</head>
+<body>
+
+<a href="../../index.html">Home</a> : <a href="../programming.htm">programming</a> 
+: <a href="lisp.htm">lisp</a>
+
+<h1>Common Lisp Tips</h1>
+
+
+<hr><h2>Evaluating the last expression</h2>
+
+In the REPL, +, ++, and +++ have as values the three most recently evaluated expressions. A quick way to evaluate the previous expression, especially handy in a REPL without input history, is
+<pre>#.+</pre>
+It's equivalent to (eval +).
+
+<pre>
+CL-USER> (defparameter *x* 1)
+1
+CL-USER> (incf *x*)
+2
+CL-USER> +
+(INCF *X*)
+CL-USER> #.+
+3
+CL-USER> ***
+2
+CL-USER> *x*
+3
+</pre>
+
+
++. *, **, and *** hold values, and +, ++, and +++ hold expressions. Expressions that result in errors do not get saved to the + variables. 
+
+<hr><h2>Links to external sites</h2>
+
+<li><a href="http://lisptips.com/post/43944770476/semicolon-style">smicolon style</a> - from Lisp Tips
+
+<li><a href="http://lisptips.com/">Tips</a> - a tip on Common Lisp programming every day. Very very useful resource for learning Lisp.
+
+<li><a href="http://lisptips.com/post/43404489000/the-tree-walkers-of-cl">tree-walkers</a> - using subst-if and tree-equal
+
+<li><a href="http://lisptips.com/post/44108369388/trying-again-with-with-simple-restart">with-simple-restart</a> - a simple way to retry a failure
+
+<hr><pre>
+Author:  Mark Carter
+Created: 16-Jan-2012
+Updated: 01-Apr-2013
+</pre>
+</body>
+</html>

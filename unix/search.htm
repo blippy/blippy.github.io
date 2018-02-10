@@ -1,0 +1,37 @@
+<html><head>
+<LINK REL=StyleSheet HREF="../style.css" TYPE="text/css">
+<title>Search</title>
+</head>
+
+<body>
+
+<a href="../index.html">Home</a> : <a href="unix.htm">unix</a>
+
+<h1>Search</h1>
+
+Search facilities on Unix, esp. Debian.
+
+
+<hr><h2>Catfish</h2>
+
+Installable via Debian. Accessable via menu Accessories:Catfish. Only searches based on filename, not contents. GUI, not command-line (although it does have options when involed from command-line.
+
+<hr><h2>Recoll</h2>
+
+Looks very promising from first impressions. It works via a gui rather than command line. It is more for your personal data. It doesn't follow symbolic links by defaults, and it indexes some directories that you probably aren't interested in - but this is easily changed. Run it by typing <code>recoll</code>. The index must be regenerated using <code>recollindex</code>- which doesn't take too long after an initial scan. I added the following line to my personal crontab:
+<pre>     0 2  * * *   recollindex</pre>
+
+Recoll can be started from menu item Accessories:Recoll.
+
+<hr><h2>Also-rans</h2>
+
+A list of programs I have tried, but didn't like much
+
+<li><a href="http://www.debianadmin.com/desktop-search-engine-with-doodle.html">doodle</a> - a desktop search engine, but it only seems to index meta-data. Apparently it is possible to perform full-text indexing, but that may require libextractor plugins. Also comes with a daemon. It seems easier just to use <code>recoll</code>
+
+<hr><pre>
+Author:  Mark Carter
+Created: 11-Apr-2012
+Updated: 11-Apr-2012
+</pre>
+</body></html>

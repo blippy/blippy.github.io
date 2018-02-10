@@ -1,0 +1,44 @@
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+  <title>Scheme</title></head>
+<body>
+
+
+<a href="../../index.html">Home</a> : <a href="../programming.htm">programming</a>
+
+<h1>Scheme</h1>
+
+
+<hr><h2>Recipes</h2>
+
+<h3>Convert string to code</h3>
+
+<pre>
+(with-input-from-string "(foo bar)" (lambda () (read)))
+</pre>
+
+
+<hr><h2>Links to other sites</h2>
+
+<li><a href="http://rigaux.org/language-study/various/callcc/scheme.html">gotos</a> - simulating gotos in scheme using continuations - various methods</li>
+
+	<li><a href="http://www.jazzscheme.org/" >jazzscheme</a> - "full-featured cross-platform application framework, a sophisticated programmable IDE and a build system that creates executable binaries for Mac OS X, Windows and Linux. JazzScheme has been used for more than 10 years to develop commercial software."</li>
+
+	<li><a href="https://www.youtube.com/watch?v=OyfBQmvr2Hc">Most Beuatiful Prgram Ever Written</a></li>
+
+	<li><a href="http://www.gnu.org/software/guile/manual/html_node/R6RS-I_002fO-Ports.html#R6RS-I_002fO-Ports">R6RS I/O Ports</a> - guile reference</li>
+
+	<li><a href="https://github.com/scheme-requests-for-implementation">SRFIs</a> - code!</li>
+
+<li><a href="http://srfi.schemers.org/srfi-71/srfi-71.html">srfi-71</a> - Extended LET-syntax for multiple values. Let's you assign multiple values at once, and a few other tricks. Eg. <pre>(let ((a b (values 10 11))) b) ; 11</pre>
+
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 21-Apr-2012
+Updated: 28-Nov-2017
+</small>
+</body>
+</html>

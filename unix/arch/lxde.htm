@@ -1,0 +1,71 @@
+<html><head>
+<LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+<title>lxde</title>
+</head>
+
+<body>
+  <a href="../../index.html">Home</a>
+  : <a href="../unix.htm">unix</a>
+: <a href="arch.htm">arch</a>
+
+<h1>lxde</h1>
+
+Include the installation of:
+<pre>
+  pacman -S lxde-icon-theme lxmenu-data lxpanel lxtask
+</pre>
+
+In <code>~/.xinitrc</code>:
+<pre>
+exec startldxe
+</pre>
+
+<hr><h2>Add menu and panel items</h2>
+
+<pre>
+  sudo pacman -S archlinux-xdg-menu
+
+  Create a .desktop file (e.g. <a href="https://gist.github.com/blippy/b160e89ebc5511edd398">dillo.desktop</a> xlink)
+  Install it: cp foo.desktop $HOME/.local/share/applications
+  sudo update-menus # seems to make it accessable to the panel
+  lxpanelctl restart # possibly unecessary
+
+  Add the icon to the panel:
+  RMB on panel &gt; Panel Settings &gt; Panel Applets &gt; Application Launch Bar (double-click)
+  
+</pre>
+
+SEE ALSO: <a href="https://specifications.freedesktop.org/menu-spec/menu-spec-1.0.html#category-registry">Registered categories</a>
+
+<hr><h2>PCManFM</h2>
+
+<pre>
+<b>Set detailed list view:</b>
+Edit : Preferences : General : Default View : Detailed View List
+View &gt; Folder ViewMode &gt; Detailed List View
+View &gt Preserve This Folder's Settings
+</pre>
+
+<hr><h2>Trash</h2>
+
+Sufficient: <code>sudo pacman -Su gamin gvfs</code> . <code>gvfs</code> is necessary.
+
+<hr><h2>Unclassified</h2>
+
+<pre>
+  yaourt openbox-menu
+</pre>
+
+<hr><h2>Links to other sites</h2>
+
+None
+  
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 24-Nov-2015
+Updated: 25-Nov-2017
+</pre>
+</body>
+</html>

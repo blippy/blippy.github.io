@@ -1,0 +1,61 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html><head>
+  <LINK REL=StyleSheet HREF="style.css" TYPE="text/css">
+  <title>cinelerra</title></head>
+<body>
+
+<a href="../index.html">Home</a>
+: <a href="video.htm">video</a>
+
+<h1>Cinelerra</h1>
+
+<hr>
+
+Cinelerra seems to play much nicer with DV vids, so I recommend that you both import and render in DV. To transcode from MPG to DV, use a command like
+<pre>ffmpeg -i foo.mpg foo.dv</pre>
+
+<p>Note that DV files can be quite big. a 26.4M MPG file became a 154.1M, for example.
+
+<p>
+PAL 720x576 seems a good one to go for
+</p>
+
+
+<hr><h2>Compiling</h2>
+<pre>
+Commit cee90eb (CinelerraCV.git) ran without crashing
+CFLAGS=-g ./configure
+make
+sudo make install
+gdb cinelerra
+</pre>
+
+
+<li><a href="https://mcturra2000.wordpress.com/2016/04/28/compiling-cinelerra-cv-in-ubuntu-xenial/">Compiling on Ubuntu 16.04 (Xenial)</a> - from 28-Apr-2016</li>
+
+<li><a href="https://gist.github.com/blippy/ef99a26b29399f61139079f5b73e9c5e">Compiling cinelerra-cv on Ubuntu 17.10</a></li>
+
+<hr><h2>Blog posts</h2>
+
+<li><a href="https://mcturra2000.wordpress.com/2016/04/29/cinelerra-cv-navigating-the-codec-maze/">navigating the codec maze</a> - advocates DV and MP3, and steering clear of all other formats. Written 20-Apr-2016</li>
+
+
+<hr><h2>Links to other sites</h2>
+<ul>
+	<li><a href="https://www.youtube.com/watch?v=mzhidfw5koQ">Basic Cinelerra tutorial</a></li>
+	<li><a href="http://www.christianforums.com/threads/cinelerra-video-editing.7875097/">christian forums</a> - some discussion about containers</li>
+	<li><a href="https://cinelerra-cv.org/doxygen/2.3_d189a04/">doxygen</a></li>
+<li><a href="http://lists.cinelerra-cv.org/pipermail/cinelerra/"> mailing list</a></li>
+<li><a href="http://cinelerra.org/docs/cinelerra_cv_manual_en.html">manual</a></li>
+<li><a href="http://is.gd/sfmYPA">ogg timeline bug</a></li> 
+<li><a href="http://lists.cinelerra-cv.org/pipermail/cinelerra/2016q2/004447.html">svg degfault</a> - (qv a <a href="https://github.com/r4mp/cinelerra/tree/master/cinelerra-4.6.mod/plugins/svg">cleaned-up version</a>) </li>
+</ul>
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 01-May-2016
+Updated: 01-Feb-2018
+</pre>
+</body>
+</html>

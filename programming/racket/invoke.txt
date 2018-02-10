@@ -1,0 +1,1 @@
+":"; exec mzscheme -r $0 "$@";(require (lib "srpersist.ss" "srpersist"));(compiled-odbc-version)(define ls (lambda (dir) (directory-list dir)))(define a (lambda (x) (display x)))(display (ls "."))

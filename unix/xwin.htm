@@ -1,0 +1,69 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<LINK REL=StyleSheet HREF="../style.css" TYPE="text/css">
+<title>X Windows</title>
+</head>
+
+<body>
+
+<a href="../index.html">Home</a> : <a href="unix.htm">unix</a>
+
+<h1>X Windows</h1>
+
+Notes on the X-Windowing system
+
+<hr><h2>Tools</h2>
+
+<pre>
+xdotool # command-line X11 automation tool
+echo $( xdotool selectwindow ) and click on desktop to find its number
+
+xsetroot -solid grey20 # Set the background colour for the desktop
+
+xwininfo -root # desktop resolution, and other info
+
+</pre>
+
+<hr><h2>Display Manager - adding a new window manager</h2>
+
+Add a new window manager to the gdm menu by creating a .desktop file and adding it to /usr/share/xsessions (on Debian)
+
+<hr><h2>Multiple displays</h2>
+
+Using X, you can create multiple displays, each one using a different window manager. It is very useful for testing purposes. For example, in my main display :0 I am running wmii. Suppose I want another display running fvwm2. Here's what I do:
+<ol>
+<li>Start a new X server on display :1: <pre>nohup X :1 &amp;</pre>
+<li>Start fvwm2 on the new display: <pre>nohup fvwm2 -d :1 &amp; </pre>
+<li>Toggle between the two displays (specifics will vary): <pre>Ctl-Alt F7</pre> and <pre>Ctl-Alt F8</pre>
+</ol>
+
+<hr><h2>Also on this site</h2>
+
+<li><a href="../graphics.htm#colours">Colours</a> - a visual display of colours for you to choose from, together with hex codes and descriptive colours
+
+<hr><h2>Links to other sites</h2>
+
+
+<li><a href="http://code.google.com/p/autokey/">autokey</a> - desktop automation utility. It allows you to manage collection of scripts and phrases, and assign abbreviations and hotkeys to these. This allows you to execute a script or insert text on demand in whatever program you are using.
+
+  
+<li><a href="https://help.ubuntu.com/community/Devilspie">devilspie</a> - utility that lets you make applications start in specified workplaces, in specified sizes and placements, minimized or maximized and much more based on simple config files
+  
+<li><a href="https://lkubaski.wordpress.com/2012/06/29/adding-lxde-start-menu-and-desktop-shortcuts/">LXDE</a> - Adding start menu entries and desktop shortcuts
+  
+<li><a href="https://github.com/patrickhaller/no-wm">no-wm</a> - use
+X11 without a window manager. It relies on other utilities to fill in
+the gaps, like xbindkeys for keybindings, and xdotool for moving
+window.
+
+<li><a href="https://www.google.co.uk/#q=winwrangler">winwrangler</a> -  small destop daemon to performa advanced window manipulations not commonly found in window managers
+
+<li><a href="http://www.nongnu.org/xhotkeys/index.html">xhotkeys</a> - hotkey launcher for the X-Window System, binding keys and mouse buttons to configurable commands
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 07-May-2011
+Updated: 06-Feb-2016
+</pre>
+</body></html>

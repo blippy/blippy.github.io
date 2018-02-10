@@ -1,0 +1,41 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<LINK REL=StyleSheet HREF="../style.css" TYPE="text/css">
+<title>pipes</title>
+</head>
+
+<body>
+
+<a href="../index.html">Home</a> : <a href="bash.htm">bash</a>
+
+<h1>pipes</h1>
+
+<hr><h2>Feeding command output to a while loop without using pipes</h2>
+
+From a file:
+<pre>
+while read line
+do
+ echo $line
+done &lt;FILE
+</pre>
+
+
+
+<p><b>CAVAET:</b> using piping and while loops can start subprocesses, which can cause unexpected results insofar as the variables inside the loop will be result. So you should do something like:
+
+<pre>
+while read line
+do
+ echo $line
+done &lt; &lt;(ls -1d *)
+</pre>  
+
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 24-Nov-2015
+Updated: 24-Nov-2015
+</pre>
+</body></html>

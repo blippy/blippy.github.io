@@ -1,0 +1,75 @@
+<html><head>
+  <LINK REL=StyleSheet HREF="style.css" TYPE="text/css">
+  <title>Mathematics</title>
+</head>
+<body>
+
+<p><a href="../index.html">Home</a></p>
+
+<h1>Mathematics</h1>
+
+
+
+<hr><h2>Maxima</h2>
+
+<h3>Define function</h3>
+<pre>f(b,c) := c^2 * b ^2 - (1+ b)^2 * (1+b)^2;</pre>
+
+<h3>Solve symbolically</h3>
+
+<pre>
+solve(f(b,c), b);
+</pre>
+
+<h3>Solve numerically</h3>
+
+<pre>
+float(solve(f(b, 6), b));
+</pre>
+
+
+<hr><h2>Sample standard deviation</h2>
+
+<pre>
+Given by:
+   s = sqrt(sum(x- u)/ (n-1)) == sqrt( (n * sxx - sx *sx)/n/(n-1))
+where
+   u = mean
+   sx = sum(x)
+   sxx = sum(x * x)
+</pre>
+
+
+<hr><h2>Also on this site</h2>
+
+
+<li><a href="bayes.htm">bayes</a> - bayes theorem statistics
+<li><a href="fuzzy.htm">fuzzy</a> - Fuzzy Logic
+
+<hr><h2>Links to other sites</h2>
+
+
+<li><a href="http://greenteapress.com/">Green Tea Press</a> - has lots of free books by Allen Downey: Think Bayes, Think Complexity, Think DSP, Think Python, Think Stats
+
+<li><a href="http://www.xuru.org/rt/ExpR.asp#CopyPaste">Online Exponential Regression</a>
+<pre>1, 11.4
+2, 5.36
+3, 4.49
+4, 8.65
+5, 13.4
+6, 35.2
+7, 16.2
+8, 17.9</pre>
+
+
+<li><a href="http://en.wikipedia.org/wiki/Percentile_rank">Percentile rank</a> Wikipedia article on how to create percentile ranks
+
+<li><a href="http://hq.ssrn.com/rankings/Ranking_display.cfm?TRN_gID=10">SSRN Top 10,000 papers</a> - Social Science Research Network
+
+<hr><pre>
+Author:  Mark Carter
+Created: 20-Dec-2013
+Updated: 06-Apr-2015
+</pre>
+</body>
+</html>

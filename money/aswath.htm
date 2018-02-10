@@ -1,0 +1,89 @@
+<html>
+<head>
+  <LINK REL=StyleSheet HREF="../style.css" TYPE="text/css">
+  <title>Aswath</title>
+</head>
+
+<body>
+<a href="../index.html">Home</a> : <a href="money.htm">Money</a>
+
+<h1>Aswath</h1>
+
+Exploration of the writings of Aswath Domodaran
+
+
+
+<p>07-Jan-2014: r<sub>f</sub> = 2.95% (10y gilt) (<a href="http://markets.ft.com/research/Markets/Bonds">xlink</a>), equity risk premium 4.96% (<a href="http://pages.stern.nyu.edu/~ADAMODAR/">xlink</a>), required market return r<sub>m</sub> = 7.91% (=2.95%+4.96%)
+
+<p>21-Dec-2013: r<sub>f</sub> = 2.9% (10y gilt), equity risk premium 5.8%, required market return r<sub>m</sub> = 8.7% (=2.9%+5.8%)
+
+
+
+<hr><h2>Dividend discount model</h2>
+
+The two-stage growth model, shown on <a href="http://en.wikipedia.org/wiki/Dividend_discount_model">Wikipedia</a> has the following formula, which can be pasted directly into Maxima:
+<pre>
+p(d0, g, r, N, ginf) := d0*(1+g)/(r-g) *(1- (1+g)^N/(1+r)^N) + d0 *(1+g)^N * (1+ginf)/(1+r)^N / (r-ginf); 
+</pre>
+See also: <a href="http://financial-education.com/2007/08/14/the-h-model-dividend-discount-model/">H-model</a> - which has a half-life decay of a super-normal growth to it.
+
+
+<hr><h2>Links to other sites</h2>
+
+<h3>Betas</h3>
+
+Available from ADVFN, Digital Look, Investors Chronicle
+
+
+<h3>Musings on Markets - blog articles</h3>
+
+<ul>
+
+<li><a href="http://aswathdamodaran.blogspot.co.uk/2012/05/how-much-is-growth-worth.html">How much is growth worth</a> - Reinvestment Rate = Expected Growth rate/ Return on Capital
+
+<li><a href="http://aswathdamodaran.blogspot.co.uk/2013/11/valuation-myths-young-companies-cannot.html">Valuation Myths: Young companies cannot be valued</a> - "I promise you that it will only get easier."
+
+<li><a href="http://aswathdamodaran.blogspot.co.uk/2013/11/value-in-eye-of-storm-why-you-should.html">Value in the eye of the storm: Why you should welcome uncertainty!</a> - "you don't have to be right to make money, but just less wrong than everyone else"
+
+
+<li><a href="http://aswathdamodaran.blogspot.co.uk/2012/06/value-investing-where-is-beef.html">Value Investing: Where is the beef?</a> - "active value funds underperformed the indices ... Arguing that value investing works because Warren Buffett and Seth Klarman have beaten the market is a sign of weaknesss, not strength."
+</ul>
+
+
+
+<h3>NY Stern webpages</h3>
+
+
+
+<li><a href="http://pages.stern.nyu.edu/~adamodar/New_Home_Page/valquestions/valquestions.htm">25 Questions on DCF Valution</a> - "any my opinionated answer"
+
+<li><a href="http://pages.stern.nyu.edu/~adamodar/New_Home_Page/datafile/Betas.html">betas</a> - by sector
+
+<li><a href="http://pages.stern.nyu.edu/~%20adamodar/New_Home_Page/datafile/ctryprem.htmlhttp://pages.stern.nyu.edu/~%20adamodar/New_Home_Page/datafile/ctryprem.html">Country default spreads and risk premiums</a> - last updated January 2014 as at 09-Feb-2014
+
+<li><a href="http://pages.stern.nyu.edu/~ADAMODAR/">Damodaran Online</a> - his page on Stern
+
+<li><a href="http://pages.stern.nyu.edu/~ADAMODAR/New_Home_Page/spreadsh.htm">spreadsheets</a>: gdffginzu.xls - unleveraged betas by sector
+
+
+<h3>Youtube videos</h3>
+
+
+<li>Corporate Finance YouTube Videos: <a href="http://www.youtube.com/watch?v=f8UMSWAihnc">1</a> 
+
+<a href="http://www.youtube.com/watch?v=mxQGS2k-zlU">5</a>
+<a href="http://www.youtube.com/watch?v=EKUu_w37S7I">6</a>
+<a href="http://www.youtube.com/watch?v=vYSSUefUteA">7</a>
+<a href="http://www.youtube.com/watch?v=nQZllMSfTmU">8</a>
+<a href="http://www.youtube.com/watch?v=SifzcExqofo">9</a>
+<a href="http://www.youtube.com/watch?v=rOQA_ouTxBc">10</a>
+
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 21-Dec-2013
+Updated: 11-Aug-2014
+</pre>
+</body>
+</html>

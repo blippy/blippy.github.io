@@ -1,0 +1,92 @@
+<html><head>
+<LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+<title>Arch Linux</title>
+</head>
+
+<body>
+  <a href="../../index.html">Home</a>
+  : <a href="../unix.htm">unix</a>
+
+
+<h1>Arch Linux</h1>
+
+Preliminary installation instructions are available by typing
+<pre>
+  wget http://www.markcarter.me.uk/unix/arch.txt
+</pre>
+
+<hr><h2>keyboard</h2>
+
+<pre>
+locale # display current locale
+
+nano /etc/locale.gen # uncomment all en_GB* for Britain
+locale-gen
+
+nano /etc/locale.conf
+LANG=en_GB.UTF-8
+
+# set console keymap:
+nano /etc/vconsole.conf
+KEYMAP=uk
+
+# set X11 keymap:
+localectl set-x11-keymap gb
+</pre>
+
+
+
+<hr><h2>network</h2>
+
+<pre>
+  ip addr show # show your IP address
+  ip link set enp3s0 down # take down ethernet interface
+</pre>
+
+
+
+<hr><h2>timezone for UK</h2>
+
+<pre>
+  ln -s /usr/share/zoneinfo/Europe/London /etc/localtime
+</pre>
+
+
+
+<hr><h2>See also</h2>
+
+<li><a href="arch.txt">arch.txt</a> - for when you need to consult the documents without a browser
+
+<li><a href="aur.htm">aur</a> - for more fine-grained control than with yaourt
+<li><a href="lxde.htm">lxde</a>
+<li><a href="pacman.htm">pacman</a>
+<li>pcurses -  curses package management tool using libalpm     
+<li><a href="xorg.htm">xorg</a>
+<li><a href="yaourt.htm">yaourt</a>  
+
+
+<hr><h2>Links to other sites</h2>
+
+<h3>Forum posts (by me)</h3>
+
+<li><a href="https://bbs.archlinux.org/viewtopic.php?id=229254">autocutsel consuming 100% of Cpu2</a></li>
+<li><a href="https://bbs.archlinux.org/viewtopic.php?id=206293">creating integrated packages</a></li>
+
+
+<h3>Unclassified</h3>
+
+<li><a href="https://wiki.archlinux.org/index.php/DeveloperWiki:Building_in_a_Clean_Chroot">building packages in a clean chroot</a></li>
+
+<li><a href="https://www.archlinux.org/news/">news</a> - worth checking for possible breakages</li>
+
+
+  
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 13-Jul-2015
+Updated: 12-Oct-2017
+</pre>
+</body>
+</html>

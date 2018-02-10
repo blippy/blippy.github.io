@@ -1,0 +1,87 @@
+<html><head>
+<LINK REL=StyleSheet HREF="../style.css" TYPE="text/css">
+<title>mail</title>
+</head>
+
+<body>
+
+<a href="../index.html">Home</a> : <a href="mail.htm">mail</a>
+
+<h1>Dovecot</h1>
+
+Dovecot is a POP3 server. This page is about using secured passwords that
+are not authenticated by PAM, but through dovecot's own password system.
+
+<hr><h2>Installation and configuration</h2>
+<pre>
+<b>INSTALL:</b>
+sudo apt-get install dovecot-pop3d # dovecot-imapd
+
+<b>GENERATE a password hash</b>
+doveadm pw -s ssha
+Enter new password: foo
+Retype new password: foo
+{SSHA}smUH7aqGXI+XYXdlTQhhvNdPZGyckOmP
+Then enter the following in /etc/dovecot/users:
+mcarter:{SSHA}smUH7aqGXI+XYXdlTQhhvNdPZGyckOmP:1000:1000::/home/mcarter
+Further configuration will be needed to get dovecot to authenticate away from PAM
+
+<b>RESTART dovecot:</b>
+service dovecot restart
+Create a self-signed SSL certificate? Yes
+commonName: localhost
+</pre>
+
+
+<hr><h2>/etc/dovecot/conf.d/10-auth.conf</h2>
+
+To bypass PAM mechanisms and use separate passwords, ensure that you match the following lines:
+<pre>
+#!include auth-system.conf.ext
+!include auth-passwdfile.conf.ext
+</pre>
+
+
+<hr><h2>/etc/dovecot/conf.d/10-mail.conf</h2>
+
+To fix "Error: file_dotlock_create ... (set mail_privileged_group=mail)":
+
+<pre>
+mail_privileged_group = mail
+</pre>
+
+<hr><h2>/etc/dovecot/conf.d/15-lda.conf</h2>
+
+<pre>
+lda_mailbox_autocreate = yes
+</pre>
+
+<hr><h2>Troubleshoot</h2>
+
+
+<pre>usermod -a -G mail mcarter # add user to the mail group</pre>
+
+Testing connection:
+<pre>
+openssl s_client -connect localhost:110 -starttls pop3
+USER foo
+PASS bar
+LIST
+RETR 1
+</pre>
+
+<hr><h2>Unclassified</h2>
+
+Passwords are stored in <code>/etc/dovecot/users</code>
+<p>Secure pop3 port is 995
+
+<hr><h2>Link to other sites</h2>
+
+None
+
+<hr><pre>
+Author:  Mark Carter
+Created: 28-Jan-2014
+Updated: 08-Sep-2014
+</pre>
+</body></html>

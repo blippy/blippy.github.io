@@ -1,0 +1,67 @@
+<html>
+<head>
+  <LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+  <title>Filesystem</title>
+</head>
+<body>
+
+<a href="../../index.html">Home</a> 
+: <a href="../programming.htm">programming</a> 
+: <a href="lisp.htm">lisp</a>
+
+<h1>Filesystem</h1>
+
+
+This is how you would specify the file <code>C:\Users\mcarter\My Documents\grim.txt</code> in Lisp:
+<pre>
+(make-pathname :device "C" 
+   :directory '(:absolute "Users" "mcarter" "My Documents" )
+   :name "grim" :type "txt")
+</pre>
+
+
+<p>To specify a relative directory:
+<pre>
+(make-pathname :directory '(:relative ".config" "clisp"))
+</pre>
+On UNIX, it gives me: <code>#P".config/clisp/"</code>
+
+
+<p>To specify a directory from your homedir:
+<pre>
+(merge-pathnames  
+ (make-pathname :directory '(:relative ".config" "clisp"))
+ (user-homedir-pathname))
+</pre>
+On UNIX, it gives: <code>#P"/home/mcarter/.config/clisp/"</code>
+
+<p>To specify a file from your homedir, you simply combine:
+<pre>
+(merge-pathnames  
+ (make-pathname :directory '(:relative ".config" "clisp") :name "yafi" :type "dat")
+ (user-homedir-pathname))
+</pre>
+On UNIX, it gives: <code>#P"/home/mcarter/.config/clisp/yafi.dat"</code>
+
+<hr><h2>Clisp</h2>
+
+<li><code>(ext:cd [pathname])</code> - sets or returns the working directory
+<li><code>(ext:default-directory)</code>
+<li><code>(ext:delete-directory)</code>
+<li><code>(ext:dir optional pathname)</code> - like directory, but displays the pathnames instead of returning them
+<li><code>(ext:directory pathname)</code> - lists directory - refer to link below for full functionality
+<li><code>(ext:make-directory directory</code> - create a new subdirectory
+<li><code>(ext:probe-directory pathname)</code> - tests whether pathname exists
+<li><code>(ext:rename-directory)</code>
+
+<p>
+<a href="http://clisp.org/impnotes/dir-func.html">xlink</a>
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 08-Aug-2011
+Updated: 21-Jan-2012
+</pre>
+</body>
+</html>

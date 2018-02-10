@@ -1,0 +1,88 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<LINK REL=StyleSheet HREF="../style.css" TYPE="text/css">
+<title>bash</title>
+</head>
+
+<body>
+
+<a href="../index.html">Home</a>
+
+<h1>bash</h1>
+
+
+
+
+
+<hr><h2>Existence</h2>
+
+<pre>
+# check if a COMMAND does/does not exist:
+command -v foo &gt;/dev/null 2&gt;&1 && echo success || echo fail
+# check if a DIRECTORY exists:
+[[ -d "$DIRECTORY" ]] && do something
+# check if EXECUTABLE:
+[[ -x "$PATH_TO_EXE" ]] && do something
+
+
+Others:
+-h symbolic link
+-f file exists
+
+</pre>
+
+
+
+
+<hr><h2>If</h2>
+
+One-line statements:
+<pre>   if [ "$QUIET" != "-q" ]; then echo ; echo $cmd ; fi</pre>
+
+
+<hr><h2>Inline here documents</h2>
+
+<code>&lt;&lt;&lt;</code> - inline here documents. E.g.
+<pre>bc &lt;&lt;&lt; "scale=2; 10*100/3"
+333.33
+</pre>
+
+<hr><h2>Redirect as pseudo-file</h2>
+
+Example: <code>comm</code> takes two file names as arguments. You can treat outputs from other commands as file arguments to <code>comm</code> using a structure like:
+<pre>comm -12 &lt;(sort names1) &lt;(sort names2)</pre>
+
+
+
+<hr><h2>See also</h2>
+
+<li><a href="clp.htm">clp</a> - command-line processing</li>
+<li><a href="os.htm">os</a> - identify operating system</li>
+<li><a href="pipes.htm">pipes</a> - feeding command output to a while loop
+<li><a href="random.htm">random</a> - random number generation
+<li><a href="rc.htm">rc</a> - initialisation files
+
+<hr><h2>Links to other sites</h2>
+
+<h3>gists</h3>
+
+<li><a href="https://gist.github.com/blippy/41bbe6569f1df75f17d5">cop.sh</a> - coprocesses in bash using `dc' as an example
+  
+<h3>Unclassified</h3>
+<li><a href="http://stackoverflow.com/questions/3231804/in-bash-how-to-add-are-you-sure-y-n-to-any-command-or-alias">Are you sure? [Y/n]</a>
+
+  
+<li><a href="http://robertmuth.blogspot.co.uk/2012/08/better-bash-scripting-in-15-minutes.html">Better Bash Scripting in 15 Minutes</a> - handy tips
+
+	<li><a href="https://codeyarns.com/2015/07/31/environment-variables-in-fish/">fish</a> - environment variables</li>
+
+<li><a href="http://stackoverflow.com/questions/59895/can-a-bash-script-tell-what-directory-its-stored-in">What directory is a bash script stored in?</a>
+
+<li><a href="http://www.linuxjournal.com/content/working-stdin-and-stdout?utm_source=feedburner&utm_medium=feed&utm_campaign=Feed%3A+linuxjournalcom+%28Linux+Journal+-+The+Original+Magazine+of+the+Linux+Community%29">Working with Stdin and Stdout</a> - explains many nuances of stdin, stdout and stderr, and how to determine if a script is input or output is a pipe or file, or via the keyboard and the screen
+
+<hr><pre>
+Author:  Mark Carter
+Created: 14-May-2011
+Updated: 17-Oct-2016
+</pre>
+</body></html>

@@ -1,0 +1,72 @@
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+  <title>Format</title></head>
+<body>
+
+<a href="../../index.html">Home</a> : <a href="../programming.htm">programming</a> : <a href="lisp.htm">lisp</a>
+
+<h1>Format</h1>
+
+Formatting recipes in lisp.
+
+<hr><h2>List of cons</h2>
+
+Given an alist:
+<pre>(defvar *map* '((0 . "zero") (1 . "one") (2 . "two")))</pre>
+I want to print:
+<pre>
+0: zero
+1: one
+2: two
+</pre>
+One solution is:
+<pre>
+(loop for (a . b) in *mapping*
+  do (format t "~a: ~a" a b))
+</pre>
+
+<a href="http://stackoverflow.com/questions/1263775/how-might-i-format-an-alist-in-common-lisp">xlink</a>
+
+<hr><h2>Numbers</h2>
+
+<pre>
+(format nil "~4,'0d" 42) => "0042"
+(format t "~,2F" 12.3)   => "12.30"
+(format t "~6,2F" 12.3)  => " 12.30"
+</pre>
+
+<hr><h2>Tabulated output</h2>
+
+You can format plists using something like this:
+<pre>
+(format t "~{~16a ~a~%~}" '(:MEDIAN 23.0 :MEAN 23.0))
+produces:
+MEDIAN           23.0
+MEAN             23.0
+
+You might also try ~T :
+(format t "~{~S ~16T~F~%~}" '(:MEDIAN 23.0 :MEAN 23.0)) 
+:MEDIAN  23.0
+:MEAN           23.0
+Oh, not so good.
+</pre>
+<a href="https://groups.google.com/group/comp.lang.lisp/browse_thread/thread/9f04749739b1f6e0?hl=en#">Thread</a>
+
+<hr><h2>Gists</h2>
+
+<li><a href="https://gist.github.com/blippy/e2695702c46f41f82af76d0f0a99c42e">fmtstr.lisp</a> - formatting strings left to right, including decimal formatting</li>
+
+
+<hr><h2>Links to other sites</h2>
+
+<li><a href="http://www-prod-gif.supelec.fr/docs/cltl/clm/node200.html">CLHS</a> - spec on Format
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 01-May-2011
+Updated: 17-Nov-2016
+</pre>
+</body>
+</html>

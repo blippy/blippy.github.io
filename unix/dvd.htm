@@ -1,0 +1,31 @@
+<html><head>
+<LINK REL=StyleSheet HREF="../style.css" TYPE="text/css">
+<title>DVDs</title>
+</head>
+
+<body>
+
+<a href="../index.html">Home</a> : <a href="unix.htm">unix</a>
+
+<h1>DVDs</h1>
+
+Working with DVDs and CDs.
+
+
+<hr><h2>Adding files to a DVD</h2>
+<p>To start a new DVD, transfer over a dummy file and use the -Z option. E.g.
+<pre>   growisofs -Z /dev/sr0 -R -J -pad README.txt</pre>
+Thereafter, use -M instead of -Z. You can copy directories on the filesystem to directories on the DVD using a command like:
+<pre>   growisofs -M /dev/sr0 -R -J /mnt/ernst-home/mcarter/info/archive/ongoing/docs-`date --iso`.tgz</pre>
+It is better to keep different instances of writing the DVD in different directories, as files will be overwritten, but old files wont be deleted.
+
+<hr><h2>Copying DVDs</h2>
+
+As at 08-Sep-2013, I've found Brasero to be an excellent utility. You can perform a straightforward copy, or create ISOs from a DVD, and burn ISos to a DVD.
+
+<hr><pre>
+Author:  Mark Carter
+Created: 02-Sep-2012
+Updated: 08-Sep-2013
+</pre>
+</body></html>

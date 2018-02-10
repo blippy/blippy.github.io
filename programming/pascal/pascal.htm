@@ -1,0 +1,86 @@
+<html><head>
+    <LINK REL=StyleSheet HREF="../style.css" TYPE="text/css">
+<title>Freepascal</title></head>
+<body>
+
+<a href="../../index.html">Home</a> 
+: <a href="../programming.htm" >programming</a>
+
+
+<h1>Freepascal</h1>
+
+
+<hr><h2>Database (Postgres)</h2>
+
+<pre>
+  PQConnection1.Params.Add(&#x27;host=vivo&#x27;);
+  PQConnection1.Params.Add(&#x27;dbname=scott&#x27;);
+  PQConnection1.Params.Add(&#x27;user=scott&#x27;);
+  PQConnection1.Params.Add(&#x27;password=tiger&#x27;);
+  PQConnection1.Open;
+  SQLQuery1.SQL.Text := &#x27;select * from dept&#x27;;
+  ListBox1.Clear;
+  SQLQuery1.Open;
+  while not SQLQuery1.EOF do
+  begin
+    ListBox1.Items.Add(SQLQuery1.Fields[1].AsString);
+    SQLQuery1.Next;
+  end;
+  SQLQuery1.Close;
+  PQConnection1.Close;
+
+</pre>
+
+<a href="http://wiki.freepascal.org/MySQLDatabases">xlink</a> - works on Postgres, not just MySQL.
+
+
+<hr><h2>Starting an Application hidden</h2>
+
+In *.lpr ensure the following line exists:
+<pre>
+Application.Initialize;
+<b>Application.ShowMainForm := False; // Add this line, so mainform will not show at startup</b>
+Application.CreateForm(TfrmMain, frmMain);
+</pre>
+
+
+
+<hr><h2>Table of records</h2>
+
+<pre>
+type
+      MyStufd is RECORD ....
+        END
+        MyData is file of MyStuff;
+var infile, outfile : MyData;
+            data : MyStuff;
+begin
+      infile := openForReading(&quot;filename&quot;);
+      outfile := openForWriting(&quot;anotherfile&quot;);
+      { read and pick the result to write to outfile }
+      read(data, infile);
+      if &#x27;data is good enough&#x27; then
+              write(data, outfile);
+end.
+
+</pre>
+
+
+<hr><h2>Unclassified</h2>
+
+<li><code>Application.ExeName</code> returns the full path and name of the file</li>
+<li>Git: files not needing to be put under source control (AFAIK): *.lpi, *.res (?)</li>
+<li><code>ShellExecute</code> is in unit <code>ShellApi</code></li>
+<li><code>StringReplace</code> is in unit <code>SysUtils</code></li>
+
+<hr><h2>Links to other sites</h2>
+
+None
+
+<hr><pre>
+Author:  Mark Carter
+Created: 29-Nov-2016
+Updated: 17-Apr-2017
+</pre>
+</body>
+</html>

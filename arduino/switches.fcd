@@ -1,0 +1,18 @@
+[FIDOCAD]
+FJC B 0.5
+TY 107 33 4 3 0 0 0 aakar 5V
+MC 110 75 1 0 ey_libraries.pasres7
+FCJ
+TY 105 85 5 4 0 0 0 aakar 
+TY 120 75 5 4 0 0 0 aakar 10K ("pull-up resistor")
+LI 110 40 110 50 0
+LI 110 40 110 70 0
+LI 110 85 110 111 0
+LI 110 111 133 111 0
+MC 137 111 0 0 ey_libraries.swcno0
+LI 147 111 156 111 0
+LI 156 111 156 131 0
+MC 156 131 0 0 ey_libraries.refpnt0
+LI 111 111 74 111 0
+SA 74 111 0
+TY 58 104 4 3 0 0 0 aakar Some IC pin

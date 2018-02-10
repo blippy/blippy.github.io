@@ -1,0 +1,39 @@
+<html>
+<head>
+  <LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+  <title>group-by</title>
+</head>
+<body>
+
+<a href="../../index.html">Home</a> 
+: <a href="../programming.htm">programming</a> 
+: <a href="lisp.htm">lisp</a>
+
+<h1>group-by</h1>
+
+<p>A quicklisp-installable aggregation library
+
+<hr><h2>Examples</h2>
+<pre>
+(defparameter +inputs+ '((10 200) (20 300) (10 400)))
+
+(group-by:group-by +inputs+) ; ((10 (200) (400)) (20 (300)))
+(group-by:group-by +inputs+ :value #'identity) ; ((10 (10 200) (10 400)) (20 (20 300)))
+(cdrs (group-by:group-by +inputs+ :value #'identity)) ; (((10 200) (10 400)) ((20 300)))
+</pre>
+
+<hr><h2>Links to other sites</h2>
+
+<li><a href="http://russ.unwashedmeme.com/blog/?p=171">blog entry</a> - by author, giving a few examples
+
+<li><a href="https://github.com/AccelerationNet/group-by/blob/master/group-by.lisp">group-by.lisp</a> - source code - the documentation is a little rough
+
+<li><a href="https://github.com/AccelerationNet/group-by">project page</a> - on github, with a few examples
+
+<hr><pre>
+Author:  Mark Carter
+Created: 25-Feb-2013
+Updated: 25-Feb-2013
+</pre>
+</body>
+</html>

@@ -1,0 +1,44 @@
+<html><head>
+    <LINK REL=StyleSheet HREF="../style.css" TYPE="text/css">
+    <title>branches</title>
+</head>
+
+<body>
+<a href="../index.html">Home</a> : <a href="git.htm">git</a>
+
+<h1>Branches</h1>
+
+
+
+
+<hr><h2>Local</h2>
+
+<p><b>CREATE</b> and switch to new branch: <code>git checkout -b <i>foo</i></code>
+  
+<p><b>MERGE</b> from another branch to the current branch: <code>git merge <i>foo</i></code>
+  
+<p><b>SWITCH</b> to another branch (e.g. <i>master</i>): <code>git checkout <i>foo</i></code>
+  
+<p><b>DELETE</b> branch branch: <code>git branch -d <i>foo</i></code>
+
+
+
+<hr><h2>Remote branches</h2>  
+
+To push a non-master branch to a remote repo, do:
+<pre>  git push <reponame> <branchname></pre>
+For example, if you want to push your local dev branch, do
+<pre>  git push origin dev</pre>
+If you wanted to delete the remote branch, type:
+<pre>  git push origin :dev</pre>
+  
+
+
+	  
+<hr><pre>
+Author:  Mark Carter
+Created: 21-Nov-2015
+Updated: 24-Jan-2016
+</pre>
+</body>
+</html>

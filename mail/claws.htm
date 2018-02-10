@@ -1,0 +1,36 @@
+<html><head>
+<LINK REL=StyleSheet HREF="../style.css" TYPE="text/css">
+<title>claws-mail</title>
+</head>
+
+<body>
+
+<a href="../index.html">Home</a> : <a href="mail.htm">mail</a>
+
+<h1>claws-mail</h1>
+
+This section assumes <a href="dovecot.htm">dovecot</a> has been set up with TLS authentication.
+
+<pre>
+sudo aptitude install claws-mail
+
+Configuration &lt; Create new account
+Email address: mcarter@markcarter.me.uk
+#Basic
+Protocol: POP3
+Server for receiving: 192.168.0.12
+SMTO server (send) : same
+User ID / Password as appropriate. It's the password that was set up for the mail account though
+#Receive: 
+UNCheck Use secure authentication (APOP)
+#SSL
+POP3: Use STARTTTLS for POP3 connection
+SMTP: Use STARTTTLS for SMTP connection
+</pre>
+
+<hr><pre>
+Author:  Mark Carter
+Created: 16-Mar-2014
+Updated: 16-Mar-2014
+</pre>
+</body></html>

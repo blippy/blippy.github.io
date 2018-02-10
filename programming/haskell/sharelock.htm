@@ -1,0 +1,122 @@
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+  <title>Sharelock</title></head>
+<body>
+
+
+<a href="../../index.html">Home</a> 
+: <a href="../programming.htm">programming</a>
+: <a href="haskell.htm">haskell</a>
+
+
+<h1>Sharelock</h1>
+
+Example usage of CSV files with the fixed Sharelock:
+
+<hr><h2>As a block</h2>
+<pre>
+module Blah where
+
+import Data.Maybe
+import Data.Either
+import Data.List
+import Data.Map (Map)
+import qualified Data.Map as Map
+import Data.Typeable
+
+import Text.CSV -- cabal install csv
+
+import Maskell.Stats
+import Maskell.Text
+
+cf = parseCSVFromFile "/home/mcarter/Downloads/StatsList-20150503.csv"
+
+procCsv (hdr:rowData) = do
+  print hdr
+  let rows = init rowData -- the last row is just a blank
+  let exCol name row = row !! (fromJust $ elemIndex name hdr)
+  let epic = exCol "epic"
+  let subsector = exCol "subsector"
+
+  let subRows = filter (\r -> subsector r == "SPECIALTY FINANCE") rows
+  let psrs = map (readFloat . exCol "PSR") subRows
+
+  putStrLn "Median PSR of specialty finance is:"
+  print $ mmedian psrs
+
+main = do
+  c <- cf
+  case c of
+    Left oops -> print oops
+    Right ok -> procCsv ok
+  putStrLn "Finished"
+</pre>
+
+
+<hr><h2>Using transposition</h2>
+
+<pre>
+module Move where
+
+import Data.Maybe
+import Data.Either
+import Data.List as L
+import Data.HashMap as H -- cabal install hashmap
+import Data.Typeable
+import GHC.Exts
+import Prelude as P
+
+import Text.CSV -- cabal install csv
+
+import Maskell.Stats
+import Maskell.Text
+
+cf = parseCSVFromFile "/home/mcarter/.fortran/^FTSE"
+
+
+
+
+tdata = [["1","2", "5"], ["3","4", "6"]] :: [[String]]
+t1 = P.map (\xs -> ( (head xs), (tail xs))) tdata
+t2 = H.fromList t1
+l = H.lookup "3" t2
+
+
+procCsv :: [[String]] -> IO ()
+procCsv rows = do
+
+  let tr = L.transpose rows
+  let tr1 = P.map (\xs -> ( (head xs), (tail xs))) tr
+  let m = H.fromList tr1
+
+  let closes = P.map (fromJust . readFloat) (fromJust $ H.lookup "Adj Close" m)
+  let pc prev curr = (curr - prev)/ curr * 100.0
+  let chgs = zipWith pc closes (tail closes)
+  let dates = tail (fromJust $ H.lookup "Date" m)
+  let pairs = zip dates chgs
+  let pairs1 = sortWith (abs . snd) pairs
+  print $ show pairs1
+
+
+
+
+main = do
+  c <- cf
+  v <- case c of
+    Left oops -> print oops
+    Right ok -> procCsv ok
+  putStrLn "Finished"
+
+
+</pre>
+
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 03-May-2015
+Updated: 24-Aug-2015
+</small>
+</body>
+</html>

@@ -1,0 +1,67 @@
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+  <title>CLISP</title></head>
+<body>
+
+<a href="../../index.html">Home</a> : <a href="../programming.htm">programming</a> : <a href="lisp.htm">lisp</a>
+
+
+
+
+<p>Working packages: CFFI</p>
+
+<p>Non-working packages: UFFI</p>
+
+
+<hr><h2>Building CLISP 2.47 on Ubuntu Ibex</h2>
+
+Here I show you how to build some extra goodies for CLISP
+
+
+
+<pre>
+apt-get install libsigsegv-dev   libreadline5-dev  libffcall1-dev
+apt-get install python-gtk2-dev libglade2-dev # add some gtk2 goo
+apt-get install libgdbm-dev
+cd ~/src/clisp/clisp
+
+rm -rf build-mc
+
+./configure  \
+	--with-module=gtk2 \
+	--with-module=clx/new-clx \
+	--with-module=syscalls \
+	--with-readline \
+	--with-module=gdbm \
+	--cbc build-mc
+
+cd build-mc
+make
+sudo make install
+</pre>
+
+<hr><h2>Invocation</h2>
+
+Example:
+<pre>clisp -x "(ql:quickload \"lili\") (lili:make-docs)"</pre>
+
+
+
+<hr><h2>Links to other sites</h2>
+
+<p><a href="http://clisp.cons.org/"> CLISP</a>
+- home of GNU CLISP, an ANSI Common Lisp. Contains links to downloads for every 
+platform - all free!</p>
+
+
+
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 07-Nov-2004
+Updated: 13-Feb-2013
+</pre>
+</body>
+</html>

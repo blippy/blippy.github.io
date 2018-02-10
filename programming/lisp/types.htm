@@ -1,0 +1,61 @@
+<html>
+<head>
+  <LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+  <title>Common Lisp Types</title>
+</head>
+<body>
+
+<a href="../../index.html">Home</a> 
+: <a href="../programming.htm">programming</a> 
+: <a href="lisp.htm">lisp</a>
+
+<h1>Common Lisp types</h1>
+
+
+<hr><h2>Implementing a 'list of strings' type</h2>
+
+<pre>
+(defun list-of-strings-p (seq) 
+  (every #'(lambda (x) (typep x 'string)) seq))
+
+(deftype list-of-strings ()
+   '(and list
+     (satisfies list-of-strings-p)))
+
+(list-of-strings-p '("as" "df")) ; t
+(list-of-strings-p '("as" 1)) ; nil
+</pre>
+
+
+<hr><h2>'List of whatever' type</h2>
+
+<pre>
+(defun elements-are-of-type (seq type)
+  (every #'(lambda (x) (typep x type)) seq))
+
+(deftype list-of-type (type)
+  (let ((predicate (gensym)))
+    (setf (symbol-function predicate)
+      #'(lambda (seq) (elements-are-of-type seq type)) )
+    `(and list (satisfies ,predicate)) ))
+
+(typep '(1 2 3) '(list-of-type integer)) ; T
+
+(typep '(1 2 a) '(list-of-type integer)) ; NIL
+
+(typep '(a b c) '(list-of-type symbol)) ; T
+</pre>
+
+
+<hr><h2>Links to external sites</h2>
+
+<li><a href="http://stackoverflow.com/questions/3210177/in-common-lisp-how-to-define-a-generic-data-type-specifier-like-list-of-intege">Source</a>
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 16-Jan-2012
+Updated: 16-Jan-2012
+</pre>
+</body>
+</html>

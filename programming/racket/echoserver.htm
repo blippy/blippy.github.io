@@ -1,0 +1,36 @@
+<html>
+<head>
+  <meta content="text/html; charset=iso-8859-1"  http-equiv="CONTENT-TYPE">
+  <LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+  <title>Racket echoserver</title>
+</head>
+
+<body>
+
+<a href="../../index.html">Home</a> : <a href="../programming.htm" >programming</a> : <a href="racket.htm">racket</a>
+
+<h1>Racket echoserver</h1>
+
+<hr>
+
+An echoserver, written in Racket:
+<pre>
+#lang racket  ; An echo server
+(define listener (tcp-listen 12345))
+(let echo-server ()
+  (define-values (in out) (tcp-accept listener))
+  (thread (lambda () (copy-port in out)
+                     (close-output-port out)))
+  (echo-server))
+</pre>
+
+
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 27-Nov-2010
+Updated: 27-Nov-2010
+</pre>
+</body>
+</html>

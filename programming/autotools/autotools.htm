@@ -1,0 +1,146 @@
+<html><head>
+<LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+<title>autotools</title></head>
+<body>
+
+<a href="../../index.html">Home</a> 
+: <a href="../programming.htm" >programming</a>
+
+
+<h1>GNU build tools</h1>
+
+<hr><h2>Creating projects</h2>
+
+<pre>
+Write the files configure.ac,  Markefile.am 
+autoreconf -vfi
+git add Makefile.in
+</pre>
+
+<hr><h2>Data (e.g. share)</h2>
+
+<p><code>dist_pkgdata_DATA = ...</code> <a href="https://www.gnu.org/software/automake/manual/html_node/Data.html">example</a>.</p>
+
+<p>Here is an example of <code>examples/Makefile.am</code> taken from the <code>neoleo</code> project:</p>
+<pre>
+<b>example</b>dir = $(datadir)/oleo/examples
+...
+dist_<b>example</b>_DATA = ... files ...
+</pre>
+
+<p>This will put the files in a directory like <code>/usr/share/oleo/examples</code>.</p>
+
+
+<hr><h2>Scripts</h2>
+
+<code>dist_bin_SCRIPTS = ... </code>
+
+<hr><h2>Flags</h2>
+
+
+<h3>CPPFLAGS</h3>
+E.g. <code>CPPFLAGS=-Wall</code>. You would also use it for the
+<code>-I</code> directive to include library headers.
+
+<h3>LDFLAGS</h3>
+These are linker flags. You specify library paths to link to
+here. E.g. <code>LDFLAGS=-L/usr/local/lib</code>
+
+<h3>Passing the flags</h3>
+You pass them into configure using commands like:
+<pre>env CPPFLAGS='-I/usr/include/ncurses ...' LDFLAGS='-L...' ./configure</pre>
+
+
+<hr><h2>Makefile</h2>
+
+<pre>
+foo : foo.c
+  gcc $&lt; -o $@
+
+---
+$@ the left side of the :
+$^ the right side of the :
+$&lt; the first prerequisite on the right side of :
+  
+</pre>
+
+<hr><h2><code>Makefile.am</code></h2>
+
+<p><b><code>dist_bin_SCRIPTS</code></b> - for scripts you want to install as-is. cf. <code>bin_SCRIPTS</code></p>
+
+<hr><h2>Unclassified</h2>
+
+<p><b>make distcheck</b> - attempts to build from tarball, which is excellent for checking purposes (<a href="https://bbs.archlinux.org/viewtopic.php?pid=1673746#p1673746">xlink</a>)</p>
+
+<hr><h2>Also on this site</h2>
+
+<li><a href="hdf5.htm">hdf5</a> - 
+	linking with hdf5 (but also <b>very useful generally, particularly in regard to conditional compilation</b>)</li>
+
+<hr><h2>Links to other sites</h2>
+
+
+<h3>My content</h3>
+
+<ul>
+	<li><a href="http://stackoverflow.com/questions/43030051/how-to-i-create-html-files-in-makefile-am-with-makeinfo">How to I create html files in makefile.am with makeinfo?</a></li>
+
+	<li><a href="https://stackoverflow.com/questions/45036507/how-do-i-stop-autotools-from-adding-command-line-options">How do I stop autotools from adding command line options?</a></li>
+
+	<li><a href="http://stackoverflow.com/questions/35117315/so-what-is-am-fcflags">So what "is" AM_(F)CFLAGS?</a></li>
+	
+	<li><a href="http://stackoverflow.com/questions/40949485/autotools-why-ax-rather-than-ac-in-configure-ac">why AX_... rather than AC_... configure.ac?</a></li>
+
+	<li><a href="http://stackoverflow.com/questions/42226738/why-is-automake-prefixing-my-object-files-with-the-package-name">why is automake prefixing my object files with the package name</a></li>
+
+	<li><a href="http://stackoverflow.com/questions/42230578/why-isnt-xloadqueryfont-recognising-name-8x13">why isnt xloadqueryfont recognising name 8x13</a></li>
+</ul>
+
+<h3>Unclassified</h3>
+<ul>
+
+
+	<li><a href="https://stackoverflow.com/questions/9598134/automake-tests-which-need-command-line-arguments"></a>automake tests which need command-line arguments</li>
+  
+<li><a href="https://autotools.io/index.html">Autotools Mythbuster</a> - guide
+  
+<li><a href="http://www.seul.org/docs/autotut/">autotut</a> - tutorial on
+using gnu autoconf, automake, autoheader
+
+<li><a href="http://stackoverflow.com/questions/5176929/autoconf-automake-conditional-compilation-based-on-presence-of-library">conditional compilation</a></li>
+
+<li><a href="http://frankpzh.wordpress.com/2011/06/27/convert-a-hand-made-makefile-to-one-with-autotools/">Convert a hand-made Makefile to one with autotools</a>
+
+  
+  <li><a href="https://www.gnu.org/software/automake/manual/html_node/Debugging-Make-Rules.html#Debugging-Make-Rules">Debugging Make Rules</a> - handy guide. And don't forget to look at the <code>config.log</code>
+  
+<li><a href="http://www.gnu.org/software/automake/manual/html_node/Scripts.html">executable scripts</a>
+  
+<li><a href="http://socgsa.cs.clemson.edu/seminar/tools06/resources/08_autotools/automake.htm">GNU Automake By Example</a>
+
+  
+	<li><a href="https://www.gnu.org/software/automake/manual/html_node/Macro-Index.html#Macro-Index">macro index</a> - AC_* and AM_*</li>
+
+	<li><a href="https://www.gnu.org/software/autoconf-archive/The-Macros.html#The-Macros">macros</a> -  ax_*</li>
+
+	<li><a href="http://stackoverflow.com/questions/40948462/make-distcheck-permission-denied">make distcheck permission denied</a> - see also <a href="http://realmike.org/blog/2010/07/18/building-swig-python-extensions-on-gnulinux/#automake">swig</a></li>
+
+  
+<li><a href="http://people.freedesktop.org/~dbn/pkg-config-guide.html">pkg-config</a> - guide
+
+  
+  <li><a href="http://stackoverflow.com/questions/3290908/which-files-generated-by-autotools-should-i-keep-in-version-control-repository">Which files generated by Autotools should I keep in version control repository?</a>
+  
+  <li><a href="https://www.gnu.org/software/automake/manual/html_node/Variable-Index.html#Variable-Index">variable index</a> - *_DATA, *_HEADERS, etc.
+
+
+</ul>
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 28-Dec-2007
+Updated: 08-Aug-2017
+</pre>
+</body>
+</html>

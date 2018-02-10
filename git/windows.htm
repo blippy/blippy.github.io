@@ -1,0 +1,46 @@
+<html><head>
+    <LINK REL=StyleSheet HREF="../style.css" TYPE="text/css">
+    <title>git for Windows</title>
+</head>
+
+<body>
+<a href="../index.html">Home</a> : <a href="git.htm">git</a>
+
+<h1>Git for Windows 7</h1>
+
+
+<hr><h2>File mode changes: ignoring</h2>
+
+For repo: <code>git config core.fileMode false</code>
+<p>Globally: <code>git --global config core.fileMode false</code>
+  
+<p>(<a href="http://stackoverflow.com/questions/1580596/how-do-i-make-git-ignore-file-mode-chmod-changes">xlink</a>)
+
+  <hr><h2>Line endings</h2>
+  
+  To set the repos to handle line endings automatically (as in the case of <code>sifi</code>):
+  <pre>
+    git config --global core.autocrlf false # recommened as at 27-Jul-2015
+  </pre>
+
+  An <a href="https://help.github.com/articles/dealing-with-line-endings/">xlink</a> shows how to handle binaries, text, and auto in a <code>.gitattibutes</code> file)
+  
+
+
+<hr><h2>Unlassified</h2>
+
+<p>Location of <code>.ssh</code> directory (<a href="http://stackoverflow.com/questions/20226147/where-does-github-for-windows-keep-its-ssh-key">xlink</a>):
+  <pre>   %HOMEDRIVE%%HOMEPATH%\.ssh</pre>
+  typically
+  <pre>   C:\users\mcarter\.ssh</pre>
+  
+
+
+	  
+<hr><pre>
+Author:  Mark Carter
+Created: 18-Jul-2015
+Updated: 27-Jul-2015
+</pre>
+</body>
+</html>

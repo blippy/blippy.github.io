@@ -1,0 +1,53 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<LINK REL=StyleSheet HREF="../style.css" TYPE="text/css">
+<title>bash rc files</title>
+</head>
+
+<body>
+
+<a href="../index.html">Home</a> : <a href="bash.htm">bash</a>
+
+<h1>bash rc files</h1>
+
+<hr><h2>Purpose</h2>
+<li> .profile is for things that are not specifically related to Bash
+<li> .bashrc is for the configuring the interactive Bash usage
+<li> .bash_profile is what is executed from login
+<p>
+<a href="http://stefaanlippens.net/bashrc_and_others#comment-2959">xlink</a>
+
+<hr><h2>Contents</h2>
+
+As defined by Arch Linux:
+
+<h3>.bash_profile</h3>
+<pre>
+[[ -f ~/.bashrc ]] && . ~/.bashrc
+</pre>
+
+<h3>.bashrc</h3>
+<pre>
+# If not running interactively, don't do anything
+[[ $- != *i* ]] && return
+
+alias ls='ls --color=auto'
+PS1='[\u@\h \W]\$ '
+</pre>
+
+<h3>.profile</h3>
+Actually defined by me, and I'm not sure if it's necessary
+<pre>
+export LANG="en_GB.UTF-8"
+<pre>
+
+
+
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 15-Sep-2011
+Updated: 07-Sep-2015
+</pre>
+</body></html>

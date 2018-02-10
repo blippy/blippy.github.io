@@ -1,0 +1,48 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+  <title>http-client</title>
+</head>
+<body>
+
+<a href="../../index.html">Home</a> : <a href="../programming.htm">programming</a> : <a href="lisp.htm">lisp</a>
+
+<h1>Lisp HTTP client</h1>
+
+Client-side access of web. To see the kinds of packages available under quickload, type
+<pre>(ql:system-apropos "http")</pre>
+
+<hr><h2>CLISP+WIN32</h2>
+
+The following were tested on 05-Aug-2011:
+<li>drakma - has loading problems with cl+ssl, although you can skip over it
+<li>hu.dwim.wui.http - failed with hu.dwim.util+iolib not found
+<li>s-http-client - <b>WINNER</b>
+<li>sw-http - failed with sb-cltl2 not found
+<li>trivial-http -  gives  Winsock error 10054 (ECONNRESET): Connection reset by peer
+
+<hr><h2>s-http-client</h2>
+
+This package relies on package <code>puri</code> to parse URLs. URLs are parsed STRICTLY, so you may get a condition thrown if URLs will work, but are naughty (for example, on yahoo Finance, where ^FTAS denotes the all-share index. Strictly speaking, the '^' is not allowed). You can turn off the strictness by calling <code>(setf puri:*strict-parse* nil)</code>.
+
+<p>Here is a typical way you might use s-http-client:
+<pre>
+(defparameter url 
+  "http://download.finance.yahoo.com/d/quotes.csv?s=^FTAS&f=sl1d1t1c1ohgv&e=.csv")
+(ql:quickload "s-http-client")
+(setf puri:*strict-parse* nil)
+(s-http-client:do-http-request url)
+</pre>
+
+
+
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 05-Aug-2011
+Updated: 05-Aug-2011
+</pre>
+</body>
+</html>

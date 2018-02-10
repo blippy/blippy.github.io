@@ -1,0 +1,35 @@
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+  <title>Decimals</title>
+</head>
+
+<body>
+
+<a href="../../index.html">Home</a> : 
+<a href="../programming.htm">programming</a> :
+<a href="python.htm">python</a>
+
+<h1>Python decimals</h1>
+
+Working with arbitrary precision arithmetic
+
+<pre>
+import decimal
+decimal.Decimal(5).quantize(decimal.Decimal('0.001')) # Decimal('5.000')
+decimal.Decimal(5.000003).quantize(decimal.Decimal('0.001')) # Decimal('5.000')
+decimal.Decimal(5.000003).quantize(decimal.Decimal('0.01')) # Decimal('5.00')
+decimal.Decimal(5.001).quantize(decimal.Decimal('0.01')) # Decimal('5.00')
+decimal.Decimal(5.001).quantize(decimal.Decimal('0.0001')) # Decimal('5.0010')
+decimal.Decimal('5.001').quantize(decimal.Decimal('0.0001')) # Decimal('5.0010')
+decimal.Decimal(5.0999).quantize(decimal.Decimal('0.1')) # Decimal('5.1')
+decimal.Decimal(5.09).quantize(decimal.Decimal('0.1')) # Decimal('5.1')
+</pre>
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 28-Nov-2012
+Update:  28-Nov-2012
+</pre>
+</body></html>

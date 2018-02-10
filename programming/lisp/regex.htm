@@ -1,0 +1,35 @@
+<html>
+<head>
+  <LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+  <title>Regex</title>
+</head>
+<body>
+
+<a href="../../index.html">Home</a> 
+: <a href="../programming.htm">programming</a> 
+: <a href="lisp.htm">lisp</a>
+
+<h1>Lisp Regex</h1>
+
+<p>The many flavours of Lisp regular expressions
+
+<hr><h2>cl-ppcre</h2>
+
+<p>This one looks pretty good.
+
+<pre>
+(ql:quickload "cl-ppcre")
+(cl-ppcre:split "\\s+" "how now brown    cow")
+; ("how" "now" "brown" "cow")
+</pre>
+
+<a href="http://weitz.de/cl-ppcre/">xlink</a>
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 13-Feb-2013
+Updated: 13-Feb-2013
+</pre>
+</body>
+</html>

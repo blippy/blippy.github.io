@@ -1,0 +1,65 @@
+<html><head>
+    <LINK REL=StyleSheet HREF="../style.css" TYPE="text/css">
+    <title>Fortran strings</title>
+</head>
+
+<body>
+<a href="../../index.html">Home</a>
+: <a href="../programming.htm" >programming</a>
+: <a href="fortran.htm" >fortran</a>
+
+<hr><h1>Fortran strings</h1>
+
+
+<hr><h2>Passing in strings</h2>
+
+This is for standard Fortran.
+
+<p>Caller:
+<pre>
+  character(len=32) :: astr ! adjust size as necessary
+  call foo(astr)
+</pre>
+Called:
+<pre>
+  subroutine foo(mystr)
+     character(len=*) :: mystr
+     ...  
+</pre>
+
+<hr><h2>Deferred-length character strings</h2>
+
+In this section we show how you can create dynamic-length strings.
+
+<p>A creator might look something like this:
+
+<pre>
+  function targ()
+    character(:), allocatable  :: targ
+    character(len=32) :: arg2
+    call getarg(2, arg2) ! gets the second command line arg, by way of illustration
+    targ = trim(arg2)
+  end function targ
+</pre>
+
+<p>A consumer might use it so
+<pre>
+  character(len=:), allocatable :: ticker
+  ticker = targ()    
+</pre>
+
+<hr><h2>Also on this site</h2>
+
+None
+
+<hr><h2>Links to other sites</h2>
+
+<li><a href="https://gcc.gnu.org/onlinedocs/gfortran/Varying-Length-Character-Strings.html">Varying length character strings</a> - discusses and links to some standards, but for simplicity just use deferrend-length character strings above
+
+<hr><pre>
+Author:  Mark Carter
+Created: 01-Feb-2016
+Updated: 01-Feb-2016
+</pre>
+</body>
+</html>

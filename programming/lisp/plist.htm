@@ -1,0 +1,33 @@
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+  <title>Plists</title></head>
+<body>
+
+<a href="../../index.html">Home</a> : <a href="../programming.htm">programming</a> : <a href="lisp.htm">lisp</a>
+
+<h1>Plists</h1>
+
+In Lisp, plists have the form <code>(:foo 1 :bar 2)</code>
+
+<hr><h2>Examples</h2>
+
+<pre>
+(setf plist '(:a 1 :b 2))
+(getf plist :a) ; 1
+(setf (getf plist :a) 3) ; 3
+(getf plist :a) ; 3
+</pre>
+
+
+<hr><h2>See also</h2>
+
+<a href="format.htm">format</a> - contains some recipes for formatting plists
+
+<hr><pre>
+Author:  Mark Carter
+Created: 01-May-2011
+Updated: 01-May-2011
+</pre>
+</body>
+</html>

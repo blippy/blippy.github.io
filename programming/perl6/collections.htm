@@ -1,0 +1,38 @@
+<html><head>
+<LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+<title>perl6</title></head>
+<body>
+
+<a href="../../index.html">Home</a> 
+: <a href="../programming.htm" >programming</a>
+: <a href="perl6.htm">perl6</a>
+
+
+<h1>collections</h1>
+
+<hr><h2>Hashes</h2>
+
+
+<pre>
+my %h = %( a =&gt; 1, v =&gt; 2);
+say %h&lt;b&gt;; # OUTPUT: 2
+%h&lt;b&gt; = 4;
+say %h&lt;b&gt;; # OUTPUT: 4
+
+
+my %h = %(12=&gt;13, 14=&gt;15);
+my $f = 12;
+%h{$f}; # 13
+%h&lt;16&gt;; # (Any)
+%h&lt;16&gt; || 666; # 666
+%h&lt;14&gt; || 666; # 15
+
+</pre>
+
+<hr><pre>
+Author:  Mark Carter
+Created: 01-Jul-2017
+Updated: 21-Jul-2017
+</pre>
+</body>
+</html>

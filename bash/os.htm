@@ -1,0 +1,39 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<LINK REL=StyleSheet HREF="../style.css" TYPE="text/css">
+<title>os</title>
+</head>
+
+<body>
+
+<a href="../index.html">Home</a> : <a href="bash.htm">bash</a>
+
+<h1>os</h1>
+How to identify the operating system: I have included <code>whichos</code> in dotfiles, reproduced below:
+<pre>
+#!/usr/bin/env bash
+if [ x"$OSTYPE" == xcygwin ]; then
+    echo cygwin
+else
+    (source /etc/os-release ; echo $ID)
+fi
+</pre>
+
+Example results are: arch, cygwin, ubuntu.
+
+<p>See also:</p>
+<ul>
+	<li><code>/etc/arch-release</code> - exists on Arch Linux only, and contains 0 bytes</li>
+	<li><code>/etc/lsb_release</code> - containing info, but does not exist on Arch Linux. It should 
+		exist on nearly all other Linux distros, though</li>
+	<li><code>cygwin</code> - does not appear to contain any such files, but it does set <code>$OSTYPE</code> to <code>cygwin</code></li>
+</ul>
+
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 17-Oct-2016
+Updated: 17-Oct-2016
+</pre>
+</body></html>

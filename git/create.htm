@@ -1,0 +1,51 @@
+<html><head>
+    <LINK REL=StyleSheet HREF="../style.css" TYPE="text/css">
+    <title>git config</title>
+</head>
+
+<body>
+<a href="../index.html">Home</a> : <a href="git.htm">git</a>
+
+<h1>Git create</h1>
+
+Creating a git repo.
+
+
+<hr><h2>Typical bare repo creation steps</h2>
+
+
+
+<pre>
+mkdir para.git
+cd para.git
+git --bare init
+cd ..
+
+git clone /home/acfsoul/para.git
+cd para 
+echo "Initial commit created:" `date`  > README
+git add README
+git commit -a -m "Initial commit"
+git push -u origin master
+git push
+
+And on local:
+git clone ssh://acfsoul@mcleod-schmidt.id.au/home/acfsoul/para.git
+# hack hack
+git push
+</pre>
+
+
+
+<hr><h2>My important repos</h2>
+<pre>
+cd ; git clone ssh://192.168.0.13:2222/home/mcarter/redact.git
+</pre>
+
+<hr><pre>
+Author:  Mark Carter
+Created: 07-Dec-2013
+Updated: 15-Feb-2014
+</pre>
+</body>
+</html>

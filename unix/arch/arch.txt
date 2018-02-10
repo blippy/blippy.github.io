@@ -1,0 +1,59 @@
+Boot from ISO
+fdisk -l # see list of disks in system eg /dev/sda1
+cfdisk /dev/sda
+mkfs.ext4 /dev/sda1
+mount /dev/sda1 /mnt
+mkswap /dev/sda2 # assume you set up swap
+swapon /dev/sda2
+
+
+# REQUIRES INTERNET CONNECTION!
+pacstrap /mnt base base-devel # install base and devel via internet
+arch-chroot /mnt
+passwd # set up a root password
+
+# set hostname
+echo $SOMEHOSTNAME > /etc/hostname # set a hostname
+
+# install bootloader
+pacman -S grub-bios
+grub-install /dev/sda
+mkinitcpio -p linux
+grub-mkconfig -o /boot/grub/grub.cfg
+
+# If you have "cannot find EFI directory"
+# try creating a partition at the beginning
+# of the disk of size 1M (1007k)
+# use `gdisk' to set its type to ef02
+# Maybe make it bootable using `set 1 boot on'
+# Then try `grub install /dev/sda' again
+
+
+
+exit # come out of chroot
+
+genfstab /mnt >> /mnt/etc/fstab # create an initial fstab file
+
+umount /mnt
+reboot
+# Remove installation media
+
+# You should now be able to log in as root
+
+# network - DHCP
+dhcpcd # start network
+ip link # to obtain a $profile e.g. enp0s3
+systemctl enable dhcpcd@$profile
+
+# network - Static
+# create file /etc/netctl/static:
+Description='A basic static ethernet connection created by mcarter'
+Interface=enp3s0
+Connection=ethernet
+IP=static
+Address=('192.168.0.13/24')
+Gateway='192.168.0.1'
+DNS=('192.168.0.1')
+# END OF FILE
+netctl enable static
+netctl reenable static

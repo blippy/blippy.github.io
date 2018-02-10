@@ -1,0 +1,65 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html><head>
+  <LINK REL=StyleSheet HREF="style.css" TYPE="text/css">
+  <title>Vim</title></head>
+<body>
+
+<a href="index.html">Home</a>
+
+<h1>Vim</h1>
+
+<hr>
+
+<pre>
+
+cc	change line
+=i{	Format code block
+<b>date insertion:</b>
+:r !date
+
+
+</pre>
+
+<hr><h2>Packaging</h2>
+
+<p>
+Vim version 8 has its own package manager <a href="https://shapeshed.com/vim-packages/">xlink</a>)
+</p>
+
+<p>
+<a href="https://github.com/junegunn/vim-plug">vim-plug</a> is my current (as at 29-Oct-2017) plugin manager.
+</p>
+
+
+<hr><h2>Substitution</h2>
+
+<p>
+Entire file, c to confirm:
+<pre>:%s/x/y/gc </pre>
+</p>
+
+<p><code>&amp;</code> - repeat last substitution</p>
+
+<p><code>:s</code> will repeat <code>:s/x/y/</code></p>
+
+<p><code>:sg</code> - repeat <code>:s/x/y/g</code></p>
+
+<p><a href="http://vim.1045645.n5.nabble.com/repeat-a-search-and-replace-td1164649.html">xlink</a></p>
+
+<hr><h2>Links to other sites</h2>
+
+<li><a href="http://vimhelp.appspot.com/digraph.txt.html">digraph</a></li>
+
+<li><a href="https://sanctum.geek.nz/arabesque/actually-using-ed/">ed</a> - tutorial, <a href="https://raymii.org/s/tutorials/ed_cheatsheet.html">cheatsheet</a></li>
+
+<li><a href="http://kakoune.org/">kakoune</a> - different take on vim</li>
+
+<li><a href="https://unix.stackexchange.com/questions/61118/how-to-enter-non-ascii-characters-using-hex-or-octal-codes-in-vi">unicode</a></li>
+
+<hr><pre>
+Author:  Mark Carter
+Created: 25-May-2014
+Updated: 13-Nov-2017
+</pre>
+</body>
+</html>

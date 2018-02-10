@@ -1,0 +1,96 @@
+<html><head>
+    <LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+    <title>R</title>
+</head>
+
+<body>
+<a href="../../index.html">Home</a> 
+: <a href="../programming.htm" >programming</a>
+
+
+<h1>R</h1>
+
+The statistical programming language
+
+<hr><h2>Example</h2>
+
+<pre>
+# install.packages("gdata")
+# install.packages("reshape")
+# multi line comments go here 
+library(gdata)
+require(gdata)
+library(reshape)
+require(reshape)
+
+getwd()
+tab <- read.csv("~\\Desktop\\StatsList.csv", header= TRUE)
+summary(tab)
+clean <- subset(tab, !is.na(tab$ROC) & !is.na(tab$Earnings_Yield))
+
+summary(clean)
+
+quantile(clean$Earnings_Yield,(0:10)/10)
+quantile(clean$ROC,(0:10)/10)
+
+
+pass <- subset(clean, clean$Earnings_Yield >= 15 & clean$ROC > 25)
+pass <- rename(pass, c("Greenblatt_Ranking" = "Grank", "Earnings_Yield" = "UEY"))
+pass
+head(pass)
+summary(pass)
+
+pass1 <- pass[ , which(names(pass) %in% c("EPIC", "MarketCap", "Grank", "ROC", "UEY"))]
+pass1
+summary(pass1)
+pass2 <- pass1[order(pass1$Grank), ]
+pass2
+</pre>
+
+<hr><h2>Filtering and ordering datasets</h2>
+<pre>
+df &lt;- read.csv(&quot;V:/.fortran/STATSLIST/StatsList-1.csv&quot;, header=TRUE)
+df1 &lt;- subset(df, select=c(&quot;EPIC&quot;, &quot;MarketCap&quot;, &quot;RS_Year&quot;, &quot;RS_5Year&quot;))
+df2 &lt;- subset(df1, df1$RS_5Year &lt;0 &amp; df1$RS_Year &gt;0)
+df3 &lt;- df2[order(df2$RS_5Year),]
+
+</pre>
+
+
+<hr><h2>Grouping</h2>
+
+<pre>
+# export Excel files in DIF format, they are more reliable
+tab <- read.DIF("~\\Desktop\\StatsList.dif", header = TRUE,  transpose=TRUE)
+summary(tab)
+
+# group by sector, calculating its median RS_Month
+agg <- aggregate(tab$RS_Month, by=list(sector=tab$Sector), FUN=median)
+names(agg)[names(agg) =="x"] <- "RelStr" # rename the column "x" as "RelStr"
+ordered <- agg[order(agg$RelStr),] # order by RelStr
+ordered
+</pre>
+
+<hr><h2>IDEs</h2>
+
+For GUIs, try rstudio and rkward.
+
+Front-ends: <a href="https://wiki.archlinux.org/index.php/R#Adding_a_graphical_frontend_to_R">xlink</a>.
+
+<hr><h2>Examples</h2>
+
+<li><a href="pes.txt">pes</a> - median, columns to vectors, subsets of vectors</li>
+
+
+<hr><h2>Links to other sites</h2>
+
+<li><a href="https://blog.exploratory.io/why-sql-is-not-for-analysis-but-dplyr-is-5e180fef6aa7#.7047f6q2a">dplyr</a> - data querying superior to SQL</li>
+	
+	  
+<hr><pre>
+Author:  Mark Carter
+Created: 13-Nov-2011
+Updated: 18-Dec-2016
+</pre>
+</body>
+</html>

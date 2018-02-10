@@ -1,0 +1,77 @@
+<html><head>
+<LINK REL=StyleSheet HREF="../style.css" TYPE="text/css">
+<title>postfix</title>
+</head>
+
+<body>
+
+<a href="../index.html">Home</a> : <a href="mail.htm">mail</a>
+
+<h1>postfix</h1>
+
+<hr><h2>Installation</h2>
+
+<pre>
+apt-get install postfix
+dpkg-reconfigure postfix
+Type: Internet Site
+System mail name: markcarter.me.uk
+Root and postmaster mail recipient: mcarter
+Domains of final destination:  markcarter.me.uk, miro, localhost.localdomain, localhost (defaults)
+Force synchronous: no (default)
+Local networks: keep default
+
+mail in and out successful 16-Dec-2012 to mcarter@markcarter.me.uk
+</pre>
+
+<hr><h2>/etc/mailname</h2>
+<pre>
+cubietruck.markcarter.me.uk
+</pre>
+
+
+<hr><h2>/etc/postfix/main.cf</h2>
+
+
+<pre>
+myhostname = cubietruck.markcarter.me.uk
+mydestination = markcarter.me.uk, cubietruck.markcarter.me.uk, cubietruck, localhost.localdomain, localhost
+
+# allow relaying on LAN
+mynetworks = 127.0.0.0/8 [::ffff:127.0.0.0]/104 [::1]/128, 192.168.0.0/24
+
+</pre>
+
+
+
+<hr><h2>Rejecting incoming mail for users</h2>
+
+If a user mailbox is being spammed too much. you may decide to reject all incoming messages to theat accoount (Read: 'Why you shouldn't bounce [as opposed to REJECT] spam' <a href="http://www.dontbouncespam.org/">xlink</a>). Here's how.
+
+<p>Create file /etc/postfix/recip_access, or similar, containing lines like:
+<pre>mcarter@markcarter.me.uk REJECT</pre>
+
+Turn that file into a database:
+<pre>postmap hash:recip_access</pre>
+
+Edit main.cf to enable the rejections:
+<pre>smtpd_recipient_restrictions = check_recipient_access hash:/etc/postfix/recip_access</pre>
+
+Reload postfix. You can scan for rejected emails by grepping mail.log for <code>Recipient address rejected</code>
+
+
+
+
+<hr><h2>Restarting postfix</h2>
+
+Type: <code>sudo postfix reload</code>
+
+
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 03-May-2014
+Updated: 23-Jun-2014
+</pre>
+</body></html>

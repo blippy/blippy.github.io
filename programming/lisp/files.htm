@@ -1,0 +1,79 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <title>Files</title>
+</head>
+
+
+<body>
+
+<a href="../../index.html">Home</a> : <a href="../programming.htm">programming</a> : <a href="lisp.htm">lisp</a>
+
+
+<h1>File Processing in Lisp</h1>
+
+
+Some of the several ways that you could process a file are listed below.
+
+
+
+
+<pre><br>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;<br>;The simplest way:<br><br>(with-open-file (stream "../../words/test.txt")<br>      (loop for line = (read-line stream nil nil)<br>	    while line do<br>	(per-line-fn line)))<br><br>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;<br>;Using the non-standard <a href="http://common-lisp.net/project/iterate/">iterate</a> package, you could write:<br><br>(defun process-line (line)<br>  (format t "~A~%" line))<br>(iter (for line in-file "../../words/test.txt" using #'read-line)<br>      (process-line line))<br><br>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;<br>;Using a macro:<br><br>(defmacro do-file ((path line-variable &amp;key (key #'identity)) &amp;body body)<br>  "Iterate over the lines of the file, binding the line to the <br>line-variable in each iterateion"<br>    (let ((str (gensym))  ;a temporary stream variable<br>     (var (gensym))) ;a temporary variable to hold the file input.<br>    `(with-open-file (,str ,path :direction :input)<br>       (do ((,var (read-line ,str nil) ;get the first line<br>        (read-line ,str nil)) ;get the next line<br>      ((not ,var))  ;terminate when there is no text.<br>    (let ((,line-variable (funcall ,key ,var))) <br>      ;set line-variable to var, calling our key function<br>      ;if necessary.<br>      ,@body))))) ;do the body form<br><br>Then, call it with something like:<br><br>(do-file ("authors.txt" line)<br>   (foo-function line))<br><br>;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+
+; Doesn't work on a line-by-line basis - but you can always split it
+; This function worked faster than in Perl
+
+(defun slurp-file (filename)
+  (with-open-file (stream  filename :direction :input)
+                  (let ((seq (make-string (file-length stream))))
+                    (read-sequence seq stream)
+                    seq)))
+
+
+
+</pre>
+
+<h2></h2>
+
+<hr style="width: 100%; height: 2px;">
+<h2>Buffered input</h2>
+
+Here's a recipe for using buffered input of binary files. It has been written for Corman Lisp, and uses <span style="font-family: monospace;">:element-type 'unsigned-byte</span> . If you are using another CL, then you'll probably want to use an <span style="font-family: monospace;">:element-type '(unsigned-byte 8)</span><br>
+
+<br>
+
+<pre>(defun copy-file (filename)<br>  (with-open-file <br>   (input-stream filename :direction :input :element-type 'unsigned-byte)<br>   (with-open-file<br>    (output-stream "echo.out" :direction :output <br>		   :element-type 'unsigned-byte<br>		   :if-exists :overwrite)<br>    (let ((buf (make-array 4096 :element-type 'unsigned-byte)))<br>      (loop for pos = (read-sequence buf input-stream)<br>	    while (plusp pos)<br>	    do (write-sequence buf output-stream :end pos))))))<br><br></pre>
+
+The function above takes in a file name, and produces a copy of that file to <span style="font-family: monospace;">echo.out</span> in binary mode.
+<pre><br></pre>
+
+
+
+
+
+<hr><h2>Links to other sites</h2>
+
+<a href="http://cl-cookbook.sourceforge.net/io.html">Input/Output</a> -
+Redirecting the Standard Output of your Program, Faithful Output with
+Character Streams,&nbsp;Fast Bulk I/O &nbsp;- from the Common Lisp
+Cookbook
+
+
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 28-Feb-2006
+Updated: 12-Mar-2011
+</pre>
+</body>
+</html>
+
+Created: 28-Feb-2006
+Updated: 12-Mar-2011
+</pre>
+</body>
+</html>
+ml>
+

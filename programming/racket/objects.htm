@@ -1,0 +1,48 @@
+<html>
+<head>
+  <meta content="text/html; charset=iso-8859-1"  http-equiv="CONTENT-TYPE">
+  <LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+  <title>Objects</title>
+</head>
+
+<body>
+
+<a href="../../index.html">Home</a> 
+: <a href="../programming.htm" >programming</a> 
+: <a href="racket.htm">racket</a>
+
+<h1>Objects</h1>
+
+Example demonstrating that objects are shared as references:
+
+<pre>
+#lang racket
+
+(define myobj%
+  (class object%
+    (super-new)
+    (field (value 0)))) ; value is public
+
+(define a (make-object myobj%))
+(get-field value a) ; 0
+(set-field! value a 12)
+(get-field value a) ; 12
+
+(define b a)
+(set-field! value b 13)
+(get-field value a) ; 13
+</pre>
+
+
+<hr><h2>Links to other sites</h2>
+
+None
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 29-Jun-2013
+Updated: 29-Jun-2013
+</pre>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<html>
+<head>
+  <meta content="text/html; charset=iso-8859-1"  http-equiv="CONTENT-TYPE">
+  <LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+  <title>Awk</title>
+</head>
+
+<body>
+
+<a href="../../index.html">Home</a> 
+: <a href="../programming.htm" >programming</a> 
+: <a href="racket.htm">racket</a>
+
+<h1>Mysterx</h1>
+
+
+Excel.rkt module (although it doesn't work as at 04-Jul-2013):
+
+<pre>
+(module excel racket
+  
+;#lang racket
+
+
+
+;;Example usage:
+;;(define wb (open-workbook "C:\\Users\\mcarter\\email.xls"))
+;;(define v (get-value wb "Sheet1" "A1"))
+;;(display v)
+;;(set-value! wb "Sheet1" "A2" "racket says hoop")
+;;(close-workbook wb)
+  
+  
+#| Also useful: following stuff seems to work ok
+(define wb (open-workbook "C:\\Users\\mcarter\\email.xls"))
+;(define v (get-value wb "Sheet1" "A1"))
+
+; get the value of a cell row 2 column 1
+(define v (com-get-property wb "Sheets" `("Item" 1) "Cells" `("Item" 2 1) "Value"))
+(display v)
+;(set-value! wb "Sheet1" "A2" "good stuff ok")
+(close-workbook wb)
+
+|#  
+
+
+
+;; http://benjisimon.blogspot.com/2009/06/scripting-excel-with-plt-scheme-goodbye.html
+
+;;
+;; Use COM & mysterx to integrate with excel
+;;
+(require mysterx)
+
+;; Some types - for all I know, a cell can hold more than just a 
+;; string, number of empty. But this is what I've seen so far.
+(define cell/c (or/c string? number? void?))
+(define cells/c (vectorof (vectorof cell/c)))
+
+(provide/contract
+ [open-workbook (-> path-string? com-object?)]
+ ;[close-workbook (-> com-object? boolean? any)]
+ [close-workbook (-> com-object? any)]
+ [new-workbook (-> com-object?)]
+ [get-value (-> com-object? string? string? cell/c)]
+ [set-value! (-> com-object? string? string? cell/c any)]
+ [get-values (-> com-object? string? string? cells/c)]
+ [set-values! (-> com-object? string? string? cells/c any)])
+
+;; Try to be smart about getting ahold of excel. If it's running, use
+;; that instance. If not, create a new instance.
+(define (excel-instance)
+  (define class-name "Microsoft Office Excel Application")
+  (with-handlers ([exn? (lambda (ex)
+                          (cocreate-instance-from-coclass class-name))])
+    (com-get-active-object-from-coclass class-name)))
+
+;; call the open method to access an existing workbook.
+(define (open-workbook path)
+  (let* ([excel (excel-instance)]
+         [workbooks (com-get-property excel "WorkBooks")])
+    (com-invoke workbooks "Open" (if (path? path)
+                                     (path->string path) path))))
+
+;; Create a fresh workbook
+(define (new-workbook)
+  (let* ([excel (excel-instance)]
+         [workbooks (com-get-property excel "WorkBooks")])
+    (com-invoke workbooks "Add")))
+
+;; Close a workbook
+;;(define (close doc save?)
+;;  (com-invoke doc "Save" save?))
+(define (close-workbook wb)
+  (com-invoke wb "Save"))
+
+;; A private function to access a range. You provide
+;; the document, the sheet of interest and the range.
+;; Note the range can be any of the following:
+;;  A3:B6 - a group of cells
+;;  C17   - a single cell
+;;  Foo   - a named range that's defined in the document already
+;; There may be more options too - the range is just passed to excel to interpet.
+(define (get-range doc sheet-name range)
+  (com-get-property doc "Sheets" `("Item" ,sheet-name) `("Range" ,range)))
+
+;; There's really no difference between getting and setting
+;; one value over multiple values. We have a contract on these to 
+;; provide some type checking and structure - but really, we leave Excel
+;; in charge of figuring out when we mean 1 cell versus a block of cells.
+(define (get-value doc sheet-name range)
+  (com-get-property (get-range doc sheet-name range) "Value"))
+(define (get-values doc sheet-name range)
+  (com-get-property (get-range doc sheet-name range) "Value"))
+
+;; Why Value2 below instead of Value? I have no idea. It works.
+(define (set-values! doc sheet-name range value)
+  (com-set-property! (get-range doc sheet-name range) "Value2" value))
+(define (set-value! doc sheet-name range value)
+  (com-set-property! (get-range doc sheet-name range) "Value2" value))
+  
+)
+</pre>
+
+
+<hr><h2>Links to other sites</h2>
+
+None
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 04-Jul-2013
+Updated: 04-Jul-2013
+</pre>
+</body>
+</html>

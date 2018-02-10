@@ -1,0 +1,41 @@
+<html><head>
+    <LINK REL=StyleSheet HREF="../style.css" TYPE="text/css">
+    <title>git config</title>
+</head>
+
+<body>
+<a href="../index.html">Home</a> : <a href="git.htm">git</a>
+
+<h1>Git config</h1>
+
+Configuring git.
+
+
+<hr><h2>.gitconfig</h2>
+
+Example .gitconfig file:
+
+<pre>
+[user]
+        name = ...
+        email = ...
+
+[core]
+        editor = nano
+</pre>
+
+<hr><h2>Recommended changes</h2>
+
+<pre>
+git config --global core.editor "emacs -nw"
+git config --global push.default current
+</pre>
+
+	  
+<hr><pre>
+Author:  Mark Carter
+Created: 07-Dec-2013
+Updated: 08-Oct-2015
+</pre>
+</body>
+</html>

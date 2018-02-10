@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+
+
+
+  
+  
+  
+  <title>macros</title>
+</head>
+
+
+<body style="background-color: rgb(255, 255, 255);">
+
+
+
+<a href="../../index.html">Home</a> : <a href="../programming.htm">programming</a> : <a href="lisp.htm">lisp</a>
+
+
+
+
+<br>
+
+
+
+
+<h1>Lisp Macros</h1>
+
+
+
+
+This page represents my attempts to at least begin to get a grip on Lisp macros.<br>
+
+
+
+<br>
+
+
+
+I proceed by using an example. I would like to write a macros which
+prints a descriptive message before some forms are executed, and prints
+another descriptive message after they have been executed. Here's a
+first cut of the macro:<br>
+
+
+
+<pre>(defmacro processing (text &amp;body body)<br>  `(progn (format t "Starting ~a~%" ,text)<br>          ,@body<br>          (format t "Ending ~a~%" ,text)))<br></pre>
+
+
+and here is an example call:<br>
+
+
+<pre>(processing "hayho" <br>	(write-line "hidee") <br>	(write-line "ho"))<br></pre>
+
+
+You would obtain the output:
+<pre>Starting hayho<br>hidee<br>ho<br>Ending hayho</pre>
+
+
+In order to find out how a macro would be expanded, you can use <span style="font-family: monospace;">macroexpand-1</span> . For example, typing<br>
+
+
+<pre>(macroexpand-1 '(processing "heho" (write-line "hello") (write-line "world")))<br></pre>
+
+
+returns
+<pre>(PROGN (FORMAT T "Starting ~a~%" "heho") (WRITE-LINE "hello") <br>	(WRITE-LINE "world") (FORMAT T "Endign ~a~%" "heho"))<br></pre>
+
+
+<br>
+
+
+Actually, our macro has a problem - what we really require is that it
+returns the last form that we wrote, rather than the result of the
+format operation. This is where <span style="font-family: monospace;">prog2</span> comes in:<br>
+
+
+<pre>(defmacro processing (text &amp;body body)<br>  `(prog2<br>    (format t "Starting ~a~%" ,text)<br>    ,@body<br>    (format t "Ending ~a~%" ,text)))<br></pre>
+
+
+This turns out to achieve what we want. &nbsp;Someone suggested using <span style="font-family: monospace;">unwind-protect</span> , but this isn't quite suitable. You might also want to take a look at <span style="font-family: monospace;">multiple-value-prog1</span> . <br>
+<hr style="width: 100%; height: 2px;">
+<h2>Unit test example</h2>
+Here is a macro which can print out the parameters passed in:
+<pre>(defmacro check (a b)  <br>  `(progn<br>     (write-line (format t "~a ~a "  (equal ,a ,b)  ',a))))<br></pre>
+So if you type<br>
+<pre>(check (+ 1 2) 3)</pre>
+you get<br>
+<pre>T (+ 1 2)</pre>
+The &nbsp;<span style="font-family: monospace;">(equal ,a ,b)</span> prints out a&nbsp; checks that the first argument evaluates to the same as the second, whilst<span style="font-family: monospace;"> ',a</span> gives a printout&nbsp;of the first argument. <br>
+<br>
+For a further discussion, see Practical Common Lisp <a href="http://www.gigamonkeys.com/book/practical-building-a-unit-test-framework.html">chapter 9</a> .
+<hr style="width: 100%; height: 2px;">
+<h2>Links to other sites</h2>
+
+<a href="http://www.lisperati.com/looking.html">Lisperati</a> - describes the use of backquotes and comma-escaping.
+
+<br>
+
+
+
+<br>
+
+
+
+
+<hr><small> Contact me: mcturra2000 yahoo co uk <br>
+
+
+
+
+Author: Mark Carter<br>
+
+
+
+
+Created: 18-Mar-2006<br>
+Updated: 25-Jun-2006<br>
+
+
+
+
+http://www.markcarter.me.uk/computing/lisp/macros.htm<br>
+
+
+
+
+mcref01x </small>
+</body>
+</html>
+: 25-Jun-2006<br>
+
+
+
+
+http://www.markcarter.me.uk/computing/lisp/macros.htm<br>
+
+
+
+
+mcref01x </small>
+</body>
+</html>
+y>
+</html>
+
+

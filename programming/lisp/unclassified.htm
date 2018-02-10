@@ -1,0 +1,59 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html>
+<head>
+  <LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+  <title>unclassified</title>
+</head>
+<body>
+
+
+<a href="../../index.html">Home</a> : <a href="../programming.htm">programming</a> : <a href="lisp.htm">lisp</a>
+
+<h1>Unclassified Lisp items</h1>
+
+
+This page is where I note down anything that I haven't yet put into
+definite categories.
+
+
+
+<hr><h2>Empty list</h2>
+
+<pre>(eql nil list1) is virtually always written as (null list1)</pre>
+
+
+
+
+
+
+
+
+
+<hr><h2>Macro that simplifies variable definition</h2>
+
+<pre>
+(defmacro var (&amp;body body)
+ (if (string= '= (second body))
+    `(let ((,(first body) ,(third body)))
+      (var ,@(cdddr body)))
+      `(progn ,@body)))
+
+(var a = 2
+    b = (+ a 2)
+    c = (* a b)
+ (print (list a b c)))
+</pre>
+
+
+<hr><h2>Useful functions</h2>
+Some functions that I didn't know about before, but which came in handy:<br>
+PROGV
+
+<hr><pre>
+Author:  Mark Carter
+Created: 09-Apr-2006
+Updated: 16-Jan-2012
+</pre>
+</body>
+</html>
+>

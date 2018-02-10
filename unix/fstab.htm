@@ -1,0 +1,27 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<title>fstab</title>
+</head>
+
+<body>
+<a href="../index.html">Home</a> : <a href="unix.htm">unix</a>
+
+
+<h1>fstab</h1>
+
+<pre>
+Identify what devide it is you need to add:
+  sudo blkid
+
+Add it to /etc/fstab:
+  /dev/sda2 /mnt/win7 ntfs-3g defaults,uid=3003,rw 0 0
+</pre>
+  
+
+<hr><pre>
+Author:  Mark Carter
+Created: 24-Apr-2015
+Updated: 24-Apr-2015
+</pre>
+</body>
+</html>

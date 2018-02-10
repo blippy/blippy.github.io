@@ -1,0 +1,75 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+  <title>Lisp Packages</title>
+</head>
+
+
+<body>
+
+<a href="../../index.html">Home</a> : <a href="../programming.htm">programming</a> : <a href="lisp.htm">lisp</a>
+
+
+<h1>Packages</h1>
+
+<pre>
+Pascal Bourguignon wrote:
+> David A. Cobb writes:
+>   
+>> <SNIP/>
+>> How can I determine what packages are already defined?
+>> <SNIP/>
+>>     
+
+> The first think you should learn with Common Lisp is APROPOS.
+> (by the way, the first think you should learn with unix is apropos(1)).
+>
+> Next are DESCRIBE and DOCUMENTATION (like man(1), and nowadays info(1)).
+>
+>
+> Try: (apropos "PACKAGE" "CL")
+>   
+Thank you. And the answer is '(list-all-packages)'
+>
+>    
+</pre>
+
+
+<hr><h2>Importing packages</h2>
+
+If you want to import all the symbols of a package into the current namespace, the way you'd probably do it is:
+<pre>
+(ql:quickload "foo") ; assume it contains function 'bar'
+(use-package :foo) ; import the symbols
+(bar 42) ; use function bar in some way
+</pre>
+
+
+<hr><h2>Printing all symbols in all packages</h2>
+
+<pre>
+(with-package-iterator (next-symbol (list-all-packages)
+                           :internal :external)
+     (loop
+       (multiple-value-bind (more? symbol) (next-symbol)
+         (if more? 
+            (print symbol)
+            (return)))))
+</pre>
+
+If you have the <code>lili</code> package installed, then you can print all the symbols in a package like so: <code>(lili:package-symbols 'readline)</code>
+
+
+<hr><h2>Links to other sites</h2>
+
+<li><a href="http://www.cs.northwestern.edu/academics/courses/325/readings/packages.html">EECS 325</a> - one-page introduction to packages, aimed at beginners like me.
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 01-Mar-2008
+Updated: 28-Jul-2011
+</pre>
+</body>
+</html>

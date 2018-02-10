@@ -1,0 +1,153 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <title>dns</title>
+</head>
+
+<body>
+
+<a href="../index.html">Home</a> : <a href="unix.htm">unix</a>
+
+
+<h1>DSN</h1>
+
+<hr><h2>Scrappy server notes</h2>
+
+
+Reference for setting up DNS: <a href="http://www.google.co.uk/url?sa=t&rct=j&q=raspbian%20running%20dns&source=web&cd=4&ved=0CEUQFjAD&url=http%3A%2F%2Fwww.myguitars.mine.nu%2Fimages%2Frpi_raspbianwheezy_dns_server.pdf&ei=Qf4QUtqFHoSG4ATC_4H4DQ&usg=AFQjCNEfSeLDsFcLYHTAcAfsirRb1hmqSQ&bvm=bv.50768961,d.d2k">PDF</a>
+
+<pre>
+# SERVER SIDE
+
+sudo apt-get install bind9 bind9utils
+
+sudo zile /etc/resolv.conf:
+search markcarter.me.uk
+nameserver 192.168.0.13 ; this machine (ernst)
+nameserver 192.168.0.1 ; my router
+domain markcarter.me.uk
+
+
+sudo zile /etc/bind/named.conf.options:
+options {
+    ...
+    forwarders { 212.23.3.100; 212.23.6.100; } ; // zen isp nameservers
+    listen-on port 53 { 127.0.0.1; 192.168.0.13; } ;
+    ...
+} ;
+
+sudo zile /etc/bind/named.conf.local:
+zone "markcarter.me.uk"
+{
+    type master ;
+    file "/etc/bind/zone.domain.local" ;
+} ;
+//
+zone "0.168.192.in-addr.arpa"
+{
+    type master ;
+    notify no ;
+    file "/etc/bind/zone.0.168.192.in-addr.arpa" ;
+} ;
+
+
+sudo zile /etc/bind/zone.domain.local:
+; zone.domain.local BIND9 configuration file.
+;
+$TTL 604800
+@ IN SOA ernst.markcarter.me.uk. root.ernst.markcarter.me.uk. (
+    201212037 ; serial no. (increment by +1 after every edit!)
+    604800 ; refresh
+    86400 ; retry after failure
+    2419200 ; expired
+    604800); TTL negative cache
+;
+@ IN NS ernst.markcarter.me.uk.
+@ IN A 127.0.0.1
+;
+; A records - Local machines and addresses:
+; Servers:
+klein IN A 192.168.0.11 ; dad's machine
+ernst IN A 192.168.0.13 ; DNS and DHCP server
+miro  IN A 192.168.0.14 ; mark's desktop
+; --- end of file
+
+
+sudo zile /etc/bind/zone.0.168.192.in-addr.arpa :
+$TTL 604800
+@ IN SOA ernst.markcarter.me.uk. root.ernst.markcarter.me.uk. (
+    201212038 ; serial no. (increment by +1 after each edit!)
+    604800 ; refresh
+    86400 ; retry after failure
+    2419200 ; expired
+    604800); TTL negative cache
+;
+@ IN NS ernst.markcarter.me.uk.
+;
+; PTR records - Local machines and addresses:
+; Servers:
+11 IN PTR klein.markcarter.me.uk. ; dad's machine
+13 IN PTR ernst,markcarter.me.uk. ; DNS and DHCP server
+14 IN PTR miro.markcarter.me.uk. ; mark's desktop
+; --- end of file
+
+sudo service bind9 stop
+sudo service bind9 start
+sudo service bind9 restart
+
+Test the configuration
+$ host miro
+miro.markcarter.me.uk has address 192.168.0.14
+$ host miro.markcarter.me.uk
+miro.markcarter.me.uk has address 192.168.0.14
+
+sudo apt-get install dnsutils
+
+
+# LOCAL MACHINE SIDE
+
+sudo zile /etc/network/interfaces
+Replace entire contents with:
+auto eth0
+iface eth0 inet static
+address 192.168.0.14
+netmask 255.255.255.0
+gateway 192.168.0.1
+dns-nameservers 192.168.0.13 212.23.3.100 212.23.6.100
+
+ifdown eth0
+ifup eth0
+reboot
+
+Following is junk:
+
+sudo zile /etc/dhcp/dhclient.conf :
+prepend domain-name-servers 192.168.0.13 127.0.0.1 212.23.3.100 212.23.6.100;
+
+ sudo dhclient -r
+
+sudo apt-get remove resolvconf
+
+sudo nano /etc/resolv.conf : 
+nameserver 127.0.0.1
+nameserver 192.168.0.13
+nameserver 212.23.3.100
+nameserver 212.23.6.100
+
+sudo chmod a-w /etc/resolv.conf
+
+sudo reboot now
+</pre>
+
+<hr><h2>Links to other sites</h2>
+
+<li><a href="http://cr.yp.to/djbdns/run-cache.html">How to run a cache on a workstation</a>
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 03-Sep-2013
+Updated: 06-Sep-2013
+</pre>
+
+</body></html>

@@ -1,0 +1,113 @@
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+  <title>Jupyter</title></head>
+<body>
+
+
+<a href="../../index.html">Home</a> 
+: <a href="../programming.htm">programming</a>
+: <a href="haskell.htm">haskell</a>
+
+
+<h1>Haskell Jupyter</h1>
+
+
+<a href="jupyter.htm">LATEST BUILD INSTRUCTIONS</a>
+
+<p>Notes on getting Jupyter/IPython working with IHaskell, assuming:
+<ul>
+<li>ghci 7.8.3
+<li>IHaskell commit number 44ebe75c0c6c69c6a48bf73094c349c0fe1a0d88, Apr 23 2015
+<li>jupyter_notebook commit 4df64e7d98421477b4f9430fd29da2c1ab551c14 Apr 27 2015
+</ul>
+
+<hr><h2>Installing</h2>
+
+Note that these instructions are amost certain to be incomplete, but it is my best attempt so far at piecing together the steps necessary to obtain a working version.
+
+<p>I like working with notebooks for individuals, rather than multi-user notebooks. That being the case, you want to look at <a href="https://github.com/jupyter/jupyter_notebook">jupyter_notebook</a>, and follow the instructions for building it there.</p>
+
+
+
+<h3>Path</h3>
+
+Ensure <code>~/.cabal/bin</code> is in your <code>$PATH</code>.
+
+<h3>Libraries</h3>
+
+You will need
+<pre>
+  lapack # pacman -S lapack
+  libtinfo # yaourt -Ss libtinfo
+  zeromq # pacman -S zeromq
+</pre>
+
+<h3>Base</h3>
+I'm not sure if you should do this globally, or in a sandbox. As at 11-Jul-2015, try globally:
+<pre>
+  cd ~
+  cabal install cpphs
+  cabal install ghc-parser
+  cabal install gtk2hs-buildtools
+  cabal install SHA
+  cabal install Chart
+</pre>
+
+<h3>Clone</h3>
+<p>Clone <a href="https://github.com/gibiansky/IHaskell">IHaskell</a>:
+<pre>
+git clone git@github.com:gibiansky/IHaskell.git
+</pre>
+
+<p>I seemed to have the most success with using the sandbox method described <a href="https://github.com/gibiansky/IHaskell#build-ihaskell">here:</a>
+<pre>
+cd IHaskell
+cabal sandbox init
+cabal sandbox add-source ihaskell-display/* ghc-parser ipython-kernel
+cabal install . ihaskell-display/*
+</pre>
+
+
+
+
+<h3>Build</h3>
+<pre>
+./build.sh quick # LIKELY TO BE MORE COMPLICATED THAN THAT, THOUGH
+</pre>
+
+<h3>Install</h3>
+<p>Install kernel into <code>~/.ipython</code>:
+<pre>
+.cabal-sandbox/bin/ihaskell install
+</pre>
+
+<hr><h2>Running</h2>
+<pre>
+ipython notebook --no-browser --ip='*'
+</pre>
+
+<hr><h2>Links to other sites</h2>
+
+
+
+<li><a href="https://github.com/gibiansky/IHaskell">IHaskell</a> - Haskell kernel for IPython
+
+  
+  <li><a href="http://www.kronosnotebook.com/haskell">Krons</a> - Bundle for Mac, but contains a few examples of what's possible in IHaskell
+
+<li><a href="https://github.com/gibiansky/IHaskell/issues/487">libHShslogger-1.2.8.so: cannot open shared object file</a> - a problem I had on 29-Apr-2015 that gave clues as to my problems
+
+<li><a href="https://github.com/gibiansky/IHaskell/issues/469">Patch 469</a> - 
+my patch for ghci 7.10.1 compilation
+
+
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 29-Apr-2015
+Updated: 17-Jul-2015
+</small>
+</body>
+</html>

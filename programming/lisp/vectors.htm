@@ -1,0 +1,47 @@
+<!DOCTYPE html PUBLIC "-//w3c//dtd html 4.0 transitional//en">
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <meta name="author" content="mcarter" >
+  <title>CLISP</title></head>
+<body>
+
+<a href="../../index.html">Home</a> : <a href="../programming.htm">programming</a> : <a href="lisp.htm">lisp</a>
+
+
+<p>
+This page describes how to work with vectors. Vectors can be made to act like queues, too.
+
+<p>
+VECTOR-PUSH-EXTEND function pushes new-element into specified vector. Supplied vector must be adjustable (see MAKE-ARRAY) and have fill-pointer. New element is placed at last fill-pointer position and fill-pointer is incremented. Vector size is adjusted a number of items as specified by extension argument, if necessary. See also MAKE-ARRAY, VECTOR-POP and VECTOR-PUSH. Return value is index at which the new item was placed.
+
+<pre>
+(defparameter *v* (make-array 2 :fill-pointer 0 :adjustable t)) => *V*
+(vector-push-extend 4 *v*) => 0
+(vector-push-extend 3 *v*) => 1
+(vector-push-extend 2 *v*) => 2
+*v* => #(4 3 2)
+(vector-pop *v*) => 2
+(vector-pop *v*) => 3
+(vector-pop *v*) => 4
+</pre>
+
+
+
+
+
+
+<hr><h2>Links to other sites</h2>
+
+<br><a href="http://jtra.cz/stuff/lisp/sclr/vector-push-extend.html">vector-push-extend</a> - source of this page
+
+
+
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 24-Oct-2010
+Updated: 24-Oct-2010
+</pre>
+</body>
+</html>

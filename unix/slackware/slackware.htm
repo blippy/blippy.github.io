@@ -1,0 +1,77 @@
+<html><head>
+<LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+<title>Slackware Linux</title>
+</head>
+
+<body>
+  <a href="../../index.html">Home</a>
+  : <a href="../unix.htm">unix</a>
+
+
+<h1>Slackware Linux</h1>
+
+  
+<pre>
+# SLACKWARE 14.2
+
+# USER
+useradd -m -u 3003 mcarter
+passwd mcarter
+
+# LOCALE
+vim /etc/profile.d/lang.sh
+export LANG=en_GB.UTF-8
+export LC_COLLATE=C
+
+# MAN
+`makewhatis' - makes manpages
+
+# SWAP
+fallocate -l 3G /swapfile
+chmod 600 /swapfile
+mkswap /swapfile
+swapon /swapfile
+/etc/fstab: /swapfile none swap defaults 0 0
+
+# SBOPKG
+Download dir: /usr/cache/sbopkg
+For dependencies resolution:
+	sqg -a
+is part of sbopkg and will generate files in
+	/var/lib/sbopkg/queues/*.sqf
+It takes a long time to run, but it knows about
+subdependencies. Better: build a queue for a
+particular package:
+	sqp -p <package>
+
+To install, you use a "queue", e.g.
+	sbopkg -i ffmpeg
+or
+	sbopkg -i blender
+which installs into /opt/blender. vlc is also available.
+But perhaps a better way is to use slackbuilds.
+
+
+
+# SLACKBUILDS
+Contains binary builds for many extras, inc keepassx, sshfs, qt5:
+http://www.slackware.com/~alien/slackbuilds
+
+</pre>
+
+<hr><h2>See also</h2>
+
+<li><a href="vbox.htm">vbox</a></li>
+
+<hr><h2>Links to other sites</h2>
+
+<li><a href="https://www.slackwiki.com/Bluetooth">bluetooth</a></li>
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 16-Sep-2017
+Updated: 28-Nov-2017
+</pre>
+</body>
+</html>

@@ -1,0 +1,78 @@
+<html><head>
+    <LINK REL=StyleSheet HREF="../style.css" TYPE="text/css">
+    <title>git</title>
+</head>
+
+<body>
+<a href="../index.html">Home</a>
+
+<h1>Git</h1>
+
+<hr><h2>Cleaning</h2>
+
+Dry run:
+<pre>
+git clean -dfxn
+</pre>
+
+
+As good as a freshly cloned repo 
+(<a href="http://stackoverflow.com/questions/5037480/removing-non-repository-files-with-git">xlink</a>):
+<pre>
+git clean -dfx
+</pre>
+
+
+<hr><h2>Cloning</h2>
+
+<pre>
+git clone 192.168.0.13:repos/redact.git
+git clone git@github.com:/blippy/cerbo.git
+</pre>
+
+<hr><h2>Fetching vs Pulling</h2>
+git pull = git fetch + git merge, effectively
+
+<hr><h2>Patches</h2>
+
+<pre>
+Hack hack hack
+git commit
+git format-patch -1
+</pre>
+
+<a href="http://stackoverflow.com/questions/2082296/how-do-patches-work-in-git">xlink</a>
+
+
+<hr><h2>Reverting</h2>
+
+If you want to undo one or more uncommited files: <code>git checkout FILE1 ...</code>
+
+<hr><h2>Tags</h2>
+
+<li>Listing tags: <code>git tag</code>
+   
+<li>Creating tags e.g.: <code>git tag -a v1.4 -m 'version 1.4'</code>
+<li>Pushing tags upstream: <code>git push --tags</code>
+<li>Checking out a tag: <code>git checkout $tagname</code>. When you've finished, go back to whatever branch you were working on before: <code>git checkout master</code>
+  
+<hr><h2>Also on this site</h2>
+
+<li><a href="branches.htm">branches</a> - local and remote
+<li><a href="config.htm">config</a> - how to configure git
+<li><a href="create.htm">create</a> - including creation of bare repos
+<li><a href="github.htm">github</a> - specific comments on github, and a list of alternatives
+  
+  <li><a href="patches.htm">patches</a>
+<li><a href="windows.htm">windows</a> - Win 7 native version
+
+
+
+	  
+<hr><pre>
+Author:  Mark Carter
+Created: 13-Nov-2010
+Updated: 14-Nov-2017
+</pre>
+</body>
+</html>

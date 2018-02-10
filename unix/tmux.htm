@@ -1,0 +1,65 @@
+<html><head>
+<LINK REL=StyleSheet HREF="../style.css" TYPE="text/css">
+<title>tmux</title>
+</head>
+
+<body>
+
+<a href="../index.html">Home</a> : <a href="unix.htm">unix</a>
+
+<h1>tmux</h1>
+
+<hr><h2>~/.tmux.conf</h2>
+
+<pre>
+# Set Shift-Page Up/Down to shift the page up/down
+set -g terminal-overrides 'xterm*:smcup@:rmcup@'
+
+# mouse wheel scrolling
+set -g mouse on
+bind -T root WheelUpPane copy-mode -eu
+</pre>
+
+<hr><h2>tmuxinator</h2>
+
+Allows you to create/manage tmux sessions easily. Here is an example file I created, <code>~/.tmuxinator/accts.yml</code>:
+<pre>
+project_name: accts
+project_root: ~/repos/nokilli/accts
+#socket_name: foo # Not needed.  Remove to use default socket
+#rvm: 1.9.2@rails_project
+#pre: sudo /etc/rc.d/mysqld start
+tabs:
+  - data: cd data
+  - process: ls
+  - view: laccts
+</pre>
+
+To go to the accts session, simply type:
+<pre>mux accts</pre>
+
+
+<hr><h2>Links to other sites</h2>
+
+<li><a href="http://webdizz.name/blog/2012/05/24/tmux-cheat-sheet/">cheat sheet</a> - commonly-used commands
+
+
+<li><a href="http://askubuntu.com/questions/194293/how-to-send-terminal-command-to-a-tty-terminal">How to send terminal command to a TTY terminal</a> - tmux has a `send-keys' command expressly for this purpose. There's also a little C program `ttyecho' that is listed that can achieve the same effect without `tmux'
+
+<li><a href="https://github.com/aziz/tmuxinator">tmuxinator</a> - Create and manage tmux sessions easily
+
+<h3>Alternative multiplexers</h3>
+
+<li><a href="http://linux.die.net/man/1/dtach">dtach</a> - simple program that emulates the detach feature of screen
+
+<li><a href="http://www.brain-dump.org/projects/dvtm/">dvtm</a> - dynamic virtual terminal manager
+
+
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 08-Oct-2012
+Updated: 23-Nov-2015
+</pre>
+</body></html>

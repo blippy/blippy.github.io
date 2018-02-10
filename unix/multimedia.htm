@@ -1,0 +1,221 @@
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <LINK REL=StyleSheet HREF="../style.css" TYPE="text/css">
+  <title>Multimedia</title>
+</head>
+
+<body>
+
+<a href="../index.html">Home</a> : <a href="unix.htm">unix</a>
+
+<h1>Multimedia</h1>
+
+
+<hr><h2>avconv</h2>
+
+avconv supecedes ffmpeg. I have written some notes about using avconv at DB03/325.
+
+<hr><h2>kino 1.1.0</h2>
+
+
+
+<h3>Input Formats</h3>
+
+
+
+<table style="text-align: left; width: 100%;" border="0" cellpadding="2"
+cellspacing="2">
+  <tbody>
+    <tr>
+      <td style="font-weight: bold;">Format</td>
+      <td style="font-weight: bold;">Works?</td>
+      <td style="font-weight: bold;">Workaround</td>
+    </tr>
+    <tr>
+      <td style="width: 60px;">AVI</td>
+      <td style="width: 119px;">yes</td>
+      <td style="width: 1176px;"></td>
+    </tr>
+    <tr>
+      <td style="width: 60px;">FLV</td>
+      <td style="width: 119px;">yes</td>
+      <td style="width: 1176px;"></td>
+    </tr>
+    <tr>
+      <td style="width: 60px;">MPG</td>
+      <td style="width: 119px;">yes</td>
+      <td style="width: 1176px;"></td>
+    </tr>
+    <tr>
+      <td style="width: 60px;">WMV</td>
+      <td style="width: 119px;">no</td>
+      <td style="width: 1176px;">ffmpeg -i file.wmv -sameq file.mpg</td>
+    </tr>
+  </tbody>
+</table>
+
+<h3>General processing</h3>
+Kino is a good way of producing videos for YouTube. My general strategy is:<br>
+<br>
+1. Use Kino to import files<br>
+2. Do the editing<br>
+3. Export the results in DV format. Don't worry if Kino produces individual DV
+files<br>
+ Click the Export button<br>
+ Click the DV tab<br>
+ Ensure the "Auto Split Files" is unchecked<br>
+4. Convert the files to MPG format using a command like <br>
+ ffmpeg -i capture001.dv -sameq -s 320x240 output.mpg<br>
+<br>
+
+<hr>
+
+<h2>mjpegtools</h2>
+mjpegtools is an Ubuntu package - set of tools that can do recording of videos
+and playback, simple cut-and-paste editing and the MPEG compression of audio
+and video under Linux - it looks like to can use it to stitch jpeg files into a
+movie. Some experimenting which doesn't seem to work too well:<br>
+<br>
+Suppose I have a file called foo.jpg, which I want to make an MPG file of. I
+do<br>
+
+<pre>cp foo.jpg foo00.jpg</pre>
+<pre>jpeg2yuv -f 25 -I p -l 250 -j foo%02d.jpg | mpeg2enc -o foo.mpg</pre>
+<br>
+This does create a file of 10 seconds long, but seems to create problems for
+tools like Kino or Cinelerra. So it doesn't appear to be a perfect solution.
+
+
+<hr><h2>Openshot Video</h2>
+
+A NLVE. If you apt-get install it, it is advisable to also install <code>libavformat-extra</code> for some useful codecs.
+
+<p>Some settings I have used on Jun 2013:
+<pre>
+Profile:       Web
+Target:        Youtube
+Video Profile: VGA NTSC
+Quality:       Med
+</pre>
+I found that a video lasting 1m13s produced an mpeg file of size 48.5M.
+
+<p>As at 19-Jun-2013, OpenShot 1.4.3 worked OK for a few clips, but crashed frequently thereafter. Transitions seemed to cause problems, too. It even seemed to crash X after awhile. Verdict: seek a more reliable NLVE.
+
+<hr><h2>Links to other sites</h2>
+
+
+
+<h3>Applications</h3>
+Note that I have tried hardly any of these things - so don't be surpised if
+they're disappointing.
+
+
+
+
+<li><a href="http://www.cinepaint.org/">Cinepaint</a> - motion picture image
+painting and retouching tool [Added 27-Jan-2008]
+
+<li><a href="http://home.gna.org/gaupol/">Gaupol</a> - editor for text-based
+subtitle files - v0.9 seems very flakey and unusable. Use Jubler instead.
+[Added 20-Dec-2007]
+
+
+<li><a href="http://www.jubler.org/">Jubler</a> - subtitle editor. Excellent at
+what it does - very intuitive and powerful. [Added 27-Jan-2008]
+
+
+<li><a href="http://mediainfo.sourceforge.net/en">MediaInfo</a> - apt-get installable app that displays information about the video and audio streams in a container.
+
+<li><a href="http://www.mltframework.org/twiki/bin/view/MLT/">MLT</a>
+- open source multimedia framework, designed and developed for
+television broadcasting. It provides a toolkit for broadcasters, video
+editors, media players, transcoders, web streamers and many more types
+of applications. The functionality of the system is provided via an
+assortment of ready to use tools, xml authoring components, and an
+extendible plug-in based API. [Added 26-Nov-2007]
+
+
+
+
+
+
+
+<h3>Listings</h3>
+
+Sites which catalogue links of links<p>
+
+<a href="https://code.launchpad.net/projects/+index?text=video">Launchpad</a> -
+search results for items relating to video
+
+
+<h3>Non-linear video editors</h3>
+
+<li><a href="http://cvs.cinelerra.org/">Cinelerra</a> - heavy-weight
+video editor, aimed at professionals. The grandaddy of video editors
+for Linux. Not especially intuitive or stable, IMHO. [Added
+27-Jan-2008]
+
+<li><a href="http://1010.co.uk/gneve.html">Gneve</a> - Gnu Emacs Video Editing.
+That's right, Emacs can now edit video. [Added 07-Mar-2009]
+
+<li><a href="http://jahshaka.com/">Jahshaka</a> - a video and film
+compositing, editing and special fx system that uses OpenGL &amp;
+OpenML hardware rendering to give operators real time
+interactivity. The system is cross platform, and also includes full
+CG, paint and image processing modules. I haven't managed to compile
+it yet. It seems to rely on a lot of dependencies that isn't in Ubuntu
+[Added 16-Jan-2008. Updated 17-Feb-2012]
+
+<li><a href="http://www.kdenlive.org/index.php">kdenlive</a> - non
+linear video editor for the KDE environment running on Linux. It is
+based on the MLT video framework which relies on the FFMPEG
+project. [Added 26-Nov-2007]
+
+<li><a href="http://www.kinodv.org/">Kino</a> - basic and simple
+editor, and more stable than Cinelerra and Kdenlive. Works on DV
+format, but can import from a variety of formats. [Added 27-Jan-2008]
+
+<li><a href="http://lives.sourceforge.net/">LiVES</a> - video editor
+and "VJ" tool [Added 27-Jan-2008]
+
+
+<li><a href="http://www.pitivi.org/wiki/Main_Page">pitivi</a> -
+written in python - v0.10.3 very buggy and feature-lacking. Use kino
+or OpenMovieEditor instead.  [Added 20-Dec-2007]
+
+
+
+<h3>Programming Resources</h3>
+
+Libraries for you to use, and information
+
+<li><a href="http://pymedia.org/">PyMedia</a> - python module for wav, mp3, ogg,
+avi, divx, etc. file manipulations. Can also be used in conjuction with <a
+href="http://www.pygame.org/news.html">PyGame</a> to play videos. I have used
+it to stitch together JPEG files to make a short video. I'm pleased to say "it
+works". Good for when scripting something is just plain easier than using a
+GUI. [Added 27-Jan-2008]
+
+<li>
+<a href="http://www.xvid.org/">Xvid</a> - created to promote the adoption of
+open standards, namely MPEG-4 video, and to permit the interoperable creation
+and exchange of digital video between different software applications and a
+wide range of devices. [Added 27-Jan-2008] 
+
+<h3>Transcoding</h3>
+
+<li><a href="http://handbrake.fr/">Handbrake</a> - extensive transcoding facilities [Added 21-Oct-2012]
+
+<li><a href="http://biggmatt.com/winff/">WinFF</a> - GUI front-end for ffmpeg. Handbrake is better.
+
+<h3>Unclassified</h3>
+
+<li><a href="http://hddv.net/showthread.php?47045-Containers-and-Codecs-explained">Containers and codecs explained</a> - contains link to YT video which explains what preferences you should use.
+
+<hr><pre>
+Author:  Mark Carter
+Created: 14-Nov-2007
+Updated: 16-Sep-2013
+</pre></body>
+</html>

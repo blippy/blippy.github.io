@@ -1,0 +1,79 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html><head>
+  <LINK REL=StyleSheet HREF="style.css" TYPE="text/css">
+  <title>video</title></head>
+<body>
+
+<a href="../index.html">Home</a>
+
+<h1>Video</h1>
+
+
+<hr><h2>ffmpeg</h2>
+
+<p>Speed up video: <code>ffmpeg -i input.mkv -an -filter:v "setpts=0.5*PTS" output.mkv</code>. <code>-an</code> turns off audio. <a href="https://trac.ffmpeg.org/wiki/How%20to%20speed%20up%20/%20slow%20down%20a%20video">xlink</a>
+
+<p>Convert to 720x256 video, reduce volume a lot, skip the first 5 seconds of video, and only take 1 second of video:</p>  
+<pre>
+ffmpeg -ss 00:00:05 -i static.mkv -t 00:00:01 -vf scale=720x576 -af "volume=0.1" static.mpg
+</pre>
+
+Legend:
+<ul>
+	<li><b>Ratio</b> - relative size of output file to input</li>
+	<li><b>Vlc</b> - playback quality</li>
+</ul>
+
+<h3>AVI -&gt; DV</h3>
+
+Useful for converting flipcam files to PAL DV format, and boosting the gain:
+<pre>
+ffmpeg -i myvid.avi -af "volume=10dB" -target pal-dv myvid.dv
+</pre>
+
+An AVI file of 1.2G, lasting 50m, produced a DV file of 11.0G in 5m36s.
+
+<h3>WTV -&gt; MKV</h3>
+
+<pre>
+ffmpeg -i in.wtv out.mkv
+Ratio: 0.44
+Vlc: excellent
+
+</pre>
+
+<h3>WTV -&gt; MP4</h3>
+
+WTV files stutter in VLC, so you are advised to convert it to MP4.
+<pre>
+ffmpeg -i in.wtv -acodec libmp3lame out.mp4
+</pre>
+
+A 1h5m WTV is 708M, and converts to a 310M MP4 file. AAC is the preferred audio codec for MP4, but it is an experimental codec; hence the use of libmp3lame. 
+
+As of Dec 2015, AAC is no longer experimental in <code>ffmpeg</code> .
+
+
+
+<hr><h2>Also on this site</h2>
+
+<li><a href="cine.htm">cinelerra</a></li>
+
+<hr><h2>Other software</h2>
+
+<li><a href="https://github.com/jliljebl/flowblade">flowblade</a></li>
+
+<li><a href="https://www.mltframework.org/bin/view/MLT/Projects">mlt</a>
+- references kdenlive, flowblade, shotcut, openshot, etc
+</li>
+
+<li><a href="http://www.openmovieeditor.org/">open movie editor</a></li>
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 14-Nov-2015
+Updated: 01-Feb-2018
+</pre>
+</body>
+</html>

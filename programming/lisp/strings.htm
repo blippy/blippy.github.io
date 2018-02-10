@@ -1,0 +1,36 @@
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+  <title>Strings</title></head>
+<body>
+
+<a href="../../index.html">Home</a> : <a href="../programming.htm">programming</a> : <a href="lisp.htm">lisp</a>
+
+<h1>Lisp strings</h1>
+
+Fiddling with strings in Lisp.
+
+<p>To convert a string to a number use
+<a href="http://www.lispworks.com/documentation/HyperSpec/Body/f_rd_fro.htm#read-from-string">READ-FROM-STRING</a>
+(with caveats). 
+
+
+<hr><h2>Sort string list alphabetically</h2>
+
+(sort '("foo" "bar" "baz") #'string-lessp) ; ("bar" "baz" "foo")
+
+<hr><h2>Links to other sites</h2>
+<a href="http://cl-cookbook.sourceforge.net/strings.html#number">Strings
+Cookbook</a> page.
+
+
+
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 25-Apr-2011
+Updated: 25-Feb-2013
+</pre>
+</body>
+</html>
