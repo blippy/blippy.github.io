@@ -34,6 +34,15 @@ sudo resize2fs /dev/sda1
 
 According to <a href="http://au.answers.yahoo.com/question/index?qid=20120118052015AAbpOSU">Yahoo Answers</a>, USB pen drives consume about 5v @ 145mA (725mW) at their heaviest load, in write mode. On 15-Sep-2013, I estimated that the yearly power consumption of an RPi was about &pound;5 (DB04/89).
 
+<hr><h2>Wifi (Pi2)</h2>
+
+Assumes use of Edimaxx Wifi dongle. Pi2 keeps turning off the wifi, so to disable it:
+<pre>
+	sudo vim /etc/network/interfaces
+Add the line:
+	wireless-power off
+</pre>
+
 <hr><h2>See also</h2>
 
 <li><a href="ultibo.htm">ultibo</a></li>
@@ -56,7 +65,7 @@ According to <a href="http://au.answers.yahoo.com/question/index?qid=20120118052
 <hr><pre>
 Author:  Mark Carter
 Created: 11-Aug-2013
-Updated: 12-Dec-2017
+Updated: 14-Feb-2018
 </pre>
 </body>
 </html>
