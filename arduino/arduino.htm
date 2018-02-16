@@ -41,9 +41,19 @@ It works, but seems a bit finicky, and crashed. Use FidoCadj instead.
 <pre>
 Tools : Port : /dev/ttyACM0
 
-sudo usermod -a -G dialout `whoami`
+sudo usermod -a -G dialout,tty USER
+sudo chmod 666 /dev/ttyACM0
 sudo chmod a+rw /dev/ttyUSB0
 </pre>
+
+Icon:
+<ol>
+	<li>run install.sh. This creates a desktop item in ~/Desktop</li>
+	<li>Double-click on it</li>
+	<li>In the Ubuntu icon bar, add icon to favourite</li>
+	<li>Close the IDE</li>
+	<li>Remove the file in ~/Desktop</li>
+</ol>
 
 <hr><h2>Also on this site</h2>
 
@@ -90,7 +100,7 @@ Other
 <hr><pre>
 Author:  Mark Carter
 Created: 09-Jan-2018
-Updated: 08-Feb-2018
+Updated: 16-Feb-2018
 </pre>
 </body>
 </html>
