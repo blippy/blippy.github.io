@@ -1,0 +1,41 @@
+<html><head>
+<LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+<title>goops</title></head>
+<body>
+
+<a href="../../index.html">Home</a> 
+: <a href="../programming.htm" >programming</a>
+: <a href="guile.htm" >guile</a>
+
+
+<h1>goops</h1>
+
+<hr><h2>Example</h2>
+
+<pre>
+(use-modules (oop goops))
+
+(define-class &lt;cls&gt; (&lt;object&gt;)
+  x)
+
+(define c1 (make &lt;cls&gt;))
+(slot-set! c1 &#x27;x 0)
+(display (slot-ref c1 &#x27;x)) ; outputs 0
+
+(define (adj c)
+  (slot-set! c &#x27;x 1))
+
+(adj c1)
+(display (slot-ref c1 &#x27;x)) ; outputs 1
+
+
+</pre>
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 20-Feb-2018
+Updated: 20-Feb-2018
+</pre>
+</body>
+</html>
