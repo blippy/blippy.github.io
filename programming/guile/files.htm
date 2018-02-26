@@ -1,0 +1,41 @@
+<html><head>
+<LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+<title>files</title></head>
+<body>
+
+<a href="../../index.html">Home</a> 
+: <a href="../programming.htm" >programming</a>
+: <a href="guile.htm" >guile</a>
+
+
+<h1>Files</h1>
+
+<hr><h2>Read in a file as a list of lines</h2>
+
+<pre>
+(use-modules (ice-9 rdelim))
+;; read in the file as a list of lines
+(define (read-lines file)
+  (let ((ls '()))
+    (with-input-from-file file
+      (lambda ()
+        (do ((line (read-line) (read-line)))
+            ((eof-object? line))
+          (set! ls (cons line ls)))
+        (reverse ls)))))
+
+</pre>
+
+<hr><h2>Links to other sites</h2>
+
+<li><a href="http://pleac.sourceforge.net/pleac_guile/filecontents.html">file contents</a></li>
+
+<li><a href="https://www.gnu.org/software/guile/manual/html_node/Line_002fDelimited.html#Line_002fDelimited">line oriented and delimited text</a></li>
+
+<hr><pre>
+Author:  Mark Carter
+Created: 26-Feb-2018
+Updated: 26-Feb-2018
+</pre>
+</body>
+</html>
