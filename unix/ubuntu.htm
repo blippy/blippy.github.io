@@ -10,8 +10,17 @@
 <h1>Ubuntu</h1>
 
 
-Some set-up notes. Geared towards 16.10.
+Some set-up notes. Geared towards 18.04.
 
+<hr><h2>cpufreq</h2>
+<pre>
+List the available governors:
+	cpufreq-info -g
+List the governors being used by cpu:	
+	cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+Set the governor for all cpus:
+	sudo cpufreq-set -r -g powersave
+</pre>
 
 <hr><h2>Create launcher item</h2>
 
