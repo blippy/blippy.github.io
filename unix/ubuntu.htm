@@ -17,7 +17,7 @@ Some set-up notes. Geared towards 18.04.
 List the available governors:
 	cpufreq-info -g
 List the governors being used by cpu:	
-	cat /sys/devices/system/cpu/cpu0/cpufreq/scaling_governor
+	cat /sys/devices/system/cpu/cpu*/cpufreq/scaling_governor
 Set the governor for all cpus:
 	sudo cpufreq-set -r -g powersave
 </pre>
@@ -43,6 +43,21 @@ Drag the resulting file onto the launcher.
 <hr><h2>Deactivate on-line search</h2>
 
 Turn off on-line search results, which should speed things up:<code>System Settings: Security &amp; Privacy: Search: switch off Include online search results</code>
+
+<hr><h2>Gnome</h2>
+
+<pre>
+Install the `dconf' graphical Gnome settings editor (dconf-tools/gome-tweak-tool package?)
+
+Customise the clock:
+	org.gnome.desktop.interface.clock-show-date
+
+Enable	Ctl-Alt-Bspace:
+	gsettings set org.gnome.desktop.input-sources xkb-options "['terminate:ctrl_alt_bksp']"
+</pre>
+
+
+
 
 <hr><h2>LXDE</h2>
 
@@ -72,7 +87,7 @@ sudo usermod -a -G sudo mcarter
 <hr><pre>
 Author:  Mark Carter
 Created: 21-Oct-2013
-Updated: 17-Oct-2016
+Updated: 29-Apr-2018
 </pre>
 </body>
 </html>
