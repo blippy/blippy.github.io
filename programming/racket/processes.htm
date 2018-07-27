@@ -1,0 +1,43 @@
+<html>
+<head>
+  <meta content="text/html; charset=iso-8859-1"  http-equiv="CONTENT-TYPE">
+  <LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+  <title>Racket</title>
+</head>
+
+<body>
+
+<a href="../../index.html">Home</a> 
+: <a href="../programming.htm" >programming</a> 
+: <a href="racket.htm">racket</a>
+
+<h1>Processes</h1>
+
+Call the <code>ls</code> command and print the directory entries:
+
+<pre>
+#lang racket
+
+(require data/queue)
+(define pr (process* "/bin/ls" "-hal" "/"))
+(define iport (first pr))
+(define q (make-queue))
+(let loop ()
+  (define node (read-line iport))
+  (unless (eof-object? node)
+    (enqueue! q node)
+    (loop)))
+
+(for ((node q))
+  (display node)
+  (newline))
+(close-input-port iport)
+</pre>
+
+<hr><pre>
+Author:  Mark Carter
+Created: 27-Jul-2018
+Updated: 27-Jul-2018
+</pre>
+</body>
+</html>
