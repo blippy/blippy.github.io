@@ -1,0 +1,31 @@
+;; really naff jottings about macros in plt
+;; 15-jul-2006 started
+
+
+(define-syntax twice
+  (syntax-rules ()
+      ((twice a n  body ...)
+       (let ((a (* 2 n)))
+         body ...))))
+
+(twice b 3
+       (print b)
+       (newline))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; UNHYGENIC MACROS
+;; 29-Jul-2018
+
+;; simulates `define a'
+(require syntax/parse/define)
+
+(define-syntax-parser make-a
+  [(_)
+   #:with a (datum->syntax this-syntax 'a)
+   #'(define a 1)])
+
+(make-a)
+(display a)
+
+
+
