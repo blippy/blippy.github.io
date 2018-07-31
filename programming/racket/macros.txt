@@ -8,9 +8,23 @@
        (let ((a (* 2 n)))
          body ...))))
 
+; or more simply:
+(define-syntax-rule (twice a n body ...)
+  (let ((a (* 2 n)))
+    body ...))
+  
+; usage:
 (twice b 3
        (print b)
        (newline))
+
+;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
+;; DEBUGGING MACROS
+;; 31-Jul-2018
+;; using example above
+
+(expand-once #'(twice b 3 (print b) (newline)))
+
 
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 ;; UNHYGENIC MACROS
