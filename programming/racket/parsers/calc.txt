@@ -1,22 +1,7 @@
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
-<html>
-<head>
-  <meta content="text/html; charset=iso-8859-1"  http-equiv="CONTENT-TYPE">
-  <title>Racket-parsers</title>
-</head>
+#lang racket
 
-<body>
-
-<a href="../../index.html">Home</a> : <a href="../programming.htm" >programming</a> : <a href="racket.htm">racket</a>
-
-<h1>Racket parsers</h1>
-
-Examples are available in <code>collects/parser-tools/examples</code> (at least if you have the sources installed). Here is calc.rkt from there:
-
-<pre>
-#lang scheme
-
-;; An interactive calculator inspired by the calculator example in the bison manual.
+;;;; An interactive calculator inspired by the calculator example in the bison manual.
+;;;; 2018-08-10 Added commenting to lexer (comments begin with #)
 
 
 ;; Import the parser and lexer generators.
@@ -26,6 +11,8 @@ Examples are available in <code>collects/parser-tools/examples</code> (at least 
 
 (define-tokens value-tokens (NUM VAR FNCT))
 (define-empty-tokens op-tokens (newline = OP CP + - * / ^ EOF NEG))
+
+
 
 ;; A hash table to store variable values in for the calculator
 (define vars (make-hash))
@@ -51,6 +38,8 @@ Examples are available in <code>collects/parser-tools/examples</code> (at least 
    ["(" 'OP]
    [")" 'CP]
    ["sin" (token-FNCT sin)]
+   [(:: "#" (complement (:* #\newline)) #\newline) ;; a comment
+    (token-newline)]
    [(:+ (:or lower-letter upper-letter)) (token-VAR (string->symbol lexeme))]
    [(:+ digit) (token-NUM (string->number lexeme))]
    [(:: (:+ digit) #\. (:* digit)) (token-NUM (string->number lexeme))]))
@@ -102,26 +91,8 @@ Examples are available in <code>collects/parser-tools/examples</code> (at least 
                   (one-line))))))
     (one-line)))
 
+(calc (open-input-string
+       "x=1
+#foo bar baz
+(x + 2 * 3) - (1+2)*3"))
 (calc (open-input-string "x=1\n(x + 2 * 3) - (1+2)*3"))
-</pre>
-
-<hr><h2>Links to other sites</h2>
-
-<li><a href="https://beautifulracket.com/">beautiful racket</a> - language-oriented programming</li>
-
-<li>Matthew Flatt - DSL Embedding in Racket - Youtube Videos <a href="https://youtu.be/WQGh_NemRy4">1</a> 
-<a href="https://youtu.be/JC3o87p_rBY">2</a>
-</li>
-
-<li><a href="https://pkgs.racket-lang.org/package/peg">peg</a> parser. <a href="https://github.com/rain-1/nand-lang">Example</a> "nand-lang".</li>
-
-
-<li><a href="https://gist.github.com/blippy/2137e9f14e38aca48db44d74b0df8941">tsv.scm</a> - Create tab-separated fields</li>
-
-<hr><pre>
-Author:  Mark Carter
-Created: 12-Oct-2010
-Updated: 06-Aug-2018
-</pre>
-</body>
-</html>
