@@ -1,0 +1,97 @@
+#lang racket
+(require parser-tools/yacc
+         parser-tools/lex
+         (prefix-in : parser-tools/lex-sre))
+
+(define (msg a b)
+  (display a)
+  (displayln b))
+
+
+(define (snip text left right)
+  (define len (string-length text))
+  (define end (- len right))
+  (if (<= len left)
+      ""
+      (substring text left end)))
+
+(define-tokens my-value-tokens (FIELD ))
+(define-empty-tokens my-empty-tokens (NEWLINE EOF))
+
+(define tsv-lexer
+  (lexer
+   [(eof) 'EOF]
+   [#\newline 'NEWLINE]
+   [#\space (tsv-lexer input-port)]
+   [#\tab (tsv-lexer input-port)]
+   [(:: #\# (:+ (char-complement #\Newline))) ; just ignore comments
+    (tsv-lexer input-port)]
+   [(:: #\" (:+ (char-complement (:or #\" #\Newline))) #\") ; a double-quoted string
+    (token-FIELD (snip lexeme 1 1))]
+   [(:+ (char-complement (:or #\Tab #\Space #\Newline #\#)))
+    (begin
+      (token-FIELD lexeme))]
+ ))
+
+(define tsv-parser
+  (parser
+
+   (start start)
+   (end EOF)
+   (tokens my-value-tokens my-empty-tokens)
+   (error (lambda (a b c) (void)))
+
+   (grammar
+
+    (start
+     ;;[() #f]
+    [(error start) $2]
+     [(records) $1])
+    
+    (records
+     ;;[(NEWLINE) '()]
+     ;;[(record NEWLINE) (list $1)]
+     ;;[(record NEWLINE) $1]
+     ;;[(record NEWLINE) $1]
+     [(record) (list  $1)]
+     [(record records) (cons $1 $2)])
+
+    (record
+     [(NEWLINE) '()]
+     [(fields NEWLINE) $1])
+
+    (fields
+     [(FIELD)
+      (begin
+        (msg "fields:FIELD:" $1)
+        (list $1))]
+     ;;[(FIELD) (list $1)]
+     [(FIELD fields)
+      (begin
+        (msg "fields: FIELD fields:" (cons $1 $2))
+        (cons $1 $2))])
+    
+    )))
+       
+
+(define (parse-tsv input-string)
+  (define ip (open-input-string input-string))
+  (tsv-parser (lambda () (tsv-lexer ip))))
+
+;;;; Some examples
+;;(print (tsv-lexer (open-input-string "AAA AAA")))
+;;(parse-tsv "AAA AAAA BB#foo bar\n")
+;;(parse-tsv "BB\n")
+(define foo
+  #<<EOF
+Comment go # like this
+How now brown cow
+how does your cargen grow. "she said knowingly"
+
+
+yo foo
+"Make sure you have a blank line below for the \n. Otherwise you'll get a parse error"
+
+EOF
+  )
+;;(parse-tsv foo)
