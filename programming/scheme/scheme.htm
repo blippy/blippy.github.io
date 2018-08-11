@@ -9,6 +9,17 @@
 
 <h1>Scheme</h1>
 
+<hr><h2><code>define-syntax-rule</code></h2>
+
+This is defined in Racket, but not by other schemes. I define it as follows:
+<pre>
+(define-syntax define-syntax-rule
+  (syntax-rules ()
+    [(define-syntax-rule (id arg ...) body)
+     (define-syntax id
+       (syntax-rules ()
+	 [(id arg ...) body]))]))
+</pre>
 
 <hr><h2>Recipes</h2>
 
@@ -23,13 +34,11 @@
 
 <li><a href="http://rigaux.org/language-study/various/callcc/scheme.html">gotos</a> - simulating gotos in scheme using continuations - various methods</li>
 
-	<li><a href="http://www.jazzscheme.org/" >jazzscheme</a> - "full-featured cross-platform application framework, a sophisticated programmable IDE and a build system that creates executable binaries for Mac OS X, Windows and Linux. JazzScheme has been used for more than 10 years to develop commercial software."</li>
+<li><a href="https://www.youtube.com/watch?v=OyfBQmvr2Hc">Most Beuatiful Prgram Ever Written</a></li>
 
-	<li><a href="https://www.youtube.com/watch?v=OyfBQmvr2Hc">Most Beuatiful Prgram Ever Written</a></li>
+<li><a href="http://www.gnu.org/software/guile/manual/html_node/R6RS-I_002fO-Ports.html#R6RS-I_002fO-Ports">R6RS I/O Ports</a> - guile reference</li>
 
-	<li><a href="http://www.gnu.org/software/guile/manual/html_node/R6RS-I_002fO-Ports.html#R6RS-I_002fO-Ports">R6RS I/O Ports</a> - guile reference</li>
-
-	<li><a href="https://github.com/scheme-requests-for-implementation">SRFIs</a> - code!</li>
+<li><a href="https://github.com/scheme-requests-for-implementation">SRFIs</a> - code!</li>
 
 <li><a href="http://srfi.schemers.org/srfi-71/srfi-71.html">srfi-71</a> - Extended LET-syntax for multiple values. Let's you assign multiple values at once, and a few other tricks. Eg. <pre>(let ((a b (values 10 11))) b) ; 11</pre>
 
@@ -38,7 +47,7 @@
 <hr><pre>
 Author:  Mark Carter
 Created: 21-Apr-2012
-Updated: 28-Nov-2017
+Updated: 11-Aug-2018
 </small>
 </body>
 </html>
