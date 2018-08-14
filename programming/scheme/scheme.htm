@@ -9,6 +9,21 @@
 
 <h1>Scheme</h1>
 
+<hr><h2><code>file-&gt;lines</code></h2>
+<pre>
+(define (file->lines filename)	
+  (define (loop lines)
+    (define line (read-line))
+    (if (eof-object? line)
+	(reverse lines)
+	(loop (cons line lines))))
+  (define (loop-0) (loop '()))
+  (with-input-from-file filename loop-0))
+
+</pre>
+
+
+
 <hr><h2><code>define-syntax-rule</code></h2>
 
 This is defined in Racket, but not by other schemes. I define it as follows:
@@ -47,7 +62,7 @@ This is defined in Racket, but not by other schemes. I define it as follows:
 <hr><pre>
 Author:  Mark Carter
 Created: 21-Apr-2012
-Updated: 11-Aug-2018
+Updated: 14-Aug-2018
 </small>
 </body>
 </html>
