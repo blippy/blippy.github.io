@@ -15,6 +15,34 @@ Install tigervnc. Configuration is here (<a href="https://wiki.archlinux.org/ind
 
 <p>I have a script called vnc that creates and kills sessions.
 
+<hr><h2>Raspian server</h2>
+
+Install:
+<pre>
+sudo raspi-config
+Interfacing options
+VNC
+</pre>
+
+Set VNC password:
+<pre>
+At top right of screen, click the VNC icon
+Menue item: options
+Security: Authentication: VNC password
+Users and Permissions: Standard user: add a password
+</pre>
+
+Fix small screen size in headerless mode:
+<pre>
+Raspberry Pi Configuration: System : Set resolution:
+DMT mode 82 ...
+</pre>
+
+
+<hr><h2>Ubuntu client connection to Raspbian server</h2>
+
+Use <code>remmina</code>. Use the password that you entered in Raspbian
+
 <hr><h2>Windows: Client side</h2>
 
 TigerVNC seems better than TightVNC. Remmina looks good as a Linux client, but is not available on Windows.
@@ -27,7 +55,7 @@ TigerVNC seems better than TightVNC. Remmina looks good as a Linux client, but i
 <hr><pre>
 Author:  Mark Carter
 Created: 26-Oct-2014
-Updated: 17-Jul-2015
+Updated: 10-Dec-2018
 </pre>
 </body>
 </html>
