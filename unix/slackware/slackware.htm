@@ -33,33 +33,11 @@ mkswap /swapfile
 swapon /swapfile
 /etc/fstab: /swapfile none swap defaults 0 0
 
-# SBOPKG
-Download dir: /usr/cache/sbopkg
-For dependencies resolution:
-	sqg -a
-is part of sbopkg and will generate files in
-	/var/lib/sbopkg/queues/*.sqf
-It takes a long time to run, but it knows about
-subdependencies. Better: build a queue for a
-particular package:
-	sqp -p <package>
-
-To install, you use a "queue", e.g.
-	sbopkg -i ffmpeg
-or
-	sbopkg -i blender
-which installs into /opt/blender. vlc is also available.
-But perhaps a better way is to use slackbuilds.
-
-
-
-# SLACKBUILDS
-Contains binary builds for many extras, inc keepassx, sshfs, qt5:
-http://www.slackware.com/~alien/slackbuilds
-
 </pre>
 
 <hr><h2>See also</h2>
+
+<li><a href="repos.htm">repos</a> - sbopkg and slackbuilds</li>
 
 <li><a href="vbox.htm">vbox</a></li>
 
@@ -71,7 +49,7 @@ http://www.slackware.com/~alien/slackbuilds
 <hr><pre>
 Author:  Mark Carter
 Created: 16-Sep-2017
-Updated: 28-Nov-2017
+Updated: 30-Dec-2018
 </pre>
 </body>
 </html>
