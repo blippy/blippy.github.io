@@ -45,9 +45,9 @@ It works, but seems a bit finicky, and crashed. Use FidoCadj instead.
 <pre>
 Tools : Port : /dev/ttyACM0
 
-sudo usermod -a -G dialout,tty USER
+sudo usermod -a -G dialout,tty `whoami`
 sudo chmod 666 /dev/ttyACM0
-sudo chmod a+rw /dev/ttyUSB0
+sudo chmod a+rw /dev/ttyACM0
 </pre>
 
 Icon:
@@ -107,7 +107,7 @@ Other
 <hr><pre>
 Author:  Mark Carter
 Created: 09-Jan-2018
-Updated: 18-Oct-2018
+Updated: 10-Jan-2019
 </pre>
 </body>
 </html>
