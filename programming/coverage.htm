@@ -1,0 +1,40 @@
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <LINK REL=StyleSheet HREF="../style.css" TYPE="text/css">
+  <title>coverage</title>
+</head>
+
+<body>
+
+<a href="../index.html">Home</a> : 
+<a href="programming.htm">programming</a> 
+
+
+<h1>coverage</h1>
+
+<p>
+Compile:
+<pre>
+g++ foo.cc --coverage
+</pre>
+</p>
+
+<p>
+Execute your program. This creates a set of <code>gcda</code> files in the source directory at each execution.
+</p>
+
+<p>
+Inspect the results:
+<pre>
+cd src-directory
+gcov foo.cc # generates a gcov file
+less foo.cc.gcov # textual results
+</pre>
+</p>
+
+<hr><pre>
+Author:  Mark Carter
+Created: 19-Jan-2019
+Updated: 19-Jan-2019
+</pre>
+</body></html>
