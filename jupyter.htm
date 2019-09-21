@@ -1,0 +1,41 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<LINK REL=StyleSheet HREF="style.css" TYPE="text/css">
+<title>About</title>
+</head>
+
+<body>
+<a href="index.html">Jupyter</a>
+
+
+<h1>Jupyter</h1>
+
+<pre>
+# Install into a virtual environment
+virtualenv --version # check existence
+pip3 install --user virtualenv
+cd ~/tools
+virtualenv --no-site-packages jupyter
+cd jupyter/bin
+source activate
+pip3 install jupyter
+
+# install micropython kernel
+cd ~/tools/jupyter
+git clone https://github.com/goatchurchprime/jupyter_micropython_kernel.git
+pip3 install -e jupyter_micropython_kernel
+python3 -m jupyter_micropython_kernel.install
+jupyter kernelspec list
+
+# Run it from a different shell
+jup # my own script
+</pre>
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 21-Sep-2019
+Updated: 21-Sep-2019
+</pre>
+</body>
+</html>
