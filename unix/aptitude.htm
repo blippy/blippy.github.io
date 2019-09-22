@@ -45,16 +45,11 @@ Description: a collection of classic textual unix games
  number, pig, phantasia, pom, ppt, primes, quiz, random, rain, robots, rot13, sail, snake, tetris,
  trek, wargames, worm, worms, wump, wtf</pre>
 
-<hr><h2>Remove unused kernels</h2>
-Remove all unused kernels with apt-get (<a href="http://www.commandlinefu.com/commands/view/10520/remove-all-unused-kernels-with-apt-get">xlink</a>):
-<pre>aptitude remove $(dpkg -l|egrep '^ii linux-(im|he)'|awk '{print $2}'|grep -v `uname -r`)</pre>
-
-<hr><h2>Update to new distribution</h2>
+<hr><h2>Standard update</h2>
 
 <pre>
-aptitude update
-aptitude dist-upgrade
-do-release-upgrade -d
+sudo apt update # updates list of avail packs
+sudo apt upgrade # actually installs them
 </pre>
 
 
@@ -76,7 +71,7 @@ Try taking a look at <code>apt-cache search</code> and <code>apt-get search</cod
 <hr><pre>
 Author:  Mark Carter
 Created: 25-Jan-2009
-Updated: 24-Sep-2018
+Updated: 22-Sep-2019
 </pre>
 </body>
 </html>
