@@ -1,0 +1,41 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 3.2//EN">
+<html>
+<head>
+<meta content="text/html; charset=iso-8859-1"  http-equiv="CONTENT-TYPE">
+<LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+<title>Racket</title>
+</head>
+
+<body>
+
+<a href="../../index.html">Home</a>
+: <a href="../programming.htm" >programming</a>
+: <a href="racket.htm">racket</a>
+
+
+<h1>TCP client</h1>
+
+<pre>
+(require racket/tcp)
+
+(define-values (in out) (tcp-connect  "192.168.0.15" 3333))
+(define (msg line)
+  (displayln line out)
+  (flush-output out)
+  (display "Response: ")
+  (displayln (read-line in)))
+(msg "hello world")
+(msg "ESP32 rocks")
+(close-input-port in)
+(close-output-port out)
+</pre>
+
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 14-Sep-2019
+Updated: 14-Sep-2019
+</pre>
+</body>
+</html>
