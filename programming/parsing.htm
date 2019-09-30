@@ -8,6 +8,36 @@
 
 <h1>Parsing</h1>
 
+<hr><h2>Recursive descent parsing</h2>
+
+<pre>
+// ARITHMETIC
+// Adopt the algorithm at 
+// https://www.engr.mun.ca/~theo/Misc/exp_parsing.htm#classic
+// for computing arithmetic
+//
+// Here&#x27;s the original derivations
+//  E --&gt; T {( &quot;+&quot; | &quot;-&quot; ) T}
+//  T --&gt; F {( &quot;*&quot; | &quot;/&quot; ) F}
+//  F --&gt; P [&quot;^&quot; F]
+//  P --&gt; v | &quot;(&quot; E &quot;)&quot; | &quot;-&quot; T
+//
+// Here&#x27;s mine:
+// I extend BNF with the notion of a function, prefixed by &amp;
+// {} zero or more repetitions
+// [] optional
+//  &amp;M(o, X) --&gt; X {o X} // e.g. &amp;M((&quot;+&quot;|&quot;-&quot;), T) --&gt; T { (&quot;+&quot;|&quot;-&quot;) T }
+//  E --&gt; &amp;M(( &quot;&lt;&quot; | &quot;&lt;=&quot; | &quot;&gt;&quot; | &quot;&gt;=&quot; | &quot;==&quot; | &quot;!=&quot; ), R)
+//  R --&gt; &amp;M(( &quot;+&quot; | &quot;-&quot; ), T)
+//  T --&gt; &amp;M(( &quot;*&quot; | &quot;/&quot; ), F)
+//  F --&gt; [&quot;+&quot;|&quot;-&quot;] (v | &quot;(&quot; E &quot;)&quot;)
+
+</pre>
+
+
+<li><a href="https://github.com/blippy/cerbo/blob/master/blang/v4/blang.cc">blang</a></li>
+
+
 <hr><h2>Links to other sites</h2>
 
 
@@ -39,7 +69,7 @@
 <hr><pre>
 Author:  Mark Carter
 Created: 11-Oct-2017
-Updated: 29-Sep-2019
+Updated: 30-Sep-2019
 </pre>
 </body>
 </html>
