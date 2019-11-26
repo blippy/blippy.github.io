@@ -13,7 +13,7 @@
 
 <p>Speed up video: <code>ffmpeg -i input.mkv -an -filter:v "setpts=0.5*PTS" output.mkv</code>. <code>-an</code> turns off audio. <a href="https://trac.ffmpeg.org/wiki/How%20to%20speed%20up%20/%20slow%20down%20a%20video">xlink</a>
 
-<p>Convert to 720x256 video, reduce volume a lot, skip the first 5 seconds of video, and only take 1 second of video:</p>  
+<p>Convert to 720x576 video, reduce volume a lot, skip the first 5 seconds of video, and only take 1 second of video:</p>  
 <pre>
 ffmpeg -ss 00:00:05 -i static.mkv -t 00:00:01 -vf scale=720x576 -af "volume=0.1" static.mpg
 </pre>
@@ -83,7 +83,7 @@ Flipcam produces a 1GiB AVI for 60min . <code>Kdenlive</code> imported the AVI s
 <hr><pre>
 Author:  Mark Carter
 Created: 14-Nov-2015
-Updated: 24-Nov-2019
+Updated: 26-Nov-2019
 </pre>
 </body>
 </html>
