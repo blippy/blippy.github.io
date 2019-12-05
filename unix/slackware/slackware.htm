@@ -4,8 +4,8 @@
 </head>
 
 <body>
-  <a href="../../index.html">Home</a>
-  : <a href="../unix.htm">unix</a>
+<a href="../../index.html">Home</a>
+: <a href="../unix.htm">unix</a>
 
 
 <h1>Slackware Linux</h1>
@@ -15,8 +15,12 @@
 # SLACKWARE 14.2
 
 # USER
+<strike>
 useradd -m -u 3003 mcarter
 passwd mcarter
+</strike>
+
+sudo usermod -a -G netdev pi
 
 # LOCALE
 dotfiles/slackware/kbd
@@ -55,7 +59,7 @@ swapon /swapfile
 <hr><pre>
 Author:  Mark Carter
 Created: 16-Sep-2017
-Updated: 02-Sep-2019
+Updated: 05-Dec-2019
 </pre>
 </body>
 </html>
