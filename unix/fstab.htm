@@ -14,14 +14,19 @@ Identify what devide it is you need to add:
   sudo blkid
 
 Add it to /etc/fstab:
-  /dev/sda2 /mnt/win7 ntfs-3g defaults,uid=3003,rw 0 0
+  <strike>/dev/sda2 /mnt/win7 ntfs-3g defaults,uid=3003,rw 0 0</strike>
+  /dev/sdb1 /mnt/sdb1 ntfs defaults,user,rw 0 0
+
+Mount and unmount:
+  sudo mount /dev/sdb1
+  sudo umount /dev/sdb1
 </pre>
   
 
 <hr><pre>
 Author:  Mark Carter
 Created: 24-Apr-2015
-Updated: 24-Apr-2015
+Updated: 05-Dec-2019
 </pre>
 </body>
 </html>
