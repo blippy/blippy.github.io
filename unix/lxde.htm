@@ -1,0 +1,43 @@
+<html><head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+<LINK REL=StyleSheet HREF="../style.css" TYPE="text/css">
+<title>LXDE</title>
+</head>
+
+<body>
+<a href="../index.html">Home</a> 
+: <a href="unix.htm">unix</a>
+
+
+<h1>LXDE</h1>
+
+
+<hr><pre>
+Append to /home/pi/.config/lxsession/LXDE/autostart:
+
+@xbindkeys
+@xrdb -load /home/pi/.Xresources
+</pre>
+
+May need to
+<pre>
+cd /etc/xdg/autostart
+sudo mv clipit-startup.desktop clipit-startup.desktop.ori
+cd -
+</pre>
+
+
+<hr><h2>Links to other sites</h2>
+
+
+
+<li><a href="https://lkubaski.wordpress.com/2012/06/29/adding-lxde-start-menu-and-desktop-shortcuts/">LXDE</a> - Adding start menu entries and desktop shortcuts</li>
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 15-Dec-2019
+Updated: 15-Dec-2019
+</pre>
+</body>
+</html>
