@@ -1,0 +1,75 @@
+<html><head>
+  <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+  <LINK REL=StyleSheet HREF="../style.css" TYPE="text/css">
+  <title>programming</title>
+</head>
+
+<body>
+
+<a href="../../index.html">Home</a> 
+: <a href="../programming.htm">programming</a> 
+: <a href="forth.htm">forth</a> 
+
+
+<h1>forth 'macros'</h1>
+
+Forth is an extensive and powerful language, but it is difficult to figure out how to create "macros", i.e. words
+which change the language itself. Macros are achieved through <code>immediate</code>.
+
+<p>The best way to start off is not to use macros. Suppose we want to print out a countdown. Here's how we might do it
+
+<pre>
+: x 5 [ here ] dup .  1 - dup ?branch [ , ]  drop ;
+x \ outputs: 5 4 3 2 1
+.s \ just confirm that the stack is empty
+</pre>
+
+Let's try to abstract away the loop structuring. Like so:
+
+<pre>
+: begin 	here ; immediate
+: ?again 	compile ?branch , ; immediate
+\ Then we can write
+: y 		5 begin dup . 1 - dup ?again drop ;
+y
+.s
+</pre>
+
+Actually, bbf already defines begin and ?again, so there's no need to define it ourselves.
+
+<p>
+
+Let's take it one step further. Suppose we didn't like the immediate word 
+<code>?again</code>,
+and wanted to alias it. I've gotten into all sorts of contortions trying to make it work
+without crashing, and I found the easiest solution was to create a convenience word, like so:
+
+
+<pre>
+' ?again constant '?again 
+</pre>
+
+Then I can define the word I actually want:
+
+
+<pre>
+: unless '?again execute ; immediate
+</pre>
+
+Then use it in the intuitive way:
+
+<pre>
+: z     5     begin dup . 1 - dup unless        drop ;
+z
+.s
+</pre>
+
+
+
+
+<hr><pre>
+Author:  Mark Carter
+Created: 14-Jan-2020
+Updated: 14-Jan-2020
+</pre>
+</body></html>
