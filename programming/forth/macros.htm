@@ -14,7 +14,17 @@
 <h1>forth 'macros'</h1>
 
 Forth is an extensive and powerful language, but it is difficult to figure out how to create "macros", i.e. words
-which change the language itself. Macros are achieved through <code>immediate</code>.
+which change the language itself. Macros are achieved through <code>IMMEDIATE</code>.
+
+<p>
+
+In versions 1 and 2 of my 
+<li><a href="https://github.com/blippy/cerbo/tree/master/forth">bbf</a></li> (barebones Forth) system, I used
+convoluted tricks to inline immediate words. Having toyed with the 
+<code>gforth</code> system, I figured that I could use a word like 
+<code>POSTPONE</code> to work with both immediate and non-immediate words. This is the method I 
+describe here. v3 still uses the word <code>COMPILE</code>  internally, but your use of it is
+discouraged.
 
 <p>The best way to start off is not to use macros. Suppose we want to print out a countdown. Here's how we might do it
 
@@ -28,7 +38,7 @@ Let's try to abstract away the loop structuring. Like so:
 
 <pre>
 : begin 	here ; immediate
-: ?again 	compile ?branch , ; immediate
+: ?again 	postpone ?branch , ; immediate
 \ Then we can write
 : y 		5 begin dup . 1 - dup ?again drop ;
 y
@@ -46,14 +56,7 @@ without crashing, and I found the easiest solution was to create a convenience w
 
 
 <pre>
-' ?again constant '?again 
-</pre>
-
-Then I can define the word I actually want:
-
-
-<pre>
-: unless '?again execute ; immediate
+: unless	postpone ?again ; immediate
 </pre>
 
 Then use it in the intuitive way:
@@ -70,6 +73,6 @@ z
 <hr><pre>
 Author:  Mark Carter
 Created: 14-Jan-2020
-Updated: 14-Jan-2020
+Updated: 17-Jan-2020
 </pre>
 </body></html>
