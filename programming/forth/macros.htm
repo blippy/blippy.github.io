@@ -69,10 +69,30 @@ z
 
 
 
+<hr><h2>Embedding literals</h2>
+
+Suppose you wanted to embed numbers in a word. Under bbf, you can do that for a non-immediate word:
+
+
+<pre>
+: f  [ 1 2 + ] literal  ;
+." Expect: 3 3" cr
+f  . f  . cr
+</pre>
+
+To embed in an immediate wordL
+
+
+<pre>
+: n23     23  postpone literal    ; immediate
+: nn n23 . cr ;
+." Expect 23:" cr
+nn
+</pre>
 
 <hr><pre>
 Author:  Mark Carter
 Created: 14-Jan-2020
-Updated: 17-Jan-2020
+Updated: 18-Jan-2020
 </pre>
 </body></html>
