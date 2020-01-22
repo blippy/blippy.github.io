@@ -80,7 +80,7 @@ Suppose you wanted to embed numbers in a word. Under bbf, you can do that for a 
 f  . f  . cr
 </pre>
 
-To embed in an immediate wordL
+To embed in an immediate word:
 
 
 <pre>
@@ -90,9 +90,40 @@ To embed in an immediate wordL
 nn
 </pre>
 
+
+<hr><h2>COMPILE and [COMPILE] (ANS)</h2>
+
+[COMPILE] is an immediate word, COMPILE is not. 
+
+When creating immediate words, you use COMPILE to compile in non-immediate words, and [COMPILE] for immediate words.
+
+<p>
+
+For example, suppose we want to construct the word ?EXIT which leaves a word if the top of the stack is true,
+but continues on if the TOS is false. Here's how it would be defined:
+
+<pre>
+: ?EXIT  [compile] if compile exit [compile] then ; immediate
+</pre>
+
+Not that `IF` amd 'THEN` are immediate words, whilst `EXIT` is not.
+
+You can then use it in the following way:
+
+<pre>
+: eg 0 ?exit 12 . 0 ?exit 13 . 1 ?exit 14 . ; 
+eg
+</pre>
+
+will output 12 13. The 14 will not be output.
+
+
+
+
+
 <hr><pre>
 Author:  Mark Carter
 Created: 14-Jan-2020
-Updated: 18-Jan-2020
+Updated: 22-Jan-2020
 </pre>
 </body></html>
