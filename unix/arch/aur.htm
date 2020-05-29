@@ -10,15 +10,34 @@
 
 <h1>AUR</h1>
 
-For complex builds where there might be failure, it is better to download-build-install as separate steps:
+<hr><h2>Fine-grained control</h2>
+
+Example:
 <pre>
-  cower -d foo
-  cd foo
-  makepkg
-  makepkg -i
+git clone https://aur.archlinux.org/neoleo.git
+cd neoleo
+makepkg
+makepkg -i
+
+# some makepkg flags
+i install
+s install missing dependencies using pacman
 </pre>
 
 
+<hr><h2>Yay</h2>
+
+Popular package manager
+
+
+Example:
+<pre>
+yay -S cflow
+</pre>
+
+
+
+<li><a href="https://computingforgeeks.com/yay-best-aur-helper-for-arch-linux-manjaro/">xlink</a></li>
 
 <hr><h2>Links to other sites</h2>
 
@@ -29,7 +48,7 @@ None
 <hr><pre>
 Author:  Mark Carter
 Created: 18-Nov-2015
-Updated: 21-Nov-2015
+Updated: 29-May-2020
 </pre>
 </body>
 </html>
