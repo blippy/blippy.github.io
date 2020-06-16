@@ -17,6 +17,35 @@
 %serialconnect to --port=/dev/ttyUSB0
 </pre>
 
+
+<hr><h2>Lua</h2>
+
+
+
+<h3>Building and Flashing Lua</h3>
+
+Obtain the latest release from <a href="https://github.com/nodemcu/nodemcu-firmware">github</a>
+
+
+
+
+<pre>
+esptool.py --port /dev/ttyUSB0 erase_flash
+esptool.py --port /dev/ttyUSB0 flash_id # informational purposes
+esptool.py --port /dev/ttyUSB0 write_flash -fm qio 0x00000 bin/0x00000.bin 
+esptool.py --port /dev/ttyUSB0 write_flash -fm qio 0x10000 bin/0x10000.bin 
+</pre>
+
+
+Enabling optional dependencies in <code>nodemcu-firmware-3.0-master_20200610/app/include/user_config.h</code>:
+<li>BUILD_FATFS for SD card reading. Binary 0x10000.bin goes from 400k to 476k</li>
+
+
+<h3>Unclassified</h3>
+
+ESplorer Baud 115200. Fiddling with DTR and RTS may help.
+
+
 <hr><h2>repl</h2>
 
 <pre>
@@ -50,6 +79,8 @@ Run file:
 
 <li><a href="https://github.com/thehookup/Wireless_MQTT_Doorbell/blob/master/GPIO_Limitations_ESP8266_NodeMCU.jpg">GPIO pins</a></li>
 
+<li><a href="https://gist.github.com/blippy/eb1dd77244072683757a00acedef4603">wifi.lua</a></li>
+
 <li><a href ="https://www.rototron.info/raspberry-pi-esp32-micropython-tutorial/">setup</a>, and <a href="https://www.youtube.com/watch?v=w15-EQASP_Y">video</a>. Excellent.</li>
 
 
@@ -59,7 +90,7 @@ Run file:
 <hr><pre>
 Author:  Mark Carter
 Created: 08-May-2019
-Updated: 15-May-2019
+Updated: 16-Jun-2020
 </pre>
 </body>
 </html>
