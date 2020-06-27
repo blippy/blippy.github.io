@@ -9,6 +9,22 @@
 
 <h1>perl6</h1>
 
+<hr><h2>Heredocs</h2>
+
+Example:
+<pre>
+my $str = q:to/END/;
+HALT 
+NOP
+TRAP
+L1:
+        ADD R1, R13
+\ foo bar baz
+LDA 26(R1),R2
+END
+
+</pre>
+
 <hr><h2>Also on this site</h2>
 
 <li><a href="collections.htm">collections</a></li>
@@ -47,7 +63,7 @@
 <hr><pre>
 Author:  Mark Carter
 Created: 14-Dec-2016
-Updated: 23-Sep-2019
+Updated: 27-Jun-2020
 </pre>
 </body>
 </html>
