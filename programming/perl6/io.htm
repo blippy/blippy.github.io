@@ -1,0 +1,28 @@
+<html><head>
+<LINK REL=StyleSheet HREF="../../style.css" TYPE="text/css">
+<title>perl6</title></head>
+<body>
+
+<a href="../../index.html">Home</a> 
+: <a href="../programming.htm" >programming</a>
+: <a href="perl6.htm">perl6</a>
+
+
+<h1>io</h1>
+
+<hr><h2>Binary output</h2>
+
+<pre>
+my byte @foo = [1, 2, 3, 4]
+my $fout = open "foo.dat", :w, :bin;
+for @mem { $fout.write(Buf.new($_)); }
+$fout.close;
+</pre>
+
+<hr><pre>
+Author:  Mark Carter
+Created: 28-Jun-2020
+Updated: 28-Jun-2020
+</pre>
+</body>
+</html>
