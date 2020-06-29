@@ -9,6 +9,18 @@
 <h1>m4</h1>
 
 
+<hr><h2>Counter</h2>
+
+<pre>
+define(`COUNT&#x27;, 0)dnl
+define(`COUNTER&#x27;, `define(`COUNT&#x27;, eval(COUNT+1))`LABEL_&#x27;COUNT&#x27;)dnl
+
+COUNTER() =&gt; LABEL_1
+COUNTER() =&gt; LABEL_2
+COUNTER() =&gt; LABEL_3
+COUNTER() =&gt; LABEL_4
+</pre>
+
 
 <hr><h2>Links to other sites</h2>
 
@@ -21,7 +33,7 @@
 <hr><pre>
 Author:  Mark Carter
 Created: 14-Jun-2016
-Updated: 06-Apr-2017
+Updated: 29-Jun-2020
 </pre>
 </body>
 </html>
