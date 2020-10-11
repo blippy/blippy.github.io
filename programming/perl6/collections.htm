@@ -38,6 +38,7 @@ say %h&lt;b&gt;; # OUTPUT: 4
 my %h = %(12=&gt;13, 14=&gt;15);
 my $f = 12;
 %h{$f}; # 13
+$h{$key} = $value; # add a key
 %h&lt;16&gt;; # (Any)
 %h&lt;16&gt; || 666; # 666
 %h&lt;14&gt; || 666; # 15
@@ -47,7 +48,7 @@ my $f = 12;
 <hr><pre>
 Author:  Mark Carter
 Created: 01-Jul-2017
-Updated: 27-Jun-2020
+Updated: 11-Oct-2020
 </pre>
 </body>
 </html>
