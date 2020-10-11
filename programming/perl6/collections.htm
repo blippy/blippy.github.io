@@ -43,6 +43,10 @@ $h{$key} = $value; # add a key
 %h&lt;16&gt; || 666; # 666
 %h&lt;14&gt; || 666; # 15
 
+for %h.kv -&gt; $k, $v {
+	say "key $k value $v";
+}
+
 </pre>
 
 <hr><pre>
