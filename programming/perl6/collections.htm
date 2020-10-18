@@ -20,6 +20,15 @@ my Int @a;
 say @a; # outputs [42 43]
 </pre>
 
+<pre>
+my @hdrs = (&quot;blue&quot;, &quot;gpio&quot;);
+say @hdrs;
+for @hdrs -&gt; $hdr {
+        say &quot;value is $hdr&quot;;
+}
+
+</pre>
+
 List of lists:
 <pre>
 @.push( [$foo, $bar]);
@@ -52,7 +61,7 @@ for %h.kv -&gt; $k, $v {
 <hr><pre>
 Author:  Mark Carter
 Created: 01-Jul-2017
-Updated: 11-Oct-2020
+Updated: 18-Oct-2020
 </pre>
 </body>
 </html>
