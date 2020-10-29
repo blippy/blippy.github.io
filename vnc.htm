@@ -18,13 +18,13 @@ Install tigervnc. Configuration is here (<a href="https://wiki.archlinux.org/ind
 
 <hr><h2>Debian 10 server</h2>
 
-**Edit  ~/.vnc/xstartup:**
+<b>Edit  ~/.vnc/xstartup:</b>
 <pre>
 #!/bin/env bash
 exec /usr/bin/mate-session &
 </pre>
 
-**Start vnc:**
+<b>Start vnc:</b>
 <pre>
 	vncserver :1  -geometry 1920x1080 -localhost no
 or
