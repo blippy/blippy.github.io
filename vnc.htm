@@ -15,6 +15,25 @@ Install tigervnc. Configuration is here (<a href="https://wiki.archlinux.org/ind
 
 <p>I have a script called vnc that creates and kills sessions.
 
+
+<hr><h2>Debian 10 server</h2>
+
+**Edit  ~/.vnc/xstartup:**
+<pre>
+#!/bin/env bash
+exec /usr/bin/mate-session &
+</pre>
+
+**Start vnc:**
+<pre>
+	vncserver :1  -geometry 1920x1080 -localhost no
+or
+	vncserver  -geometry 1920x1080 -localhost no
+or
+	vnc -c # my own script
+</pre>
+
+
 <hr><h2>Raspian server</h2>
 
 Install:
@@ -63,7 +82,7 @@ TigerVNC seems better than TightVNC. Remmina looks good as a Linux client, but i
 <hr><pre>
 Author:  Mark Carter
 Created: 26-Oct-2014
-Updated: 09-Jan-2019
+Updated: 29-Oct-2020
 </pre>
 </body>
 </html>
