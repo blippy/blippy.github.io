@@ -30,6 +30,12 @@ say $m;
 </pre>
 
 
+<hr><h2>Comments</h2>
+
+<pre>
+	token comment   { '#' \N*  }
+</pre>
+
 <hr><h2>Strings</h2>
 
 This captures the enclosing double-quotes:
@@ -78,7 +84,7 @@ token kstr { &#x27;&quot;&#x27; &lt;( &lt;-[&quot;]&gt;* )&gt; &#x27;&quot;&#x27
 <hr><pre>
 Author:  Mark Carter
 Created: 10-Mar-2017
-Updated: 03-Jul-2020
+Updated: 31-Oct-2020
 </pre>
 </body>
 </html>
