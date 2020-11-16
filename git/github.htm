@@ -31,6 +31,21 @@ Github, and alternatives.
 
 <a href="http://stackoverflow.com/questions/7244321/how-to-update-a-github-forked-repository">xlink</a> Also explains how to set "upstream".
 
+<hr><h2>Upstream</h2>
+
+<pre>
+Add grandparent to upstream:
+    git remote add upstream https://github.com/sean-lawless/computersystems.git
+    git remote -v # List the remotes
+
+To create a branch, e.g. foo, based on grandparent's master:
+    git checkout -b foo upstream/master
+</pre>
+
+
+<li><a href="https://www.reddit.com/r/git/comments/jv6j7y/how_do_i_create_an_upstream_branch/">xlink</a></li>
+
+
 <hr><h2>Links to other sites</h2>
 
 
@@ -42,7 +57,7 @@ Github, and alternatives.
 <hr><pre>
 Author:  Mark Carter
 Created: 05-May-2014
-Updated: 02-Jul-2020
+Updated: 16-Nov-2020
 </pre>
 </body>
 </html>
