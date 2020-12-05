@@ -5,7 +5,8 @@
 <body>
 
 
-<a href="../../index.html">Home</a> : <a href="../programming.htm">programming</a>
+<a href="../../index.html">Home</a> 
+: <a href="../programming.htm">programming</a>
 : <a href="cxx.htm">cxx</a>
 
 <h1>Compiler</h1>
@@ -26,10 +27,11 @@ __linux__              1
 __unix__        1      1
 </pre>
 
-<p>
-<a href="http://stackoverflow.com/questions/2224334/gcc-dump-preprocessor-defines">GCC dump preprocessor defines</a>
-
-</p>
+To dump preprocessor defines:
+<pre>
+gcc -dM -E - &lt; /dev/null
+g++ -dM -E -x c++ - &lt; /dev/null
+</pre>
 
 
 <hr><h2>Versions</h2>
@@ -70,7 +72,7 @@ user-defined literatls  4.4
 <hr><pre>
 Author:  Mark Carter
 Created: 22-Oct-2016
-Updated: 01-Mar-2020
+Updated: 05-Dec-2020
 </small>
 </body>
 </html>
