@@ -1,0 +1,139 @@
+<!DOCTYPE HTML>
+<HTML>
+ <HEAD>
+  <TITLE>matrices</TITLE>
+  <META NAME="generator" CONTENT="wxMaxima">
+  <META HTTP-EQUIV="Content-Type" CONTENT="text/html; charset=utf-8">
+<script type="text/x-mathjax-config">
+  MathJax.Hub.Config({
+    displayAlign: "left",
+    context: "MathJax",
+    TeX: {TagSide: "left"}
+  })
+</script>
+<script type="text/javascript"
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-AMS_HTML">
+</script>
+  <link rel="stylesheet" type="text/css" href="matrices_htmlimg/matrices.css"/>
+ </HEAD>
+ <BODY>
+
+<!-- ***************************************************** -->
+<!--          Created with wxMaxima version 19.01.2x         -->
+<!-- ***************************************************** -->
+<noscript><div class="error message">    Please enable JavaScript in order to get a 2d display of the equations embedded in this web page.</div></noscript>\(      \DeclareMathOperator{\abs}{abs}
+      \newcommand{\ensuremath}[1]{\mbox{$#1$}}
+\)
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i27)	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">A</span><span class="code_operator">:</span> <span class="code_function">matrix</span>([<span class="code_number">−</span><span class="code_number">50000</span>, <span class="code_number">10000</span>, <span class="code_number">0</span>], <BR>
+ &nbsp;&nbsp; [<span class="code_number">0</span>, <span class="code_number">−</span><span class="code_number">10000</span>, <span class="code_number">−</span><span class="code_number">10000</span>],<BR>
+[<span class="code_number">1</span>, <span class="code_number">1</span>, <span class="code_number">−</span><span class="code_number">1</span>])<span class="code_endofline">;</span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{A}\begin{pmatrix}-50000 & 10000 & 0\\
+0 & -10000 & -10000\\
+1 & 1 & -1\end{pmatrix}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i28)	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">B</span><span class="code_operator">:</span> <span class="code_variable">A</span><span class="code_operator">^</span><span class="code_operator">^</span><span class="code_number">−</span><span class="code_number">1</span><span class="code_endofline">;</span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{B}\begin{pmatrix}-\frac{1}{55000} & -\frac{1}{110000} & \frac{1}{11}\\
+\frac{1}{110000} & -\frac{1}{22000} & \frac{5}{11}\\
+-\frac{1}{110000} & -\frac{3}{55000} & -\frac{5}{11}\end{pmatrix}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i24)	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_variable">B</span>.<span class="code_variable">A</span><span class="code_endofline">;</span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{%o24} \begin{pmatrix}1 & 0 & 0\\
+0 & 1 & 0\\
+0 & 0 & 1\end{pmatrix}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i29)	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_function">float</span>(<span class="code_variable">B</span>.[<span class="code_number">−</span><span class="code_number">6</span>, <span class="code_number">−</span><span class="code_number">3</span>, <span class="code_number">0</span>])<span class="code_endofline">;</span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{%o29} \begin{pmatrix}1.363636363636363 {{10}^{-4}}\\
+8.181818181818182 {{10}^{-5}}\\
+2.181818181818181 {{10}^{-4}}\end{pmatrix}\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i30)	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_number">2</span><span class="code_number">.</span><span class="code_number">2e</span><span class="code_operator">−</span><span class="code_number">4</span>·<span class="code_number">5000</span><span class="code_endofline">;</span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{%o30} 1.1\]
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i10)	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_number">5</span><span class="code_number">.</span><span class="code_number">2e</span><span class="code_operator">−</span><span class="code_number">4</span><span class="code_endofline">;</span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{%o10} 5.2 {{10}^{-4}}\]
+
+
+<!-- Text cell -->
+
+
+<P CLASS="comment">&nbsp;
+ho now<BR>
+</P>
+
+
+<!-- Code cell -->
+
+
+<TABLE><TR><TD>
+  <SPAN CLASS="prompt">
+(%i31)	
+  </SPAN></TD>
+  <TD><SPAN CLASS="input">
+<span class="code_number">23</span><span class="code_endofline">;</span>  </SPAN></TD>
+</TR></TABLE>
+\[\tag{%o31} 23\]
+
+ <HR>
+ <SMALL> Created with <A HREF="https://wxMaxima-developers.github.io/wxmaxima/">wxMaxima</A>.</SMALL>
+ </BODY>
+</HTML>
