@@ -15,13 +15,13 @@ Remmina and TigerVNC Viewer seem to work acceptably.
 
 <hr><h2>Debian 10 server</h2>
 
-<b>Edit  ~/.vnc/xstartup:</b>
+<p><b>Edit  ~/.vnc/xstartup:</b>
 <pre>
 #!/bin/env bash
 exec /usr/bin/mate-session &
 </pre>
 
-<b>Start vnc:</b>
+<p><b>Start vnc:</b>
 <pre>
 	vncserver :1  -geometry 1920x1080 -localhost no
 or
@@ -37,7 +37,7 @@ MATE on Buster didn't seem to start properly.
 
 <p>LXDE seems the best bet. You need to install it first, though.
 
-<b>Edit  ~/.vnc/xstartup:</b>
+<p><b>Edit  ~/.vnc/xstartup:</b>
 <pre>
 #!/bin/env bash
 exec startldxe &
