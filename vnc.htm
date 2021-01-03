@@ -8,12 +8,9 @@
 
 <h1>VNC</h1>
 
-<hr><h2>Arch Linux</h2>
+<hr><h2>Clients</h2>
 
-Install tigervnc. Configuration is here (<a href="https://wiki.archlinux.org/index.php/Vncserver">xlink</a>), but the systemd info seems somewhat flakey.
-
-
-<p>I have a script called vnc that creates and kills sessions.
+Remmina and TigerVNC Viewer seem to work acceptably.
 
 
 <hr><h2>Debian 10 server</h2>
@@ -34,55 +31,26 @@ or
 </pre>
 
 
-<hr><h2>Raspian server</h2>
+<hr><h2>Raspberry Pi OS server</h2>
 
-Install:
-<pre>
-sudo raspi-config
-Interfacing options
-VNC
-</pre>
+MATE on Buster didn't seem to start properly. 
 
-Set VNC password:
-<pre>
-At top right of screen, click the VNC icon
-Menue item: options
-Security: Authentication: VNC password
-Users and Permissions: Standard user: add a password
-</pre>
+<p>LXDE seems the best bet. You need to install it first, though.
 
-Fix small screen size in headerless mode:
+<b>Edit  ~/.vnc/xstartup:</b>
 <pre>
-Raspberry Pi Configuration: System : Set resolution:
-DMT mode 82 ...
+#!/bin/env bash
+exec startldxe &
 </pre>
 
 
-<hr><h2>Slackware 14.2-current</h2>
-
-Download tightvnc <a href="http://www.tightvnc.com/download-old.php">here</a>. Compile as per README. Start is using <code>vncviewer</code>.
-
-<p>
-I haven't tried TigerVNC.
-</p>
-
-<hr><h2>Ubuntu client connection to Raspbian server</h2>
-
-Use <code>remmina</code>. Use the password that you entered in Raspbian
-
-<hr><h2>Windows: Client side</h2>
-
-TigerVNC seems better than TightVNC. Remmina looks good as a Linux client, but is not available on Windows.
-<pre>
-
-</pre>
-
+<p>Don't use the default VNC server. Xtigervnc seems a good bet.
 
 
 <hr><pre>
 Author:  Mark Carter
 Created: 26-Oct-2014
-Updated: 29-Oct-2020
+Updated: 03-Jan-2021
 </pre>
 </body>
 </html>
